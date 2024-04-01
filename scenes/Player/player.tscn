@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfa5k6fj6tlv1"]
+
+[ext_resource type="Texture2D" uid="uid://cbh5fcy3ukll6" path="res://graphics/ShipAnimated3.png" id="1_5og54"]
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_hxh8b"]
+[ext_resource type="PackedScene" uid="uid://bo3cvbws56w4u" path="res://scenes/Controllers/Player/movement_controller.tscn" id="3_uf2ww"]
+[ext_resource type="PackedScene" uid="uid://clmb2m2xj4oua" path="res://scenes/Controllers/Player/attack_controller.tscn" id="4_o2gl1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ydn7t"]
+radius = 17.0
+
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("movement_controller")]
+rotation = -6.26583
+script = ExtResource("1_hxh8b")
+movement_controller = NodePath("movementController")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ydn7t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5456
+scale = Vector2(1.5625, 1.375)
+texture = ExtResource("1_5og54")
+
+[node name="movementController" parent="." instance=ExtResource("3_uf2ww")]
+
+[node name="attackController" parent="." instance=ExtResource("4_o2gl1")]
