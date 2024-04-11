@@ -27,5 +27,8 @@ texture = ExtResource("1_5og54")
 [node name="attackController" parent="." instance=ExtResource("4_o2gl1")]
 
 [node name="laser_position" type="Marker2D" parent="."]
+position = Vector2(17.0148, 0.704825)
+
+[node name="Projectiles" type="Node2D" parent="."]
 
 [connection signal="laser" from="." to="attackController" method="_on_player_laser"]

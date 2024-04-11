@@ -10,4 +10,10 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _process(_delta):
-	attack_controller.player_shoot(self)
+	attack_controller.player_shoot(self, get_laser_marker_position(), bullet_direction())
+
+func get_laser_marker_position():
+	return $laser_position.global_position
+
+func bullet_direction():
+	return (get_global_mouse_position() - position).normalized()
