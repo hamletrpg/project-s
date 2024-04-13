@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmxjqojlhm8om"]
+[gd_scene load_steps=5 format=3 uid="uid://cmxjqojlhm8om"]
 
 [ext_resource type="Script" path="res://scripts/enemies/mobs/basic_mob.gd" id="1_5bvnm"]
+[ext_resource type="Texture2D" uid="uid://b3fwxgitq3qbc" path="res://graphics/mobs/basic_mob/enemy.png" id="2_c6iuh"]
+[ext_resource type="PackedScene" uid="uid://dpubvi77hto5w" path="res://scenes/Enemies/controllers/basic_enemy_wander_controller.tscn" id="3_hnx20"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f4mcv"]
 
@@ -9,3 +11,8 @@ script = ExtResource("1_5bvnm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_f4mcv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_c6iuh")
+
+[node name="basicEnemyWanderController" parent="." instance=ExtResource("3_hnx20")]

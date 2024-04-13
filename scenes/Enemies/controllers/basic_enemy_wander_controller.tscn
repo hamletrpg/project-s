@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpubvi77hto5w"]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy_controllers/basic_enemy_wander_controller.gd" id="1_h8c11"]
+
+[node name="basicEnemyWanderController" type="Node2D"]
+script = ExtResource("1_h8c11")
+
+[node name="wander_update" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="wander_update" to="." method="_on_wander_update_timeout"]
