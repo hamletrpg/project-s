@@ -12,7 +12,6 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _process(_delta):
-	print(can_shoot)
 	if can_shoot:
 		attack_controller.player_shoot(self, get_laser_marker_position(), bullet_direction())
 
