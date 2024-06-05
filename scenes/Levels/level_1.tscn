@@ -14,6 +14,6 @@ bullet = ExtResource("3_17ts8")
 position = Vector2(98.65, 99)
 
 [node name="basic_mob" parent="." instance=ExtResource("4_ve0j3")]
-position = Vector2(327, 54)
+position = Vector2(559, 291)
 
 [connection signal="laser" from="player" to="." method="_on_player_laser"]

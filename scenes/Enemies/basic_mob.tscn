@@ -1,26 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmxjqojlhm8om"]
+[gd_scene load_steps=7 format=3 uid="uid://cmxjqojlhm8om"]
 
 [ext_resource type="Script" path="res://scripts/enemies/mobs/basic_mob.gd" id="1_5bvnm"]
 [ext_resource type="Texture2D" uid="uid://b3fwxgitq3qbc" path="res://graphics/mobs/basic_mob/enemy.png" id="2_c6iuh"]
-[ext_resource type="PackedScene" uid="uid://dpubvi77hto5w" path="res://scenes/Enemies/controllers/basic_enemy_wander_controller.tscn" id="3_hnx20"]
+[ext_resource type="PackedScene" uid="uid://bryxb2ku35jen" path="res://scenes/Enemies/controllers/attack_controller.tscn" id="4_j74d4"]
+[ext_resource type="PackedScene" uid="uid://dpubvi77hto5w" path="res://scenes/Enemies/controllers/basic_enemy_wander_controller.tscn" id="4_smdja"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f4mcv"]
 
-[node name="basic_mob" type="CharacterBody2D" node_paths=PackedStringArray("wander_controller")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_62bni"]
+radius = 105.802
+
+[node name="basic_mob" type="CharacterBody2D" node_paths=PackedStringArray("wander_controller", "attack_controller")]
 script = ExtResource("1_5bvnm")
 wander_controller = NodePath("basicEnemyWanderController")
+attack_controller = NodePath("attack_controller")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_f4mcv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.56603
 texture = ExtResource("2_c6iuh")
 
-[node name="basicEnemyWanderController" parent="." instance=ExtResource("3_hnx20")]
+[node name="basicEnemyWanderController" parent="." instance=ExtResource("4_smdja")]
 
 [node name="wander_update" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
+wait_time = 2.0
 autostart = true
 
+[node name="attack_range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_range"]
+shape = SubResource("CircleShape2D_62bni")
+
+[node name="attack_controller" parent="." instance=ExtResource("4_j74d4")]
+
 [connection signal="timeout" from="wander_update" to="." method="_on_wander_update_timeout"]
+[connection signal="body_entered" from="attack_range" to="." method="_on_attack_range_body_entered"]

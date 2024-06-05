@@ -7,6 +7,9 @@ var can_shoot: bool = true
 
 signal laser(pos, dir)
 
+func _ready():
+	PlayerReference.player = self
+
 func _physics_process(delta):
 	movement_controller.rotate_forward_backwards(self, delta)
 	move_and_slide()
