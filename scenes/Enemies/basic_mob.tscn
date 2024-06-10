@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmxjqojlhm8om"]
+[gd_scene load_steps=8 format=3 uid="uid://cmxjqojlhm8om"]
 
 [ext_resource type="Script" path="res://scripts/enemies/mobs/basic_mob.gd" id="1_5bvnm"]
+[ext_resource type="PackedScene" uid="uid://df7xotv1od8v0" path="res://scenes/Enemies/enemy_projectiles/basic_enemy_lasser.tscn" id="2_1ojow"]
 [ext_resource type="Texture2D" uid="uid://b3fwxgitq3qbc" path="res://graphics/mobs/basic_mob/enemy.png" id="2_c6iuh"]
 [ext_resource type="PackedScene" uid="uid://bryxb2ku35jen" path="res://scenes/Enemies/controllers/attack_controller.tscn" id="4_j74d4"]
 [ext_resource type="PackedScene" uid="uid://dpubvi77hto5w" path="res://scenes/Enemies/controllers/basic_enemy_wander_controller.tscn" id="4_smdja"]
@@ -14,6 +15,7 @@ radius = 105.802
 script = ExtResource("1_5bvnm")
 wander_controller = NodePath("basicEnemyWanderController")
 attack_controller = NodePath("attack_controller")
+bullet = ExtResource("2_1ojow")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_f4mcv")
@@ -35,5 +37,6 @@ shape = SubResource("CircleShape2D_62bni")
 
 [node name="attack_controller" parent="." instance=ExtResource("4_j74d4")]
 
+[connection signal="laser" from="." to="." method="_on_laser"]
 [connection signal="timeout" from="wander_update" to="." method="_on_wander_update_timeout"]
 [connection signal="body_entered" from="attack_range" to="." method="_on_attack_range_body_entered"]
