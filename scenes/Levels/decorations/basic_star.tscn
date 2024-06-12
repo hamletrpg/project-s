@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://2vgc2hveq4lk"]
+
+[ext_resource type="Texture2D" uid="uid://d12hx20dg66yo" path="res://graphics/level/stars/basic_star/star1.png" id="1_7vyo7"]
+[ext_resource type="Texture2D" uid="uid://dgclsvex5ga36" path="res://graphics/level/stars/basic_star/star2.png" id="2_g1omm"]
+[ext_resource type="Texture2D" uid="uid://bsscsog2wsga2" path="res://graphics/level/stars/basic_star/star3.png" id="3_3pdbj"]
+[ext_resource type="Texture2D" uid="uid://cqbfvbvqkc44b" path="res://graphics/level/stars/basic_star/star4.png" id="4_l2u75"]
+[ext_resource type="Texture2D" uid="uid://cy22kj4riyktn" path="res://graphics/level/stars/basic_star/star5.png" id="5_j5phc"]
+[ext_resource type="Texture2D" uid="uid://dkogiglo5nr6k" path="res://graphics/level/stars/basic_star/star6.png" id="6_2hpsr"]
+[ext_resource type="Texture2D" uid="uid://dl56wfy10kxrn" path="res://graphics/level/stars/basic_star/star7.png" id="7_dhncg"]
+[ext_resource type="Texture2D" uid="uid://bfgxgpck1541v" path="res://graphics/level/stars/basic_star/star8.png" id="8_efwyw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cmfbn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7vyo7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_g1omm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3pdbj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_l2u75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_j5phc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2hpsr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dhncg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_efwyw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="basic_star" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cmfbn")
+autoplay = "default"
+frame = 1
+frame_progress = 0.792455
