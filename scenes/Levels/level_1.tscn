@@ -16,7 +16,6 @@ sources/0 = SubResource("TileSetAtlasSource_h6hcq")
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_esvit")
-player = ExtResource("1_grpn2")
 bullet = ExtResource("3_17ts8")
 
 [node name="TileMap" type="TileMap" parent="."]

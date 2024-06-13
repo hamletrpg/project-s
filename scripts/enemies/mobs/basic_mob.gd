@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var current_state = State.WANDER
 var can_shoot = true
+var health = 100
 @onready var wander_update_timer = $wander_update
 @export var wander_controller: Node2D
 @export var attack_controller: Node2D
@@ -73,3 +74,15 @@ func _on_chase_range_body_exited(body):
 		set_state(State.WANDER)
 		wander_update_timer.start()
 		print("Wander")
+
+
+func _on_hurt_box_area_entered(area):
+	var get_bullet_owner = area.get("bullet_owner")
+	if get_bullet_owner != null and get_bullet_owner == player:
+		health -= 10
+		if health <= 0:
+			queue_free()
+		print(health)
+		area.queue_free()
+		print("Hurt")
+		
