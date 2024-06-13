@@ -16,7 +16,7 @@ func wander_action():
 	# print("Enemy position: ", enemy.global_position)
 	# print("Target position: ", target_position)
 	if target_position.distance_to(enemy.global_position) < 2 or target_position == Vector2.ZERO:
-		# print("Setting new target position")
+		
 		var angle = randf_range(0, 2 * PI)
 		var offset = Vector2(cos(angle), sin(angle)) * wander_radius
 		target_position = start_node_position + offset
@@ -26,3 +26,4 @@ func wander_action():
 	enemy.velocity = enemy.velocity.lerp(desired_velocity, 0.1)
 	enemy.rotation = enemy.global_position.angle_to_point(target_position)
 	# print(target_position)
+	# print(target_position.distance_to(enemy.global_position))

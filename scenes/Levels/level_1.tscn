@@ -76,10 +76,4 @@ position = Vector2(60, 565)
 [node name="basic_mob" parent="Enemies" instance=ExtResource("4_ve0j3")]
 position = Vector2(532, 391)
 
-[node name="basic_mob2" parent="Enemies" instance=ExtResource("4_ve0j3")]
-position = Vector2(686, 176)
-
-[node name="basic_mob3" parent="Enemies" instance=ExtResource("4_ve0j3")]
-position = Vector2(142, 381)
-
 [connection signal="laser" from="player" to="." method="_on_player_laser"]
