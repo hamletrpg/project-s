@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvd6mi7v0tojs"]
+
+[ext_resource type="Texture2D" uid="uid://crdccdvmxmhmx" path="res://graphics/level/portal/basic_portal/portal1.png" id="1_mh38x"]
+[ext_resource type="Texture2D" uid="uid://cn26en4rxg433" path="res://graphics/level/portal/basic_portal/portal2.png" id="2_abu8o"]
+[ext_resource type="Texture2D" uid="uid://1oyycg2xakyn" path="res://graphics/level/portal/basic_portal/portal3.png" id="3_klnpb"]
+[ext_resource type="Texture2D" uid="uid://cs5vci0e6axjh" path="res://graphics/level/portal/basic_portal/portal4.png" id="4_okm87"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2rodu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mh38x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_abu8o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_klnpb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_okm87")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
+
+[node name="basic_portal" type="Node2D"]
+scale = Vector2(3.27003, 3.51699)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2rodu")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.166452
