@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqln6hs6borc8"]
+
+[ext_resource type="Texture2D" uid="uid://bxe6vl00dosjg" path="res://graphics/minerals/mineral_prot_small.png" id="1_43agr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dnmv6"]
+
+[node name="mineral_basic_1" type="StaticBody2D" groups=["mineral"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_43agr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dnmv6")

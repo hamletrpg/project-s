@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bn3bv4jnmc88t"]
+[gd_scene load_steps=13 format=3 uid="uid://bn3bv4jnmc88t"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_1.gd" id="1_esvit"]
 [ext_resource type="PackedScene" uid="uid://cfa5k6fj6tlv1" path="res://scenes/Player/player.tscn" id="1_grpn2"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://2vgc2hveq4lk" path="res://scenes/Levels/decorations/basic_star.tscn" id="6_d05fh"]
 [ext_resource type="PackedScene" uid="uid://c36noj5q42o81" path="res://scenes/Levels/decorations/planets/planet_dry.tscn" id="7_rvarj"]
 [ext_resource type="PackedScene" uid="uid://dj2sp4luty23e" path="res://scenes/Enemies/enemy_bio_basic/enemy_bio_basic.tscn" id="7_ssw2p"]
+[ext_resource type="PackedScene" uid="uid://tv70wifjj634" path="res://scenes/Enemies/miners_harverter/basic_miner.tscn" id="8_tpn0q"]
+[ext_resource type="PackedScene" uid="uid://bqln6hs6borc8" path="res://scenes/Levels/decorations/minerals/mineral_basic_1.tscn" id="9_pg6lq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h6hcq"]
 texture = ExtResource("4_cd8iy")
@@ -116,7 +118,15 @@ position = Vector2(1050, 99)
 [node name="enemy_bio_basic" parent="Enemies" instance=ExtResource("7_ssw2p")]
 position = Vector2(381, 39)
 
+[node name="basic_miner" parent="Enemies" instance=ExtResource("8_tpn0q")]
+position = Vector2(539, 105)
+
 [node name="planet_dry" parent="." instance=ExtResource("7_rvarj")]
 position = Vector2(2055, 545)
+
+[node name="minerals" type="Node2D" parent="."]
+
+[node name="mineral_basic_1" parent="minerals" instance=ExtResource("9_pg6lq")]
+position = Vector2(500, 108)
 
 [connection signal="laser" from="player" to="." method="_on_player_laser"]

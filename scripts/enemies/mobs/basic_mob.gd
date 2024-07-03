@@ -47,7 +47,7 @@ func set_state(state):
 func _on_wander_update_timeout():
 	var random_number = randi_range(0, 4)
 	set_state(State.WANDER if random_number != 4 else State.IDLE)
-	print(random_number)
+	#print(random_number)
 
 func _on_attack_range_body_entered(body):
 	if body == player:

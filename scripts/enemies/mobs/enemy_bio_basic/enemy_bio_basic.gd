@@ -5,15 +5,13 @@ var current_state = State.WANDER
 
 enum State {
 	IDLE,
-	WANDER,
-	ATTACK,
-	CHASE
+	WANDER
 }
 
 func _physics_process(_delta):
-	if get_state() == State.IDLE and get_state() != State.ATTACK:
+	if get_state() == State.IDLE and get_state():
 		velocity = Vector2.ZERO
-	elif get_state() == State.WANDER and get_state() != State.ATTACK:
+	elif get_state() == State.WANDER and get_state():
 		wander_controller.wander_action()
 
 	move_and_slide()
