@@ -44,5 +44,8 @@ shape = SubResource("CircleShape2D_brs83")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mineral_detection_radious"]
 shape = SubResource("CircleShape2D_5xccg")
 
+[node name="mining_phase_change_timer" type="Timer" parent="."]
+
 [connection signal="area_entered" from="hutbox" to="." method="_on_hutbox_area_entered"]
 [connection signal="body_entered" from="mineral_detection_radious" to="." method="_on_mineral_detection_radious_body_entered"]
+[connection signal="timeout" from="mining_phase_change_timer" to="." method="_on_mining_phase_change_timer_timeout"]

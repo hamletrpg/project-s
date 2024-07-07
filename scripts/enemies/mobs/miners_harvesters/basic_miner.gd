@@ -7,6 +7,8 @@ var health = 100
 @export var wander_controller: Node2D
 @export var harvesting_controller: Node2D
 
+@onready var mining_phase_change_timer = $mining_phase_change_timer
+
 @onready var player = PlayerReference.player
 
 enum State {
@@ -36,9 +38,8 @@ func _on_mineral_detection_radious_body_entered(body):
 		mineral_target = body
 		print(body)
 		set_state(State.HARVEST)
-		mineral_target.emit_signal("phase_change")
-
-
+		mining_phase_change_timer.start(3)
+		
 func _on_hutbox_area_entered(area):
 	var get_bullet_owner = area.get("bullet_owner")
 	if get_bullet_owner != null and get_bullet_owner == player:
@@ -48,3 +49,10 @@ func _on_hutbox_area_entered(area):
 		print(health)
 		area.queue_free()
 		print("Hurt")
+
+
+func _on_mining_phase_change_timer_timeout():
+	if get_state() == State.HARVEST:
+			mineral_target.emit_signal("phase_change")
+	else:
+		mining_phase_change_timer.stop()
