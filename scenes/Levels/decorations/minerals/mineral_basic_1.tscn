@@ -1,13 +1,47 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqln6hs6borc8"]
+[gd_scene load_steps=7 format=3 uid="uid://bqln6hs6borc8"]
 
-[ext_resource type="Texture2D" uid="uid://bxe6vl00dosjg" path="res://graphics/minerals/mineral_prot_small.png" id="1_43agr"]
+[ext_resource type="Script" path="res://scripts/levels/minerals/mineral_basic_1.gd" id="1_1ef5v"]
+[ext_resource type="Texture2D" uid="uid://b2ne1lm88jwnq" path="res://graphics/minerals/mineral_prot_small1.png" id="1_pmuv5"]
+[ext_resource type="Texture2D" uid="uid://dl4cvvc6jtydy" path="res://graphics/minerals/mineral_prot_small2.png" id="2_rp6ci"]
+[ext_resource type="Texture2D" uid="uid://cvaus3ru0e87e" path="res://graphics/minerals/mineral_prot_small3.png" id="3_lbf2e"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ov64o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pmuv5")
+}],
+"loop": true,
+"name": &"Phase-1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rp6ci")
+}],
+"loop": true,
+"name": &"Phase-2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_lbf2e")
+}],
+"loop": true,
+"name": &"Phase-3",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dnmv6"]
 
 [node name="mineral_basic_1" type="StaticBody2D" groups=["mineral"]]
+script = ExtResource("1_1ef5v")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_43agr")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ov64o")
+animation = &"Phase-1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dnmv6")
+
+[connection signal="phase_change" from="." to="." method="_on_phase_change"]

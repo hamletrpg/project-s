@@ -107,13 +107,13 @@ position = Vector2(-882, 1218)
 position = Vector2(532, 391)
 
 [node name="basic_mob2" parent="Enemies" instance=ExtResource("4_ve0j3")]
-position = Vector2(1045, 499)
+position = Vector2(566, 208)
 
 [node name="basic_mob3" parent="Enemies" instance=ExtResource("4_ve0j3")]
-position = Vector2(46, 356)
+position = Vector2(402, 146)
 
 [node name="basic_mob4" parent="Enemies" instance=ExtResource("4_ve0j3")]
-position = Vector2(1050, 99)
+position = Vector2(661, 135)
 
 [node name="enemy_bio_basic" parent="Enemies" instance=ExtResource("7_ssw2p")]
 position = Vector2(381, 39)
@@ -122,7 +122,7 @@ position = Vector2(381, 39)
 position = Vector2(539, 105)
 
 [node name="planet_dry" parent="." instance=ExtResource("7_rvarj")]
-position = Vector2(2055, 545)
+position = Vector2(1236, 221)
 
 [node name="minerals" type="Node2D" parent="."]
 

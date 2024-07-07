@@ -90,6 +90,5 @@ rotation = -1.56621
 sprite_frames = SubResource("SpriteFrames_muy2t")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.489162
 
 [node name="basicEnemyWanderController" parent="." instance=ExtResource("17_2lbl2")]

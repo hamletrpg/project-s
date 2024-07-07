@@ -5,6 +5,7 @@ var orbit_speed = 30
 var approach_speed = 50
 
 func harvester_move_to_mineral(enemy, target, delta):
+	# vector from target to enemy, might change to do it backwards
 	var direction = (enemy.global_position - target.global_position)
 	var distance = direction.length()
 	if distance > orbit_distance:
