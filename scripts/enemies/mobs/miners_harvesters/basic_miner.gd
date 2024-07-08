@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var current_state = State.WANDER
 var mineral_target: Node2D
-var health = 100
+var health = 30
 
 @export var wander_controller: Node2D
 @export var harvesting_controller: Node2D
