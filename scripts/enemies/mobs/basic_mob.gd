@@ -9,9 +9,12 @@ var health = 100
 @onready var player = PlayerReference.player
 @export var bullet: PackedScene 
 @export var chase_controller: Node2D
+@export var selecting_controller: Node2D
 
 
 signal laser(pos, dir)
+signal selected
+signal no_selected
 
 enum State {
 	IDLE,
@@ -53,7 +56,6 @@ func _on_attack_range_body_entered(body):
 	if body == player:
 		set_state(State.ATTACK)
 
-
 func _on_laser(pos, dir):
 	var spawned_bullet = bullet.instantiate()
 	spawned_bullet.global_position = pos
@@ -75,7 +77,6 @@ func _on_chase_range_body_exited(body):
 		wander_update_timer.start()
 		print("Wander")
 
-
 func _on_hurt_box_area_entered(area):
 	var get_bullet_owner = area.get("bullet_owner")
 	if get_bullet_owner != null and get_bullet_owner == player:
@@ -86,3 +87,9 @@ func _on_hurt_box_area_entered(area):
 		area.queue_free()
 		print("Hurt")
 		
+
+func _on_selected():
+	selecting_controller.selector_sprite.visible = true
+
+func _on_no_selected():
+	selecting_controller.selector_sprite.visible = false

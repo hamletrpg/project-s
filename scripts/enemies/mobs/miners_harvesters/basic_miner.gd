@@ -6,10 +6,14 @@ var health = 30
 
 @export var wander_controller: Node2D
 @export var harvesting_controller: Node2D
+@export var selecting_controller: Node2D
 
 @onready var mining_phase_change_timer = $mining_phase_change_timer
 
 @onready var player = PlayerReference.player
+
+signal selected
+signal no_selected
 
 enum State {
 	IDLE,
@@ -56,3 +60,10 @@ func _on_mining_phase_change_timer_timeout():
 			mineral_target.emit_signal("phase_change")
 	else:
 		mining_phase_change_timer.stop()
+
+
+func _on_selected():
+	selecting_controller.selector_sprite.visible = true
+
+func _on_no_selected():
+	selecting_controller.selector_sprite.visible = false

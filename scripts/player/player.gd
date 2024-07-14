@@ -3,6 +3,8 @@ extends CharacterBody2D
 @export var movement_controller: Node2D
 @export var attack_controller: Node2D
 
+var attacking = false
+
 var can_shoot: bool = true
 
 signal laser(pos, dir)
@@ -15,8 +17,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _process(_delta):
-	if can_shoot:
-		attack_controller.player_shoot(self, get_laser_marker_position(), bullet_direction())
+	attack_controller.process_attack(self)
 
 func get_laser_marker_position():
 	return $laser_position.global_position

@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://tv70wifjj634"]
+[gd_scene load_steps=10 format=3 uid="uid://tv70wifjj634"]
 
 [ext_resource type="Script" path="res://scripts/enemies/mobs/miners_harvesters/basic_miner.gd" id="1_13rpi"]
 [ext_resource type="Texture2D" uid="uid://3g6iilmhcpkv" path="res://graphics/mobs/basic_miner/miner_basic.png" id="1_30flc"]
 [ext_resource type="PackedScene" uid="uid://dpubvi77hto5w" path="res://scenes/Enemies/controllers/basic_enemy_wander_controller.tscn" id="3_8orec"]
 [ext_resource type="PackedScene" uid="uid://bifcb4knv7q4l" path="res://scripts/enemies/enemy_controllers/basic_havesting_controller.tscn" id="4_okj1n"]
 [ext_resource type="PackedScene" uid="uid://i03l6y5phnjj" path="res://scripts/enemies/enemy_controllers/basic_shield_functionality.tscn" id="5_qfh64"]
+[ext_resource type="PackedScene" uid="uid://cr8m5kqmso2hh" path="res://scenes/selector/basic_selector.tscn" id="6_72l6j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cv5oc"]
 radius = 8.0
@@ -16,10 +17,11 @@ radius = 7.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_5xccg"]
 radius = 74.0
 
-[node name="basic_miner" type="CharacterBody2D" node_paths=PackedStringArray("wander_controller", "harvesting_controller")]
+[node name="basic_miner" type="CharacterBody2D" node_paths=PackedStringArray("wander_controller", "harvesting_controller", "selecting_controller") groups=["enemies"]]
 script = ExtResource("1_13rpi")
 wander_controller = NodePath("basicEnemyWanderController")
 harvesting_controller = NodePath("basic_havesting_controller")
+selecting_controller = NodePath("basic_selector")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = -1.57184
@@ -46,6 +48,10 @@ shape = SubResource("CircleShape2D_5xccg")
 
 [node name="mining_phase_change_timer" type="Timer" parent="."]
 
+[node name="basic_selector" parent="." instance=ExtResource("6_72l6j")]
+
+[connection signal="no_selected" from="." to="." method="_on_no_selected"]
+[connection signal="selected" from="." to="." method="_on_selected"]
 [connection signal="area_entered" from="hutbox" to="." method="_on_hutbox_area_entered"]
 [connection signal="body_entered" from="mineral_detection_radious" to="." method="_on_mineral_detection_radious_body_entered"]
 [connection signal="timeout" from="mining_phase_change_timer" to="." method="_on_mining_phase_change_timer_timeout"]

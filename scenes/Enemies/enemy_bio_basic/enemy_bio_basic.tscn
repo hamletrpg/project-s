@@ -78,7 +78,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="enemy_bio_basic" type="CharacterBody2D" node_paths=PackedStringArray("wander_controller")]
+[node name="enemy_bio_basic" type="CharacterBody2D" node_paths=PackedStringArray("wander_controller") groups=["enemies"]]
 script = ExtResource("1_40kmi")
 wander_controller = NodePath("basicEnemyWanderController")
 
