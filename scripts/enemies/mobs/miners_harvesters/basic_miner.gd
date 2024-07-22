@@ -63,6 +63,9 @@ func _on_mining_phase_change_timer_timeout():
 
 
 func _on_selected():
+	var list_of_enemies = get_tree().get_nodes_in_group("enemies")
+	for enemy in list_of_enemies:
+		enemy.no_selected.emit()
 	selecting_controller.selector_sprite.visible = true
 
 func _on_no_selected():
