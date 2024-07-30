@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dh5bg2uiijw7p"]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy_controllers/basic_bio_attack.gd" id="1_cpqmo"]
+
+[node name="basic_bio_attack" type="Node2D"]
+script = ExtResource("1_cpqmo")
