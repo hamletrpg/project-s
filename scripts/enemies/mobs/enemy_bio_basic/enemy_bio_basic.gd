@@ -5,8 +5,12 @@ extends CharacterBody2D
 @export var attack_controller: Node2D
 
 @onready var player = PlayerReference.player
+@export var selecting_controller: Node2D
+
 var can_shoot = true
 
+signal selected
+signal no_selected
 
 var current_state = State.WANDER
 
@@ -58,3 +62,12 @@ func _on_area_2d_body_entered(body):
 func _on_area_2d_body_exited(body):
 	if body == player:
 		set_state(State.WANDER)
+
+func _on_selected():
+	var list_of_enemies = get_tree().get_nodes_in_group("enemies")
+	for enemy in list_of_enemies:
+		enemy.no_selected.emit()
+	selecting_controller.selector_sprite.visible = true
+
+func _on_no_selected():
+	selecting_controller.selector_sprite.visible = false

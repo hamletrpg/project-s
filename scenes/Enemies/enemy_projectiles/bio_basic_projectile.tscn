@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://tcqy5jlvx87r"]
+[gd_scene load_steps=9 format=3 uid="uid://tcqy5jlvx87r"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_controllers/bio_basic_projectile.gd" id="1_qcf2r"]
 [ext_resource type="Texture2D" uid="uid://c36uaaipye4d3" path="res://graphics/mobs/bio_basic_projectiles/bio_creature_projectile1.png" id="2_a1eya"]
@@ -30,15 +30,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_di752"]
 radius = 4.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_k0n6g"]
-radius = 12.0416
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_uqmgy"]
-radius = 42.0119
-
-[node name="bio_basic_projectile" type="CharacterBody2D" node_paths=PackedStringArray("chase_controller")]
+[node name="bio_basic_projectile" type="Area2D"]
 script = ExtResource("1_qcf2r")
-chase_controller = NodePath("basic_enemy_chase_controller")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = -1.60432
@@ -50,16 +43,4 @@ frame_progress = 0.875574
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_di752")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_k0n6g")
-
 [node name="basic_enemy_chase_controller" parent="." instance=ExtResource("6_lrix5")]
-
-[node name="chase_area" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="chase_area"]
-shape = SubResource("CircleShape2D_uqmgy")
-
-[connection signal="body_entered" from="chase_area" to="." method="_on_chase_area_body_entered"]

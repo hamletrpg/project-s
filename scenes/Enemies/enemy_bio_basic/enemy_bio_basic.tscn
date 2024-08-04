@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dj2sp4luty23e"]
+[gd_scene load_steps=24 format=3 uid="uid://dj2sp4luty23e"]
 
 [ext_resource type="Script" path="res://scripts/enemies/mobs/enemy_bio_basic/enemy_bio_basic.gd" id="1_40kmi"]
 [ext_resource type="Texture2D" uid="uid://bgvxmbfojs8gm" path="res://graphics/mobs/basic_bio_mob/enemy_bio10.png" id="2_ni0wy"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://ies00uxijxm6" path="res://graphics/mobs/basic_bio_mob/enemy_bio9.png" id="16_p1ohn"]
 [ext_resource type="PackedScene" uid="uid://dpubvi77hto5w" path="res://scenes/Enemies/controllers/basic_enemy_wander_controller.tscn" id="17_2lbl2"]
 [ext_resource type="PackedScene" uid="uid://dh5bg2uiijw7p" path="res://scenes/Enemies/controllers/basic_bio_attack.tscn" id="18_o7lff"]
+[ext_resource type="PackedScene" uid="uid://cr8m5kqmso2hh" path="res://scenes/selector/basic_selector.tscn" id="20_6ck6x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nge85"]
 radius = 6.0
@@ -84,15 +85,15 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_7rjhl"]
 radius = 104.005
 
-[node name="enemy_bio_basic" type="CharacterBody2D" node_paths=PackedStringArray("wander_controller", "attack_controller") groups=["enemies"]]
+[node name="enemy_bio_basic" type="CharacterBody2D" node_paths=PackedStringArray("wander_controller", "attack_controller", "selecting_controller") groups=["enemies"]]
 script = ExtResource("1_40kmi")
 wander_controller = NodePath("basicEnemyWanderController")
 creature = ExtResource("2_p3ddl")
 attack_controller = NodePath("basic_bio_attack")
+selecting_controller = NodePath("basic_selector")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_nge85")
-disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = -1.56621
@@ -109,6 +110,10 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_7rjhl")
 
+[node name="basic_selector" parent="." instance=ExtResource("20_6ck6x")]
+
 [connection signal="bio_projectile" from="." to="." method="_on_bio_projectile"]
+[connection signal="no_selected" from="." to="." method="_on_no_selected"]
+[connection signal="selected" from="." to="." method="_on_selected"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
