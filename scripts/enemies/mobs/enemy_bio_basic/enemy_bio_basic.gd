@@ -7,6 +7,8 @@ extends CharacterBody2D
 @onready var player = PlayerReference.player
 @export var selecting_controller: Node2D
 
+@onready var curved_point = $curved_point
+
 var can_shoot = true
 
 signal selected
@@ -45,12 +47,15 @@ func set_state(state):
 
 func _on_bio_projectile(pos, dir):
 	var creature_instance = creature.instantiate()
+	creature_instance.enemy = self
 	creature_instance.global_position = pos
 	creature_instance.direction = dir 
 	creature_instance.rotation = creature_instance.global_position.angle_to_point(player.global_position)
 	
 	get_parent().add_child(creature_instance)
 	print("instanciateting :D")
+
+	#creature_instance.quadratic_bezier(curved_point.global_position, global_position)
 
 
 func _on_area_2d_body_entered(body):

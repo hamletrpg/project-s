@@ -1,3 +1,4 @@
+class_name BasicEnemies
 extends CharacterBody2D
 
 var current_state = State.WANDER
