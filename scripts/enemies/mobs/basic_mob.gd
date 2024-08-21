@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 var current_state = State.WANDER
 var can_shoot = true
-var health = 100
+var health = 20
 @onready var wander_update_timer = $wander_update
 @export var wander_controller: Node2D
 @export var attack_controller: Node2D
@@ -31,11 +31,12 @@ func _physics_process(_delta):
 		wander_controller.wander_action()
 
 	elif get_state() == State.ATTACK:
-		if can_shoot:
-			var dir = (player.global_position - global_position).normalized()
-			attack_controller.aim_and_attack(self, global_position, dir)
-			await get_tree().create_timer(1).timeout
-			can_shoot = true
+		print("attacking lol")
+		# if can_shoot:
+		# 	var dir = (player.global_position - global_position).normalized()
+		# 	attack_controller.aim_and_attack(self, global_position, dir)
+		# 	await get_tree().create_timer(1).timeout
+		# 	can_shoot = true
 	elif get_state() == State.CHASE:
 		chase_controller.chase_target(player, 50)
 
