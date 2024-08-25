@@ -11,11 +11,12 @@ var health = 20
 @export var bullet: PackedScene 
 @export var chase_controller: Node2D
 @export var selecting_controller: Node2D
-
+@onready var wave_manager = WaveManager
 
 signal laser(pos, dir)
 signal selected
 signal no_selected
+signal i_died
 
 enum State {
 	IDLE,
@@ -31,7 +32,7 @@ func _physics_process(_delta):
 		wander_controller.wander_action()
 
 	elif get_state() == State.ATTACK:
-		print("attacking lol")
+		pass
 		# if can_shoot:
 		# 	var dir = (player.global_position - global_position).normalized()
 		# 	attack_controller.aim_and_attack(self, global_position, dir)
@@ -84,7 +85,8 @@ func _on_hurt_box_area_entered(area):
 	if get_bullet_owner != null and get_bullet_owner == player:
 		health -= 10
 		if health <= 0:
-			queue_free()
+			i_died.emit()
+			# queue_free()
 		print(health)
 		area.queue_free()
 		print("Hurt")
@@ -98,3 +100,13 @@ func _on_selected():
 
 func _on_no_selected():
 	selecting_controller.selector_sprite.visible = false
+
+
+func _on_i_died():
+	CountEnemyCurrentWave.number_of_enemies_on_this_wave -= 1
+	print("I just died dude lol that's crazy btw")
+	queue_free()
+	print("counting enemies, ", CountEnemyCurrentWave.number_of_enemies_on_this_wave)
+	if CountEnemyCurrentWave.number_of_enemies_on_this_wave == 0:
+		print("prepare new wave dude")
+		WaveManager.start_current_wave()

@@ -60,6 +60,7 @@ shape = SubResource("CircleShape2D_21k71")
 
 [node name="basic_selector" parent="." instance=ExtResource("7_ga63h")]
 
+[connection signal="i_died" from="." to="." method="_on_i_died"]
 [connection signal="laser" from="." to="." method="_on_laser"]
 [connection signal="no_selected" from="." to="." method="_on_no_selected"]
 [connection signal="selected" from="." to="." method="_on_selected"]

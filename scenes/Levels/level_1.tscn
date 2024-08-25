@@ -121,12 +121,16 @@ position = Vector2(279, 661)
 
 [node name="WaveManager" type="Node" parent="."]
 script = ExtResource("9_ngt53")
-list_of_waves = Array[Resource("res://Resources/waves.gd")]([ExtResource("10_g8fha")])
+list_of_waves = Array[Resource("res://Resources/waves.gd")]([ExtResource("10_g8fha"), ExtResource("10_g8fha")])
+current_wave_identifier = null
 
 [node name="spawn_interval_timer" type="Timer" parent="."]
 
 [node name="new_wave_timer" type="Timer" parent="."]
 
+[node name="check_for_clear_wave" type="Timer" parent="."]
+
 [connection signal="laser" from="player" to="." method="_on_player_laser"]
 [connection signal="timeout" from="spawn_interval_timer" to="WaveManager" method="_on_spawn_interval_timer_timeout"]
 [connection signal="timeout" from="new_wave_timer" to="WaveManager" method="_on_new_wave_timer_timeout"]
+[connection signal="timeout" from="check_for_clear_wave" to="WaveManager" method="_on_check_for_clear_wave_timeout"]

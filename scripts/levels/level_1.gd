@@ -4,7 +4,7 @@ extends Node2D
 @export var level_resource: Resource
 @onready var player = PlayerReference.player
 @onready var enemies_node = $Enemies
-@onready var wave_manager = $WaveManager  # Reference to the wave_manager node in the scene
+@onready var wave_manager = WaveManager  # Reference to the wave_manager node in the scene
 var level_started: bool = false
 
 func _ready():
@@ -16,6 +16,7 @@ func start_level():
 	wave_manager.list_of_waves = level_resource.waves
 	wave_manager.enemies_node = enemies_node
 	wave_manager.start_current_wave()
+	print("coming from start_level")
 
 func _on_player_laser(pos, dir):
 	var spawned_bullet = bullet.instantiate()

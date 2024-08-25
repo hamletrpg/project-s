@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 PlayerReference="*res://scripts/player/player_reference.gd"
+CountEnemyCurrentWave="*res://scripts/singletons/count_enemy_current_wave.gd"
+WaveManager="*res://Resources/wave_manager.gd"
 
 [display]
 
