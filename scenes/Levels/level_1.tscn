@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bn3bv4jnmc88t"]
+[gd_scene load_steps=12 format=3 uid="uid://bn3bv4jnmc88t"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_1.gd" id="1_esvit"]
 [ext_resource type="PackedScene" uid="uid://cfa5k6fj6tlv1" path="res://scenes/Player/player.tscn" id="1_grpn2"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://2vgc2hveq4lk" path="res://scenes/Levels/decorations/basic_star.tscn" id="6_d05fh"]
 [ext_resource type="PackedScene" uid="uid://c36noj5q42o81" path="res://scenes/Levels/decorations/planets/planet_dry.tscn" id="7_rvarj"]
 [ext_resource type="Script" path="res://Resources/wave_manager.gd" id="9_ngt53"]
-[ext_resource type="PackedScene" uid="uid://bqln6hs6borc8" path="res://scenes/Levels/decorations/minerals/mineral_basic_1.tscn" id="9_pg6lq"]
 [ext_resource type="Resource" uid="uid://bivibngaqaknj" path="res://Resources/wave.tres" id="10_g8fha"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h6hcq"]
@@ -103,26 +102,14 @@ position = Vector2(867, 2005)
 position = Vector2(-882, 1218)
 
 [node name="Enemies" type="Node2D" parent="."]
-position = Vector2(224, 379)
+position = Vector2(663, 367)
 
 [node name="planet_dry" parent="." instance=ExtResource("7_rvarj")]
 position = Vector2(1236, 221)
 
-[node name="minerals" type="Node2D" parent="."]
-
-[node name="mineral_basic_1" parent="minerals" instance=ExtResource("9_pg6lq")]
-position = Vector2(500, 108)
-
-[node name="mineral_basic_2" parent="minerals" instance=ExtResource("9_pg6lq")]
-position = Vector2(956, 661)
-
-[node name="mineral_basic_3" parent="minerals" instance=ExtResource("9_pg6lq")]
-position = Vector2(279, 661)
-
 [node name="WaveManager" type="Node" parent="."]
 script = ExtResource("9_ngt53")
 list_of_waves = Array[Resource("res://Resources/waves.gd")]([ExtResource("10_g8fha"), ExtResource("10_g8fha")])
-current_wave_identifier = null
 
 [node name="spawn_interval_timer" type="Timer" parent="."]
 

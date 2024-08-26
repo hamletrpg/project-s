@@ -7,12 +7,6 @@ extends Node
 @onready var new_wave_timer: Timer = get_node("/root/Level1/new_wave_timer")
 @onready var check_for_clear_wave: Timer = get_node("/root/Level1/check_for_clear_wave")
 var current_wave: Wave
-# var enemies_spawned: int
-
-
-# func _process(_delta):
-# 	if are_all_enemies_cleared():
-# 		start_new_wave_timer()
 
 func start_current_wave():
 	if current_wave_identifier < list_of_waves.size():
@@ -36,9 +30,6 @@ func _on_spawn_interval_timer_timeout():
 			CountEnemyCurrentWave.number_of_enemies_on_this_wave += 1
 		else:
 			spawn_timer.stop()
-			# if are_all_enemies_cleared():
-			# 	print("starting next wave")
-			# 	start_new_wave_timer()
 	else:
 		spawn_timer.stop()
 		start_current_wave()
