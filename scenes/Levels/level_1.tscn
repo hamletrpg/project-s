@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bn3bv4jnmc88t"]
+[gd_scene load_steps=10 format=3 uid="uid://bn3bv4jnmc88t"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_1.gd" id="1_esvit"]
 [ext_resource type="PackedScene" uid="uid://cfa5k6fj6tlv1" path="res://scenes/Player/player.tscn" id="1_grpn2"]
@@ -7,8 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://6ax8ixylje2t" path="res://graphics/level/tiles/black_shape_tile.png" id="4_cd8iy"]
 [ext_resource type="PackedScene" uid="uid://2vgc2hveq4lk" path="res://scenes/Levels/decorations/basic_star.tscn" id="6_d05fh"]
 [ext_resource type="PackedScene" uid="uid://c36noj5q42o81" path="res://scenes/Levels/decorations/planets/planet_dry.tscn" id="7_rvarj"]
-[ext_resource type="Script" path="res://Resources/wave_manager.gd" id="9_ngt53"]
-[ext_resource type="Resource" uid="uid://bivibngaqaknj" path="res://Resources/wave.tres" id="10_g8fha"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h6hcq"]
 texture = ExtResource("4_cd8iy")
@@ -107,10 +105,6 @@ position = Vector2(663, 367)
 [node name="planet_dry" parent="." instance=ExtResource("7_rvarj")]
 position = Vector2(1236, 221)
 
-[node name="WaveManager" type="Node" parent="."]
-script = ExtResource("9_ngt53")
-list_of_waves = Array[Resource("res://Resources/waves.gd")]([ExtResource("10_g8fha"), ExtResource("10_g8fha")])
-
 [node name="spawn_interval_timer" type="Timer" parent="."]
 
 [node name="new_wave_timer" type="Timer" parent="."]
@@ -118,6 +112,4 @@ list_of_waves = Array[Resource("res://Resources/waves.gd")]([ExtResource("10_g8f
 [node name="check_for_clear_wave" type="Timer" parent="."]
 
 [connection signal="laser" from="player" to="." method="_on_player_laser"]
-[connection signal="timeout" from="spawn_interval_timer" to="WaveManager" method="_on_spawn_interval_timer_timeout"]
-[connection signal="timeout" from="new_wave_timer" to="WaveManager" method="_on_new_wave_timer_timeout"]
-[connection signal="timeout" from="check_for_clear_wave" to="WaveManager" method="_on_check_for_clear_wave_timeout"]
+[connection signal="timeout" from="spawn_interval_timer" to="." method="_on_spawn_interval_timer_timeout"]

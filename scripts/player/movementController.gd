@@ -6,7 +6,7 @@ extends Node2D
 
 var input_direction
 
-func rotate_forward_backwards(player, delta):
+func rotate_forward_backwards(player, _delta):
 	
 	input_direction = Input.get_vector("left", "right", "up", "down")
 	player.velocity = input_direction * speed
