@@ -8,9 +8,11 @@ var health = 20
 @export var wander_controller: Node2D
 @export var attack_controller: Node2D
 @export var bullet: PackedScene 
+
 @export var chase_controller: Node2D
 @export var selecting_controller: Node2D
-@onready var wave_manager = WaveManager
+@onready var level_1: Node2D = get_node("/root/Level1")
+
 
 signal laser(pos, dir)
 signal selected
@@ -102,5 +104,4 @@ func _on_i_died():
 	queue_free()
 	print("counting enemies, ", CountEnemyCurrentWave.number_of_enemies_on_this_wave)
 	if CountEnemyCurrentWave.number_of_enemies_on_this_wave == 0:
-		print("prepare new wave dude")
-		WaveManager.start_current_wave()
+		level_1.start_current_wave()
