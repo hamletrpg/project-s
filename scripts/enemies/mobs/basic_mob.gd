@@ -17,7 +17,6 @@ var health = 20
 signal laser(pos, dir)
 signal selected
 signal no_selected
-signal i_died
 
 enum State {
 	IDLE,
@@ -83,7 +82,7 @@ func _on_hurt_box_area_entered(area):
 	if get_bullet_owner != null and get_bullet_owner == PlayerReference.player:
 		health -= 10
 		if health <= 0:
-			i_died.emit()
+			queue_free()
 			# queue_free()
 		print(health)
 		area.queue_free()
@@ -98,10 +97,3 @@ func _on_selected():
 func _on_no_selected():
 	selecting_controller.selector_sprite.visible = false
 
-func _on_i_died():
-	CountEnemyCurrentWave.number_of_enemies_on_this_wave -= 1
-	print("I just died dude lol that's crazy btw")
-	queue_free()
-	print("counting enemies, ", CountEnemyCurrentWave.number_of_enemies_on_this_wave)
-	if CountEnemyCurrentWave.number_of_enemies_on_this_wave == 0:
-		level_1.start_current_wave()

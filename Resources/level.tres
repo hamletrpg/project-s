@@ -23,7 +23,7 @@ script = ExtResource("3_th0fj")
 enemy_scene = ExtResource("2_dpoys")
 spawn_interval = 1.0
 enemy_count = 1
-has_boss = true
+has_boss = false
 
 [resource]
 script = ExtResource("1_n31x5")
