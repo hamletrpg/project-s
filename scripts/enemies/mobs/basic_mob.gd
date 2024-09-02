@@ -4,12 +4,12 @@ extends CharacterBody2D
 var current_state = State.WANDER
 var can_shoot = true
 var health = 20
-@onready var wander_update_timer = $wander_update
+#@onready var wander_update_timer = $wander_update
 @export var wander_controller: Node2D
 @export var attack_controller: Node2D
 @export var bullet: PackedScene 
 
-@export var chase_controller: Node2D
+#@export var chase_controller: Node2D
 @export var selecting_controller: Node2D
 @onready var level_1: Node2D = get_node("/root/Level1")
 
@@ -22,7 +22,7 @@ enum State {
 	IDLE,
 	WANDER,
 	ATTACK,
-	CHASE
+	#CHASE
 }
 
 func _physics_process(_delta):
@@ -33,11 +33,9 @@ func _physics_process(_delta):
 	elif get_state() == State.ATTACK:
 		if can_shoot:
 			var dir = (PlayerReference.player.global_position - global_position).normalized()
-			attack_controller.aim_and_attack(self, global_position, dir)
+			attack_controller.aim_and_attack(self, global_position, Vector2.LEFT)
 			await get_tree().create_timer(1).timeout
 			can_shoot = true
-	elif get_state() == State.CHASE:
-		chase_controller.chase_target(PlayerReference.player, 50)
 
 	move_and_slide()
 
@@ -48,10 +46,10 @@ func get_state():
 func set_state(state):
 	current_state = state
 
-func _on_wander_update_timeout():
-	var random_number = randi_range(0, 4)
-	set_state(State.WANDER if random_number != 4 else State.IDLE)
-	#print(random_number)
+#func _on_wander_update_timeout():
+	#var random_number = randi_range(0, 4)
+	#set_state(State.WANDER if random_number != 3 else State.IDLE)
+	##print(random_number)
 
 func _on_attack_range_body_entered(body):
 	if body == PlayerReference.player:
@@ -64,18 +62,18 @@ func _on_laser(pos, dir):
 	get_parent().get_parent().add_child(spawned_bullet)
 
 
-func _on_chase_range_body_entered(body):
-	if body == PlayerReference.player:
-		set_state(State.CHASE)
-		wander_update_timer.stop()
-		print("Chase")
+#func _on_chase_range_body_entered(body):
+	#if body == PlayerReference.player:
+		#set_state(State.CHASE)
+		#wander_update_timer.stop()
+		#print("Chase")
 
 
-func _on_chase_range_body_exited(body):
-	if body == PlayerReference.player:
-		set_state(State.WANDER)
-		wander_update_timer.start()
-		print("Wander")
+#func _on_chase_range_body_exited(body):+
+	#if body == PlayerReference.player:
+		#set_state(State.WANDER)
+		#wander_update_timer.start()
+		#print("Wander")
 
 func _on_hurt_box_area_entered(area):
 	var get_bullet_owner = area.get("bullet_owner")

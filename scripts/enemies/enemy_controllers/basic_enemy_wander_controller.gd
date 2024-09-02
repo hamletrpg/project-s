@@ -14,7 +14,7 @@ func _ready():
 
 func wander_action():
 	enemy.velocity = Vector2.LEFT * speed
-	enemy.rotation = enemy.global_position.angle_to_point(target_position)
+	#enemy.rotation = enemy.global_position.angle_to_point(Vector2.RIGHT)
 
 	# print("Enemy position: ", enemy.global_position)
 	# print("Target position: ", target_position)

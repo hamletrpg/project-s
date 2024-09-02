@@ -28,7 +28,7 @@ selecting_controller = NodePath("basic_selector")
 shape = SubResource("CircleShape2D_f4mcv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = 1.56175
+rotation = -1.56603
 texture = ExtResource("2_c6iuh")
 
 [node name="attack_controller" parent="." instance=ExtResource("4_j74d4")]
