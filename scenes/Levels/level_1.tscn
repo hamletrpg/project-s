@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bn3bv4jnmc88t"]
+[gd_scene load_steps=10 format=3 uid="uid://bn3bv4jnmc88t"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_1.gd" id="1_esvit"]
 [ext_resource type="PackedScene" uid="uid://cfa5k6fj6tlv1" path="res://scenes/Player/player.tscn" id="1_grpn2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://daruiitaychkx" path="res://Resources/level.tres" id="3_32le6"]
 [ext_resource type="Texture2D" uid="uid://6ax8ixylje2t" path="res://graphics/level/tiles/black_shape_tile.png" id="4_cd8iy"]
 [ext_resource type="PackedScene" uid="uid://2vgc2hveq4lk" path="res://scenes/Levels/decorations/basic_star.tscn" id="6_d05fh"]
+[ext_resource type="PackedScene" uid="uid://dbnu1n121fcwu" path="res://scenes/Enemies/enemy_kamizake_basic/kamizake_mob_basic.tscn" id="7_oy6id"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h6hcq"]
 texture = ExtResource("4_cd8iy")
@@ -118,6 +119,9 @@ position = Vector2(-62, 115)
 [node name="new_wave_timer" type="Timer" parent="."]
 
 [node name="check_for_clear_wave" type="Timer" parent="."]
+
+[node name="kamikaze_mob" parent="." instance=ExtResource("7_oy6id")]
+position = Vector2(320, 251)
 
 [connection signal="laser" from="player" to="." method="_on_player_laser"]
 [connection signal="timeout" from="spawn_interval_timer" to="." method="_on_spawn_interval_timer_timeout"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbnu1n121fcwu"]
+
+[ext_resource type="Script" path="res://scripts/enemies/mobs/kamikaze_mob/character_body_2d.gd" id="1_q3r7g"]
+[ext_resource type="Texture2D" uid="uid://b5yvgdl3yw3ap" path="res://graphics/mobs/basic_bio_mob/enemy_bio1.png" id="1_u5rca"]
+[ext_resource type="PackedScene" uid="uid://wrweywb738l0" path="res://scenes/Enemies/controllers/kamikaze_movement_controller.tscn" id="3_biciw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tah6p"]
+radius = 6.0
+
+[node name="kamikaze_mob" type="CharacterBody2D" node_paths=PackedStringArray("wander_controller")]
+script = ExtResource("1_q3r7g")
+wander_controller = NodePath("kamikaze_movement_controller")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tah6p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_u5rca")
+
+[node name="kamikaze_movement_controller" parent="." instance=ExtResource("3_biciw")]
+
+[connection signal="explode" from="kamikaze_movement_controller" to="." method="_on_kamikaze_movement_controller_explode"]
