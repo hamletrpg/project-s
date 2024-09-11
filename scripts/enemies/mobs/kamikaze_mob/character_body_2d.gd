@@ -4,9 +4,9 @@ var current_state = State.WANDER
 
 #@onready var wander_update_timer = $wander_update
 @export var wander_controller: Node2D
+var explosion_damage: int = 20
 
 var has_exploded: bool = false
-
 
 enum State {
 	WANDER,
@@ -33,4 +33,9 @@ func set_state(state):
 func _on_kamikaze_movement_controller_explode():
 	has_exploded = true
 	print("Kamikaze enemy exploded!")
+	apply_damage_to_player()
 	queue_free() 
+
+func apply_damage_to_player():
+	PlayerReference.player.take_damage(explosion_damage)
+	
