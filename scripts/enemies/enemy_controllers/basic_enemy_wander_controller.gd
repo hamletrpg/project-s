@@ -1,6 +1,6 @@
 extends Node2D
 
-var target_position = PlayerReference.player.global_position
+@onready var target_position = PlayerReference.player.global_position
 @onready var enemy = self.get_parent() as CharacterBody2D
 var target_vector  
 var desired_velocity  

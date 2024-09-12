@@ -10,6 +10,7 @@ func _ready():
 
 func take_damage(amount: int):
 	current_shield_health -= amount
+	print("amount of current shield health: ",current_shield_health)
 	if current_shield_health <= 0:
 		emit_signal("shield_disabled")
 		current_shield_health = 0
