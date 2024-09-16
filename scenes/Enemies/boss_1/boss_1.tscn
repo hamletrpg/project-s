@@ -1,18 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://ympcgh0oese5"]
+[gd_scene load_steps=6 format=3 uid="uid://ympcgh0oese5"]
 
 [ext_resource type="Script" path="res://scripts/enemies/boss_1/boss_1.gd" id="1_tguby"]
 [ext_resource type="Texture2D" uid="uid://j1qe3m2od2bg" path="res://graphics/mobs/boss_1/level_1_boss.png" id="2_7b6wu"]
+[ext_resource type="PackedScene" uid="uid://d2at62isaem2q" path="res://scenes/Enemies/boss_1/controllers/boss_1_phase_one_controller.tscn" id="3_woshf"]
+[ext_resource type="PackedScene" uid="uid://c7pc3mbqxdqbs" path="res://scenes/Enemies/boss_1/projectiles/basic_boss_one_laser.tscn" id="4_txn7w"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bra7k"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_at2ge"]
+radius = 15.9999
+height = 57.9997
 
-[node name="boss_1" type="CharacterBody2D"]
+[node name="boss_1" type="CharacterBody2D" node_paths=PackedStringArray("phase_one_controller")]
 script = ExtResource("1_tguby")
+phase_one_controller = NodePath("boss_1_phase_one_controller")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_bra7k")
+rotation = 1.57421
+shape = SubResource("CapsuleShape2D_at2ge")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = -1.5708
+rotation = 1.5708
 scale = Vector2(1.84866, 2.074)
 texture = ExtResource("2_7b6wu")
 
@@ -23,3 +29,15 @@ position = Vector2(14, 14)
 
 [node name="weapon_2" type="Marker2D" parent="weapons"]
 position = Vector2(14, -14)
+
+[node name="boss_1_phase_one_controller" parent="." node_paths=PackedStringArray("first_gun", "second_gun") instance=ExtResource("3_woshf")]
+bullet_scene = ExtResource("4_txn7w")
+first_gun = NodePath("../weapons/weapon_1")
+second_gun = NodePath("../weapons/weapon_2")
+
+[node name="shoot_from_weapon_1" type="Timer" parent="."]
+
+[node name="shoot_from_weapon_2" type="Timer" parent="."]
+
+[connection signal="shoot" from="." to="." method="_on_shoot"]
+[connection signal="timeout" from="shoot_from_weapon_1" to="." method="_on_shoot_from_weapon_1_timeout"]

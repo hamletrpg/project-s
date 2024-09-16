@@ -10,11 +10,12 @@ extends Node2D
 var level_started: bool = false
 
 func _ready():
-	new_wave_timer.connect("timeout", Callable(WaveManager, "_on_new_wave_timer_timeout"))
-	spawn_timer.connect("timeout", Callable(WaveManager, "_on_spawn_interval_timer_timeout"))
-	
-	WaveManager.list_of_waves = level_resource.waves
-	WaveManager.start_current_wave()
+	pass
+	#new_wave_timer.connect("timeout", Callable(WaveManager, "_on_new_wave_timer_timeout"))
+	#spawn_timer.connect("timeout", Callable(WaveManager, "_on_spawn_interval_timer_timeout"))
+	#
+	#WaveManager.list_of_waves = level_resource.waves
+	#WaveManager.start_current_wave()
 
 func _on_player_laser(pos, dir):
 	var spawned_bullet = bullet.instantiate()

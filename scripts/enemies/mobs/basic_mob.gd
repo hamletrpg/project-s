@@ -32,7 +32,6 @@ func _physics_process(_delta):
 		wander_controller.wander_action()
 	elif get_state() == State.ATTACK:
 		if can_shoot:
-			var dir = (PlayerReference.player.global_position - global_position).normalized()
 			attack_controller.aim_and_attack(self, global_position, Vector2.LEFT)
 			await get_tree().create_timer(1).timeout
 			can_shoot = true
@@ -46,10 +45,6 @@ func get_state():
 func set_state(state):
 	current_state = state
 
-#func _on_wander_update_timeout():
-	#var random_number = randi_range(0, 4)
-	#set_state(State.WANDER if random_number != 3 else State.IDLE)
-	##print(random_number)
 
 func _on_attack_range_body_entered(body):
 	if body == PlayerReference.player:
@@ -60,20 +55,6 @@ func _on_laser(pos, dir):
 	spawned_bullet.global_position = pos
 	spawned_bullet.direction = dir
 	get_parent().get_parent().add_child(spawned_bullet)
-
-
-#func _on_chase_range_body_entered(body):
-	#if body == PlayerReference.player:
-		#set_state(State.CHASE)
-		#wander_update_timer.stop()
-		#print("Chase")
-
-
-#func _on_chase_range_body_exited(body):+
-	#if body == PlayerReference.player:
-		#set_state(State.WANDER)
-		#wander_update_timer.start()
-		#print("Wander")
 
 func _on_hurt_box_area_entered(area):
 	var get_bullet_owner = area.get("bullet_owner")
