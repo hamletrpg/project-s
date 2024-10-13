@@ -39,5 +39,16 @@ second_gun = NodePath("../weapons/weapon_2")
 
 [node name="shoot_from_weapon_2" type="Timer" parent="."]
 
+[node name="start_position" type="Marker2D" parent="."]
+position = Vector2(-1, 0)
+
+[node name="position_list" type="Node2D" parent="."]
+
+[node name="position_2" type="Marker2D" parent="position_list"]
+position = Vector2(120, 61)
+
+[node name="position_3" type="Marker2D" parent="position_list"]
+position = Vector2(118, -72)
+
 [connection signal="shoot" from="." to="." method="_on_shoot"]
 [connection signal="timeout" from="shoot_from_weapon_1" to="." method="_on_shoot_from_weapon_1_timeout"]

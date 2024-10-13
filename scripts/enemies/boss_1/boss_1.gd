@@ -7,6 +7,7 @@ var health = 20
 @export var phase_one_controller: Node2D
 @onready var level_1: Node2D = get_node("/root/Level1")
 @onready var list_of_guns = [phase_one_controller.first_gun, phase_one_controller.second_gun]
+var reached: bool = false
 
 signal shoot(pos)
 
@@ -16,19 +17,23 @@ enum State {
 	PHASE_3
 }
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if get_state() == State.PHASE_1:
-		var space_state = get_world_2d().direct_space_state
-		var query = PhysicsRayQueryParameters2D.create(global_position, Vector2(global_position.x - 500, global_position.y))
-		var result = space_state.intersect_ray(query)
-		if result:
-			print("Hit at point: ", result)
-		if can_shoot:
-			randomize()
-			var choosen_gun = list_of_guns[randi() % list_of_guns.size()]
-			print(choosen_gun)
-			phase_one_controller.shoot_to_the_left(self, choosen_gun.global_position)
+		phase_one_controller.randomize_shoot(self)
+		if not reached:
+			phase_one_controller.enemy_wander(delta, self)
+		#if can_shoot:
+			#randomize()
+			#var choosen_gun = list_of_guns[randi() % list_of_guns.size()]
+			#print(choosen_gun)
+			#phase_one_controller.shoot_to_the_left(self, choosen_gun.global_position)
 	elif get_state() == State.PHASE_2:
+		# Keep it for laser
+		#var space_state = get_world_2d().direct_space_state
+		#var query = PhysicsRayQueryParameters2D.create(global_position, Vector2(global_position.x - 500, global_position.y))
+		#var result = space_state.intersect_ray(query)
+		#if result:
+			#print("Hit at point: ", result)
 		pass
 	elif get_state() == State.PHASE_3:
 		pass
