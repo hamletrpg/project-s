@@ -1,13 +1,10 @@
 extends CharacterBody2D
 
 var current_state = State.PHASE_1
-var can_shoot: bool = true
 var health = 20
 @onready var shoot_from_weapon_timer_1 = $shoot_from_weapon_1
-@export var phase_one_controller: Node2D
 @onready var level_1: Node2D = get_node("/root/Level1")
-@onready var list_of_guns = [phase_one_controller.first_gun, phase_one_controller.second_gun]
-var reached: bool = false
+var can_shoot: bool = true
 
 signal shoot(pos)
 
@@ -17,16 +14,13 @@ enum State {
 	PHASE_3
 }
 
+func _ready():
+	shoot_from_weapon_timer_1.connect("timeout", Callable(self, "_on_shoot_timeout"))
+
 func _physics_process(delta):
 	if get_state() == State.PHASE_1:
-		phase_one_controller.randomize_shoot(self)
-		if not reached:
-			phase_one_controller.enemy_wander(delta, self)
-		#if can_shoot:
-			#randomize()
-			#var choosen_gun = list_of_guns[randi() % list_of_guns.size()]
-			#print(choosen_gun)
-			#phase_one_controller.shoot_to_the_left(self, choosen_gun.global_position)
+		if can_shoot:
+			randomize_shoot()
 	elif get_state() == State.PHASE_2:
 		# Keep it for laser
 		#var space_state = get_world_2d().direct_space_state
@@ -38,7 +32,7 @@ func _physics_process(delta):
 	elif get_state() == State.PHASE_3:
 		pass
 
-	move_and_slide()
+	#move_and_slide()
 
 func get_state():
 	return current_state
@@ -46,13 +40,19 @@ func get_state():
 func set_state(state):
 	current_state = state
 
+func randomize_shoot():
+	#randomize()
+	#var chosen_gun = phase_one_controller.list_of_guns[randi() % phase_one_controller.list_of_guns.size()]
+	#emit_signal("shoot", chosen_gun.global_position)
+	pass
+	
 func _on_shoot(pos):
-	var bullet_instance = phase_one_controller.bullet_scene.instantiate()
-	bullet_instance.position = pos
-	level_1.add_child(bullet_instance)
-	can_shoot = false
-	shoot_from_weapon_timer_1.start()
-
-func _on_shoot_from_weapon_1_timeout():
+	#var bullet_instance = phase_one_controller.bullet_scene.instantiate()
+	#bullet_instance.position = pos
+	#level_1.add_child(bullet_instance)
+	#can_shoot = false
+	#shoot_from_weapon_timer_1.start()
+	pass
+	
+func _on_shoot_timeout():
 	can_shoot = true
-	print("changed to true")

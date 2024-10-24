@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2at62isaem2q"]
-
-[ext_resource type="Script" path="res://scripts/enemies/boss_1/controllers/boss_1_phase_one_controller.gd" id="1_jt2ol"]
-
-[node name="boss_1_phase_one_controller" type="Node2D"]
-script = ExtResource("1_jt2ol")

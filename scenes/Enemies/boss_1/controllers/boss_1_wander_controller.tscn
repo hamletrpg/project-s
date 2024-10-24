@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgboynxnpn30w"]
+
+[ext_resource type="Script" path="res://scripts/enemies/boss_1/controllers/boss_1_wander_controller.gd" id="1_837r7"]
+
+[node name="boss_1_wander_controller" type="Node2D"]
+script = ExtResource("1_837r7")
