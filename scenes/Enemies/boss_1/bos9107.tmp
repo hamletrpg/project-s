@@ -1,20 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://ympcgh0oese5"]
+[gd_scene load_steps=5 format=3 uid="uid://ympcgh0oese5"]
 
 [ext_resource type="Script" path="res://scripts/enemies/boss_1/boss_1.gd" id="1_tguby"]
 [ext_resource type="Texture2D" uid="uid://j1qe3m2od2bg" path="res://graphics/mobs/boss_1/level_1_boss.png" id="2_7b6wu"]
 [ext_resource type="PackedScene" uid="uid://dgboynxnpn30w" path="res://scenes/Enemies/boss_1/controllers/boss_1_wander_controller.tscn" id="3_ww50q"]
-[ext_resource type="PackedScene" uid="uid://dd8e8dn6hy3ot" path="res://scenes/Enemies/boss_1/controllers/boss_1_attack_controller.tscn" id="4_1htl5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_at2ge"]
 radius = 15.9999
 height = 57.9997
 
-[node name="boss_1" type="CharacterBody2D" node_paths=PackedStringArray("wander_movement_controller", "attack_controller")]
-collision_layer = 2
-collision_mask = 5
+[node name="boss_1" type="CharacterBody2D" node_paths=PackedStringArray("wander_movement_controller")]
 script = ExtResource("1_tguby")
 wander_movement_controller = NodePath("boss_1_wander_controller")
-attack_controller = NodePath("boss_1_attack_controller")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.57421
@@ -38,7 +34,5 @@ position = Vector2(14, -14)
 [node name="shoot_from_weapon_2" type="Timer" parent="."]
 
 [node name="boss_1_wander_controller" parent="." instance=ExtResource("3_ww50q")]
-
-[node name="boss_1_attack_controller" parent="." instance=ExtResource("4_1htl5")]
 
 [connection signal="timeout" from="shoot_from_weapon_1" to="." method="_on_shoot_from_weapon_1_timeout"]

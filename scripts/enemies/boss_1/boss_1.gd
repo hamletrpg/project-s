@@ -1,58 +1,56 @@
 extends CharacterBody2D
 
-var current_state = State.PHASE_1
-var health = 20
-@onready var shoot_from_weapon_timer_1 = $shoot_from_weapon_1
-@onready var level_1: Node2D = get_node("/root/Level1")
-var can_shoot: bool = true
+@export var wander_movement_controller: Node2D
+@export var attack_controller: Node2D
+@onready var weapon_1: Marker2D = $weapons/weapon_1
+@onready var weapon_2: Marker2D = $weapons/weapon_2
 
-signal shoot(pos)
+var current_state = State.WANDER
+var move_speed: float = 100.0
+var current_target: Vector2
+var is_waiting: bool = false
 
 enum State {
-	PHASE_1,
+	WANDER,
+	ATTACK,
 	PHASE_2,
 	PHASE_3
 }
 
 func _ready():
-	shoot_from_weapon_timer_1.connect("timeout", Callable(self, "_on_shoot_timeout"))
+	wander_movement_controller.connect("waiting_started", Callable(self, "_on_waiting_started"))
+	wander_movement_controller.connect("move_to_target", Callable(self, "_on_move_to_target"))
+	wander_movement_controller.start_wandering()
+
+	attack_controller.connect("attack_started", Callable(self, "_on_attack_started"))
 
 func _physics_process(delta):
-	if get_state() == State.PHASE_1:
-		if can_shoot:
-			randomize_shoot()
-	elif get_state() == State.PHASE_2:
-		# Keep it for laser
-		#var space_state = get_world_2d().direct_space_state
-		#var query = PhysicsRayQueryParameters2D.create(global_position, Vector2(global_position.x - 500, global_position.y))
-		#var result = space_state.intersect_ray(query)
-		#if result:
-			#print("Hit at point: ", result)
-		pass
-	elif get_state() == State.PHASE_3:
-		pass
+	if current_state == State.WANDER and not is_waiting:
+		move_to_target(delta)
 
-	#move_and_slide()
+func _on_move_to_target(target_position: Vector2):
+	current_target = target_position
+	is_waiting = false  # Resume movement after receiving new target
+	current_state = State.WANDER
 
-func get_state():
-	return current_state
+	# Stop attacking when the boss starts moving again
+	attack_controller.stop_attacking()
 
-func set_state(state):
-	current_state = state
+func _on_waiting_started():
+	is_waiting = true
+	current_state = State.ATTACK
 
-func randomize_shoot():
-	#randomize()
-	#var chosen_gun = phase_one_controller.list_of_guns[randi() % phase_one_controller.list_of_guns.size()]
-	#emit_signal("shoot", chosen_gun.global_position)
-	pass
-	
-func _on_shoot(pos):
-	#var bullet_instance = phase_one_controller.bullet_scene.instantiate()
-	#bullet_instance.position = pos
-	#level_1.add_child(bullet_instance)
-	#can_shoot = false
-	#shoot_from_weapon_timer_1.start()
-	pass
-	
-func _on_shoot_timeout():
-	can_shoot = true
+	# Start attacking when waiting
+	attack_controller.start_attacking([weapon_1.global_position, weapon_2.global_position], self)
+
+func move_to_target(delta):
+	var direction = (current_target - global_position).normalized()
+	var distance = global_position.distance_to(current_target)
+	var move_amount = move_speed * delta
+
+	if move_amount >= distance:
+		global_position = current_target
+		is_waiting = true
+		wander_movement_controller.reached_target()
+	else:
+		global_position += direction * move_amount
