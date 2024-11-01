@@ -1,31 +1,20 @@
 [gd_resource type="Resource" script_class="Level" load_steps=7 format=3 uid="uid://daruiitaychkx"]
 
 [ext_resource type="Script" path="res://Resources/level.gd" id="1_n31x5"]
-[ext_resource type="PackedScene" uid="uid://cmxjqojlhm8om" path="res://scenes/Enemies/basic_mob.tscn" id="2_dpoys"]
-[ext_resource type="Script" path="res://Resources/waves.gd" id="3_th0fj"]
+[ext_resource type="Resource" uid="uid://bivibngaqaknj" path="res://Resources/wave.tres" id="2_cq2ro"]
+[ext_resource type="PackedScene" uid="uid://ympcgh0oese5" path="res://scenes/Enemies/boss_1/boss_1.tscn" id="3_0l4nl"]
+[ext_resource type="Script" path="res://Resources/waves.gd" id="4_bpyw4"]
+[ext_resource type="PackedScene" uid="uid://cmxjqojlhm8om" path="res://scenes/Enemies/basic_mob.tscn" id="4_mgaj8"]
 
-[sub_resource type="Resource" id="Resource_53f7e"]
-script = ExtResource("3_th0fj")
-enemy_scene = ExtResource("2_dpoys")
+[sub_resource type="Resource" id="Resource_4qsqx"]
+script = ExtResource("4_bpyw4")
+enemy_scene = ExtResource("4_mgaj8")
 spawn_interval = 1.0
 enemy_count = 3
 has_boss = false
-
-[sub_resource type="Resource" id="Resource_sa7ic"]
-script = ExtResource("3_th0fj")
-enemy_scene = ExtResource("2_dpoys")
-spawn_interval = 1.0
-enemy_count = 3
-has_boss = false
-
-[sub_resource type="Resource" id="Resource_q22g4"]
-script = ExtResource("3_th0fj")
-enemy_scene = ExtResource("2_dpoys")
-spawn_interval = 1.0
-enemy_count = 1
-has_boss = false
+boss_scene = ExtResource("3_0l4nl")
 
 [resource]
 script = ExtResource("1_n31x5")
-waves = Array[ExtResource("3_th0fj")]([SubResource("Resource_53f7e"), SubResource("Resource_sa7ic"), SubResource("Resource_q22g4")])
-level_name = ""
+waves = Array[ExtResource("4_bpyw4")]([ExtResource("2_cq2ro"), SubResource("Resource_4qsqx")])
+level_name = "level 1"

@@ -17,6 +17,7 @@ var health = 20
 signal laser(pos, dir)
 signal selected
 signal no_selected
+signal mob_destroyed
 
 enum State {
 	IDLE,
@@ -61,6 +62,7 @@ func _on_hurt_box_area_entered(area):
 	if get_bullet_owner != null and get_bullet_owner == PlayerReference.player:
 		health -= 10
 		if health <= 0:
+			emit_signal("mob_destroyed")
 			queue_free()
 			# queue_free()
 		print(health)
