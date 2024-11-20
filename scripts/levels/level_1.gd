@@ -3,7 +3,7 @@ extends Node2D
 @export var bullet: PackedScene
 @export var level_resource: Resource
 @onready var player = PlayerReference.player
-@onready var wave_manager = $WaveManager  # Reference to the WaveManager node
+@onready var wave_manager = $WaveManager
 
 var level_started: bool = false
 

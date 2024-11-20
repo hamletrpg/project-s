@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cwk3mbel30igm"]
+
+[node name="GameUI" type="CanvasLayer"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 277
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 220
+
+[node name="Current Level" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Some data"
+
+[node name="SomeMoreData" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Some more Data :D"
+
+[node name="Cash" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "money"

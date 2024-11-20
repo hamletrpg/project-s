@@ -15,8 +15,8 @@ var health = 20
 
 
 signal laser(pos, dir)
-signal selected
-signal no_selected
+#signal selected
+#signal no_selected
 signal mob_destroyed
 
 enum State {
@@ -68,13 +68,13 @@ func _on_hurt_box_area_entered(area):
 		print(health)
 		area.queue_free()
 		print("Hurt")
-		
-func _on_selected():
-	var list_of_enemies = get_tree().get_nodes_in_group("enemies")
-	for enemy in list_of_enemies:
-		enemy.no_selected.emit()
-	selecting_controller.selector_sprite.visible = true
-
-func _on_no_selected():
-	selecting_controller.selector_sprite.visible = false
+		#
+#func _on_selected():
+	#var list_of_enemies = get_tree().get_nodes_in_group("enemies")
+	#for enemy in list_of_enemies:
+		#enemy.no_selected.emit()
+	#selecting_controller.selector_sprite.visible = true
+#
+#func _on_no_selected():
+	#selecting_controller.selector_sprite.visible = false
 

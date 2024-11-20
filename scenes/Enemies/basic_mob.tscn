@@ -48,6 +48,8 @@ shape = SubResource("CircleShape2D_62bni")
 shape = SubResource("CircleShape2D_n1pim")
 
 [node name="hurt_box" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_box"]
 shape = SubResource("CircleShape2D_21k71")
@@ -57,8 +59,6 @@ shape = SubResource("CircleShape2D_21k71")
 [node name="basicEnemyWanderController" parent="." instance=ExtResource("4_smdja")]
 
 [connection signal="laser" from="." to="." method="_on_laser"]
-[connection signal="no_selected" from="." to="." method="_on_no_selected"]
-[connection signal="selected" from="." to="." method="_on_selected"]
 [connection signal="timeout" from="wander_update" to="." method="_on_wander_update_timeout"]
 [connection signal="body_entered" from="attack_range" to="." method="_on_attack_range_body_entered"]
 [connection signal="body_entered" from="chase_range" to="." method="_on_chase_range_body_entered"]

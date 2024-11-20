@@ -4,11 +4,14 @@ extends CharacterBody2D
 @export var attack_controller: Node2D
 @onready var weapon_1: Marker2D = $weapons/weapon_1
 @onready var weapon_2: Marker2D = $weapons/weapon_2
+@onready var health: int = 30
 
 var current_state = State.WANDER
 var move_speed: float = 100.0
 var current_target: Vector2
 var is_waiting: bool = false
+
+signal boss_destroyed
 
 enum State {
 	WANDER,
@@ -21,8 +24,6 @@ func _ready():
 	wander_movement_controller.connect("waiting_started", Callable(self, "_on_waiting_started"))
 	wander_movement_controller.connect("move_to_target", Callable(self, "_on_move_to_target"))
 	wander_movement_controller.start_wandering()
-
-	attack_controller.connect("attack_started", Callable(self, "_on_attack_started"))
 
 func _physics_process(delta):
 	if current_state == State.WANDER and not is_waiting:
@@ -54,3 +55,16 @@ func move_to_target(delta):
 		wander_movement_controller.reached_target()
 	else:
 		global_position += direction * move_amount
+
+
+func _on_hurt_box_area_entered(area):
+	var get_bullet_owner = area.get("bullet_owner")
+	if get_bullet_owner != null and get_bullet_owner == PlayerReference.player:
+		health -= 10
+		if health <= 0:
+			emit_signal("boss_destroyed")
+			queue_free()
+			# queue_free()
+		print(health)
+		area.queue_free()
+		print("Hurt")

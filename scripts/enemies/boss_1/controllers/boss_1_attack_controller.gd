@@ -5,7 +5,7 @@ var attack_timer: Timer
 var weapon_positions: Array = []  # Declare weapon_positions to store weapon positions
 var boss
 
-signal attack_started()
+
 
 func _ready():
 	attack_timer = Timer.new()
@@ -18,7 +18,6 @@ func start_attacking(weapon_positions: Array, boss):
 	self.weapon_positions = weapon_positions  # Assign weapon positions
 	self.boss = boss
 	attack_timer.start()
-	emit_signal("attack_started")
 
 func stop_attacking():
 	# Stop the attack timer to prevent further bullets from spawning
@@ -27,10 +26,10 @@ func stop_attacking():
 
 func _on_attack_timer_timeout():
 	# Spawn bullets from each weapon position
-	for weapon_position in weapon_positions:
+	for weapon_position in self.weapon_positions:
 		var bullet = bullet_scene.instantiate()
 		bullet.global_position = weapon_position
-		boss.get_parent().add_child(bullet)
+		boss.get_parent().get_parent().add_child(bullet)
 
 		# Set bullet direction to move straight to the left
 		if bullet.has_method("set_direction"):
