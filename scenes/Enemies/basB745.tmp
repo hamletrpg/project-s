@@ -33,7 +33,7 @@ collision_mask = 5
 shape = SubResource("CircleShape2D_21k71")
 
 [node name="basicEnemyWanderController" parent="." instance=ExtResource("4_smdja")]
-bullet = ExtResource("2_1ojow")
 
+[connection signal="laser" from="." to="." method="_on_laser"]
 [connection signal="timeout" from="wander_update" to="." method="_on_wander_update_timeout"]
 [connection signal="area_entered" from="hurt_box" to="." method="_on_hurt_box_area_entered"]

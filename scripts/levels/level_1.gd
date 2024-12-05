@@ -5,7 +5,6 @@ extends Node2D
 @onready var player = PlayerReference.player
 @onready var wave_manager = $WaveManager
 
-var level_started: bool = false
 
 func _ready():
 	wave_manager.waves = level_resource.waves
