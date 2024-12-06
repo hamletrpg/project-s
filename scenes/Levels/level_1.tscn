@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bn3bv4jnmc88t"]
+[gd_scene load_steps=11 format=3 uid="uid://bn3bv4jnmc88t"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_1.gd" id="1_esvit"]
 [ext_resource type="PackedScene" uid="uid://cfa5k6fj6tlv1" path="res://scenes/Player/player.tscn" id="1_grpn2"]
+[ext_resource type="PackedScene" uid="uid://d048gril42d7m" path="res://scenes/Player/projectiles/player_fire_ball_projectile.tscn" id="3_2w6qw"]
 [ext_resource type="PackedScene" uid="uid://bomv023tgkb8y" path="res://scenes/Player/projectiles/basic_player_laser.tscn" id="3_17ts8"]
 [ext_resource type="Resource" uid="uid://daruiitaychkx" path="res://Resources/level.tres" id="3_32le6"]
 [ext_resource type="Texture2D" uid="uid://6ax8ixylje2t" path="res://graphics/level/tiles/black_shape_tile.png" id="4_cd8iy"]
@@ -18,6 +19,7 @@ sources/0 = SubResource("TileSetAtlasSource_h6hcq")
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_esvit")
 bullet = ExtResource("3_17ts8")
+player_fireball = ExtResource("3_2w6qw")
 level_resource = ExtResource("3_32le6")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -98,6 +100,8 @@ position = Vector2(867, 2005)
 
 [node name="basic_star23" parent="Stars" instance=ExtResource("6_d05fh")]
 position = Vector2(-882, 1218)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Stars"]
 
 [node name="Enemies" type="Node2D" parent="."]
 position = Vector2(543, 325)

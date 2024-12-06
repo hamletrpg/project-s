@@ -9,6 +9,7 @@ var attacking = false
 var can_shoot: bool = true
 
 signal laser(pos, dir)
+signal second_projectile(pos, dir)
 
 func _ready():
 	PlayerReference.player = self
