@@ -1,9 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmxjqojlhm8om"]
+[gd_scene load_steps=9 format=3 uid="uid://cmxjqojlhm8om"]
 
 [ext_resource type="Script" path="res://scripts/enemies/mobs/basic_mob.gd" id="1_5bvnm"]
 [ext_resource type="PackedScene" uid="uid://df7xotv1od8v0" path="res://scenes/Enemies/enemy_projectiles/basic_enemy_lasser.tscn" id="2_1ojow"]
 [ext_resource type="Texture2D" uid="uid://b3fwxgitq3qbc" path="res://graphics/mobs/basic_mob/enemy.png" id="2_c6iuh"]
+[ext_resource type="Script" path="res://Resources/health/health_component.gd" id="3_x5qql"]
 [ext_resource type="PackedScene" uid="uid://dpubvi77hto5w" path="res://scenes/Enemies/controllers/basic_enemy_wander_controller.tscn" id="4_smdja"]
+
+[sub_resource type="Resource" id="Resource_j6nj6"]
+resource_local_to_scene = true
+script = ExtResource("3_x5qql")
+MAX_VALUE = 50.0
+current_health = 50.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f4mcv"]
 
@@ -13,6 +20,7 @@
 script = ExtResource("1_5bvnm")
 wander_controller = NodePath("basicEnemyWanderController")
 bullet = ExtResource("2_1ojow")
+basic_mob_health_component = SubResource("Resource_j6nj6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_f4mcv")

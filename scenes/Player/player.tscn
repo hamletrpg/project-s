@@ -1,18 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfa5k6fj6tlv1"]
+[gd_scene load_steps=8 format=3 uid="uid://cfa5k6fj6tlv1"]
 
 [ext_resource type="Texture2D" uid="uid://cbh5fcy3ukll6" path="res://graphics/Player/ShipAnimated3.png" id="1_5og54"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_hxh8b"]
+[ext_resource type="Resource" uid="uid://f4wpgnj8pd45" path="res://Resources/health/player_health.tres" id="2_im7d2"]
 [ext_resource type="PackedScene" uid="uid://bo3cvbws56w4u" path="res://scenes/Controllers/Player/movement_controller.tscn" id="3_uf2ww"]
 [ext_resource type="PackedScene" uid="uid://clmb2m2xj4oua" path="res://scenes/Controllers/Player/attack_controller.tscn" id="4_o2gl1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ydn7t"]
-radius = 17.0
+radius = 9.21955
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5nrmx"]
+radius = 12.0416
 
 [node name="player" type="CharacterBody2D" node_paths=PackedStringArray("movement_controller", "attack_controller")]
 rotation = -6.26583
 script = ExtResource("1_hxh8b")
 movement_controller = NodePath("movementController")
 attack_controller = NodePath("attackController")
+health_stats = ExtResource("2_im7d2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
@@ -39,5 +44,12 @@ position = Vector2(17.0148, 0.704825)
 wait_time = 0.644
 autostart = true
 
+[node name="hurt_box" type="Area2D" parent="."]
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_box"]
+shape = SubResource("CircleShape2D_5nrmx")
+
 [connection signal="laser" from="." to="attackController" method="_on_player_laser"]
 [connection signal="timeout" from="shoot_timer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="area_entered" from="hurt_box" to="." method="_on_hurt_box_area_entered"]

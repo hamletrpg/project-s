@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ympcgh0oese5"]
+[gd_scene load_steps=8 format=3 uid="uid://ympcgh0oese5"]
 
 [ext_resource type="Script" path="res://scripts/enemies/boss_1/boss_1.gd" id="1_tguby"]
 [ext_resource type="Texture2D" uid="uid://j1qe3m2od2bg" path="res://graphics/mobs/boss_1/level_1_boss.png" id="2_7b6wu"]
+[ext_resource type="Resource" uid="uid://det48iahgxu7g" path="res://Resources/health/boss_one_health_component.tres" id="2_7cnw6"]
 [ext_resource type="PackedScene" uid="uid://dgboynxnpn30w" path="res://scenes/Enemies/boss_1/controllers/boss_1_wander_controller.tscn" id="3_ww50q"]
 [ext_resource type="PackedScene" uid="uid://dd8e8dn6hy3ot" path="res://scenes/Enemies/boss_1/controllers/boss_1_attack_controller.tscn" id="4_1htl5"]
 
@@ -19,6 +20,7 @@ collision_mask = 5
 script = ExtResource("1_tguby")
 wander_movement_controller = NodePath("boss_1_wander_controller")
 attack_controller = NodePath("boss_1_attack_controller")
+basic_mob_health_component = ExtResource("2_7cnw6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.57421

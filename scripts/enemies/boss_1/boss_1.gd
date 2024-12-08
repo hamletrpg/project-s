@@ -4,7 +4,8 @@ extends CharacterBody2D
 @export var attack_controller: Node2D
 @onready var weapon_1: Marker2D = $weapons/weapon_1
 @onready var weapon_2: Marker2D = $weapons/weapon_2
-@onready var health: int = 30
+@export var basic_mob_health_component: HealthComponent
+
 
 var current_state = State.WANDER
 var move_speed: float = 100.0
@@ -21,6 +22,7 @@ enum State {
 }
 
 func _ready():
+	basic_mob_health_component.connect("entity_health_below_zero", Callable(self, "_on_entity_health_below_zero"))
 	wander_movement_controller.connect("waiting_started", Callable(self, "_on_waiting_started"))
 	wander_movement_controller.connect("move_to_target", Callable(self, "_on_move_to_target"))
 	wander_movement_controller.start_wandering()
@@ -55,16 +57,16 @@ func move_to_target(delta):
 		wander_movement_controller.reached_target()
 	else:
 		global_position += direction * move_amount
+		
+func _on_entity_health_below_zero():
+	emit_signal("boss_destroyed")
+	queue_free()
 
 
 func _on_hurt_box_area_entered(area):
-	var get_bullet_owner = area.get("bullet_owner")
-	if get_bullet_owner != null and get_bullet_owner == PlayerReference.player:
-		health -= 10
-		if health <= 0:
-			emit_signal("boss_destroyed")
-			queue_free()
-			# queue_free()
-		print(health)
+	if area is PlayerLaserMainProjectile:
+		basic_mob_health_component.substract_health(10.0)
 		area.queue_free()
-		print("Hurt")
+	elif area is PlayerFireballSecondProjectile:
+		basic_mob_health_component.substract_health(20.0)
+		area.queue_free()

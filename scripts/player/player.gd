@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var movement_controller: Node2D
 @export var attack_controller: Node2D
-var health: int = 100
+@export var health_stats: HealthComponent
 
 var attacking = false
 
@@ -27,8 +27,7 @@ func get_laser_marker_position():
 func _on_shoot_timer_timeout():
 	can_shoot = true
 
-func take_damage(amount: int):
-	health -= amount
-	print("Player took damage D:> current health: ", health)
-	if health <= 0:
-		print("arrgg I just died lol")
+func _on_hurt_box_area_entered(area):
+	if area is BasicBossOneLaser:
+		health_stats.substract_health(30.0)
+		print("Player took damage from boss D:> current health: ", health_stats.get_current_health())
