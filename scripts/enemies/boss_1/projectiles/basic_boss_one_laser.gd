@@ -1,11 +1,11 @@
 class_name BasicBossOneLaser
 extends Area2D
 
+@export var stat: BasicLaserDamage
+
 var speed: int = 300
 var direction: Vector2 = Vector2.LEFT
 var bullet_owner = self
-
-var attack: int = 30
 
 func _ready():
 	connect("body_entered", Callable(self, "_on_body_entered"))

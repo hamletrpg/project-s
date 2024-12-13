@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bomv023tgkb8y"]
+[gd_scene load_steps=5 format=3 uid="uid://bomv023tgkb8y"]
 
 [ext_resource type="Texture2D" uid="uid://cc3qwx07ms7d8" path="res://graphics/Player/Lasers/playerLaser.png" id="1_0ulru"]
 [ext_resource type="Script" path="res://scripts/player/projectiles/basic_player_laser.gd" id="1_f8xcl"]
+[ext_resource type="Resource" uid="uid://dk8beegsoo0fr" path="res://Resources/damage/player_basic_bullet_stat.tres" id="2_seelb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dhkrm"]
 radius = 3.0
@@ -10,6 +11,7 @@ radius = 3.0
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_f8xcl")
+stat = ExtResource("2_seelb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dhkrm")

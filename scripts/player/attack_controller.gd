@@ -1,29 +1,28 @@
 extends Node2D
 
-var targets = []
-var current_target_index = 0
-var past_target_index = current_target_index
-var max_distance = 500
-var attacking_mob = 0
 var can_shoot = true
+@export var player: CharacterBody2D
 
 @onready var attack_timer = $attack_timer
+@onready var basic_attack_timer: Timer = Timer.new()
 
-func process_attack(player):
+func _ready():
+	add_child(basic_attack_timer)
+	basic_attack_timer.connect("timeout", Callable(self, "_on_basic_attack_timer_timeout"))
+	basic_attack_timer.wait_time = 0.3
+	basic_attack_timer.start()
 
-	if Input.is_action_just_pressed("main_fire"):
-		if can_shoot:
-			player.laser.emit(player.get_laser_marker_position(), Vector2.RIGHT)
-			print("shooting")
-			can_shoot = false
-			attack_timer.start()
-			
-	elif Input.is_action_just_pressed("second_fire"):
+func process_attack():
+	if Input.is_action_just_pressed("second_fire"):
 		if can_shoot:
 			player.second_projectile.emit(player.get_laser_marker_position(), Vector2.RIGHT)
 			print("fireball")
 			can_shoot = false
 			attack_timer.start()
-	
+
 func _on_attack_timer_timeout():
 	can_shoot = true
+
+func _on_basic_attack_timer_timeout():
+	player.laser.emit(player.get_laser_marker_position(), Vector2.RIGHT)
+	print("shooting")

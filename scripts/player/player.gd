@@ -19,7 +19,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _process(_delta):
-	attack_controller.process_attack(self)
+	attack_controller.process_attack()
 
 func get_laser_marker_position():
 	return $laser_position.global_position
@@ -29,5 +29,5 @@ func _on_shoot_timer_timeout():
 
 func _on_hurt_box_area_entered(area):
 	if area is BasicBossOneLaser:
-		health_stats.substract_health(30.0)
+		health_stats.substract_health(area.stat.damage)
 		print("Player took damage from boss D:> current health: ", health_stats.get_current_health())

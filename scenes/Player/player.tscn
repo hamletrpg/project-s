@@ -33,7 +33,8 @@ texture = ExtResource("1_5og54")
 
 [node name="movementController" parent="." instance=ExtResource("3_uf2ww")]
 
-[node name="attackController" parent="." instance=ExtResource("4_o2gl1")]
+[node name="attackController" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_o2gl1")]
+player = NodePath("..")
 
 [node name="laser_position" type="Marker2D" parent="."]
 position = Vector2(17.0148, 0.704825)

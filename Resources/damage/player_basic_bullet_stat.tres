@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BasicLaserDamage" load_steps=2 format=3 uid="uid://dk8beegsoo0fr"]
+
+[ext_resource type="Script" path="res://Resources/damage/basic_laser_damage.gd" id="1_5supq"]
+
+[resource]
+script = ExtResource("1_5supq")
+damage = 30.0
+speed = 400.0
