@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://cwk3mbel30igm"]
+[gd_scene load_steps=3 format=3 uid="uid://cwk3mbel30igm"]
+
+[ext_resource type="Script" path="res://scripts/UI/parent_horizontal_player_information_on_level__container.gd" id="1_1mh73"]
+[ext_resource type="Script" path="res://scripts/UI/progress_bar.gd" id="1_s8khw"]
 
 [node name="GameUI" type="CanvasLayer"]
 
@@ -10,17 +13,11 @@ theme_override_constants/margin_left = 277
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 220
+script = ExtResource("1_1mh73")
 
-[node name="Current Level" type="Label" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Some data"
-
-[node name="SomeMoreData" type="Label" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 10
-text = "Some more Data :D"
-
-[node name="Cash" type="Label" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-text = "money"
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 38.0
+offset_top = 5.0
+offset_right = 189.0
+offset_bottom = 32.0
+script = ExtResource("1_s8khw")

@@ -6,6 +6,7 @@ var can_shoot = true
 @export var wander_controller: Node2D
 @export var bullet: PackedScene 
 @export var basic_mob_health_component: HealthComponent
+var worth: float = 30.0
 
 signal laser(pos, dir)
 signal mob_destroyed
@@ -30,6 +31,9 @@ func set_state(state):
 	
 func _on_entity_health_below_zero():
 	emit_signal("mob_destroyed")
+	var player = PlayerReference.player
+	player.player_stats.current_score += worth
+	player.emit_signal("point_changed")
 	queue_free()
 
 func _on_hurt_box_area_entered(area):

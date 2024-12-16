@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var weapon_1: Marker2D = $weapons/weapon_1
 @onready var weapon_2: Marker2D = $weapons/weapon_2
 @export var basic_mob_health_component: HealthComponent
-
+@onready var worth:float = 200
 
 var current_state = State.WANDER
 var move_speed: float = 100.0
@@ -60,6 +60,9 @@ func move_to_target(delta):
 		
 func _on_entity_health_below_zero():
 	emit_signal("boss_destroyed")
+	var player = PlayerReference.player
+	player.player_stats.current_score += worth
+	player.emit_signal("point_changed")
 	queue_free()
 
 

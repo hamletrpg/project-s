@@ -1,7 +1,5 @@
 extends Node2D
 
-@export var bullet: PackedScene
-@export var player_fireball: PackedScene
 @export var level_resource: Resource
 
 @onready var player = PlayerReference.player
@@ -14,13 +12,13 @@ func _ready():
 	wave_manager.start_current_wave()
 
 func _on_player_laser(pos, dir):
-	var spawned_bullet = bullet.instantiate()
+	var spawned_bullet = player.player_stats.player_main_weapon.instantiate()
 	spawned_bullet.direction = dir
 	spawned_bullet.position = pos
 	add_child(spawned_bullet)
 
 func _on_player_second_projectile(pos, dir):
-	var spawned_bullet = player_fireball.instantiate()
+	var spawned_bullet = player.player_stats.player_secondary_weapon.instantiate()
 	spawned_bullet.direction = dir
 	spawned_bullet.position = pos
 	add_child(spawned_bullet)

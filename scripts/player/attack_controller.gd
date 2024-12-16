@@ -10,7 +10,7 @@ func _ready():
 	add_child(basic_attack_timer)
 	basic_attack_timer.connect("timeout", Callable(self, "_on_basic_attack_timer_timeout"))
 	basic_attack_timer.wait_time = 0.3
-	basic_attack_timer.start()
+	#basic_attack_timer.start()
 
 func process_attack():
 	if Input.is_action_just_pressed("second_fire"):
@@ -25,4 +25,3 @@ func _on_attack_timer_timeout():
 
 func _on_basic_attack_timer_timeout():
 	player.laser.emit(player.get_laser_marker_position(), Vector2.RIGHT)
-	print("shooting")

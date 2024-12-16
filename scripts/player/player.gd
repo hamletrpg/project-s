@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var movement_controller: Node2D
 @export var attack_controller: Node2D
-@export var health_stats: HealthComponent
+@export var player_stats: PlayerStats
 
 var attacking = false
 
@@ -10,6 +10,8 @@ var can_shoot: bool = true
 
 signal laser(pos, dir)
 signal second_projectile(pos, dir)
+signal health_changed
+signal point_changed
 
 func _ready():
 	PlayerReference.player = self
@@ -29,5 +31,7 @@ func _on_shoot_timer_timeout():
 
 func _on_hurt_box_area_entered(area):
 	if area is BasicBossOneLaser:
-		health_stats.substract_health(area.stat.damage)
-		print("Player took damage from boss D:> current health: ", health_stats.get_current_health())
+		emit_signal("health_changed")
+		player_stats.player_health_stat.substract_health(area.stat.damage)
+		print("Player took damage from boss D:> current health: ", player_stats.player_health_stat.get_current_health())
+		

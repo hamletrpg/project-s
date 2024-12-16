@@ -86,6 +86,7 @@ func _on_boss_death():
 	
 func _on_mob_death():
 	killed_mobs += 1
+	#player.player_stats.current_score += 
 	print("one enemy down, there are ", current_wave.enemy_count - killed_mobs, " left")
 	print("amount of killed mobs ", killed_mobs)
 	print("amount to next wave ", current_wave.enemy_count)
