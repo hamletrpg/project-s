@@ -19,10 +19,6 @@ movement_controller = NodePath("movementController")
 attack_controller = NodePath("attackController")
 player_stats = ExtResource("2_sf0cd")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position_smoothing_enabled = true
-rotation_smoothing_enabled = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ydn7t")
 

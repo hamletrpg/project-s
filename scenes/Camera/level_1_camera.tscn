@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdg83vfwqxogi"]
+
+[ext_resource type="Script" path="res://scripts/Camera/level_1_camera.gd" id="1_thd4l"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_22r3c"]
+b = Vector2(0, 648)
+
+[node name="Level_1_camera" type="Camera2D"]
+position = Vector2(334, 326)
+script = ExtResource("1_thd4l")
+
+[node name="spanw_collision_area" type="Area2D" parent="."]
+position = Vector2(577, -324)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spanw_collision_area"]
+shape = SubResource("SegmentShape2D_22r3c")

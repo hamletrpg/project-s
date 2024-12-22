@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var movement_controller: Node2D
 @export var attack_controller: Node2D
 @export var player_stats: PlayerStats
+@export var wave_manager: Node2D
 
 var attacking = false
 
@@ -18,6 +19,7 @@ func _ready():
 
 func _physics_process(delta):
 	movement_controller.rotate_forward_backwards(self, delta)
+
 	move_and_slide()
 
 func _process(_delta):
@@ -34,4 +36,3 @@ func _on_hurt_box_area_entered(area):
 		emit_signal("health_changed")
 		player_stats.player_health_stat.substract_health(area.stat.damage)
 		print("Player took damage from boss D:> current health: ", player_stats.player_health_stat.get_current_health())
-		

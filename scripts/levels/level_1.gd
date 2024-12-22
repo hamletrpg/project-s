@@ -5,11 +5,10 @@ extends Node2D
 @onready var player = PlayerReference.player
 @onready var wave_manager = $WaveManager
 
-
 func _ready():
 	player.connect("second_projectile", Callable(self, "_on_player_second_projectile"))
 	wave_manager.waves = level_resource.waves
-	wave_manager.start_current_wave()
+	#wave_manager.start_next_wave()
 
 func _on_player_laser(pos, dir):
 	var spawned_bullet = player.player_stats.player_main_weapon.instantiate()
@@ -22,3 +21,12 @@ func _on_player_second_projectile(pos, dir):
 	spawned_bullet.direction = dir
 	spawned_bullet.position = pos
 	add_child(spawned_bullet)
+
+func _on_dummy_area_1_area_entered(area):
+	if area.get_parent() is LevelOneCamera:
+		wave_manager.start_next_wave()
+
+func _on_dummy_area_2_area_entered(area):
+	if area.get_parent() is LevelOneCamera:
+		wave_manager.current_wave_index += 1
+		wave_manager.start_next_wave()
