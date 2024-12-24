@@ -1,9 +1,17 @@
-[gd_resource type="Resource" script_class="Level" load_steps=6 format=3 uid="uid://daruiitaychkx"]
+[gd_resource type="Resource" script_class="Level" load_steps=8 format=3 uid="uid://daruiitaychkx"]
 
 [ext_resource type="Script" path="res://Resources/level.gd" id="1_n31x5"]
 [ext_resource type="Resource" uid="uid://bivibngaqaknj" path="res://Resources/wave.tres" id="2_cq2ro"]
 [ext_resource type="PackedScene" uid="uid://ympcgh0oese5" path="res://scenes/Enemies/boss_1/boss_1.tscn" id="3_0l4nl"]
 [ext_resource type="Script" path="res://Resources/waves.gd" id="4_bpyw4"]
+[ext_resource type="PackedScene" uid="uid://cmxjqojlhm8om" path="res://scenes/Enemies/basic_mob.tscn" id="4_bxg7n"]
+
+[sub_resource type="Resource" id="Resource_j0vrl"]
+script = ExtResource("4_bpyw4")
+enemy_scene = ExtResource("4_bxg7n")
+spawn_interval = 0.5
+enemy_count = 3
+has_boss = false
 
 [sub_resource type="Resource" id="Resource_4qsqx"]
 script = ExtResource("4_bpyw4")
@@ -14,5 +22,5 @@ boss_scene = ExtResource("3_0l4nl")
 
 [resource]
 script = ExtResource("1_n31x5")
-waves = Array[ExtResource("4_bpyw4")]([ExtResource("2_cq2ro"), SubResource("Resource_4qsqx")])
+waves = Array[ExtResource("4_bpyw4")]([ExtResource("2_cq2ro"), SubResource("Resource_j0vrl"), SubResource("Resource_4qsqx")])
 level_name = "level 1"

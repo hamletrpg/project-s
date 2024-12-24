@@ -11,14 +11,18 @@ var current_state: WaveState
 var amount_of_enemies: int = 0
 var current_wave: Wave
 # very bad practice, delete later lol
+# Further note, is it? I mean, it works lol
 var killed_mobs: int
+var wave_number: int = 1
+var wave_list_index_spawner: int = 0
 
 @onready var waves: Array[Wave] = []
 @export var enemies_node: Node2D
 @onready var spawn_timer: Timer = Timer.new()
 #@onready var new_wave_timer: Timer = Timer.new()
-@onready var spawn_list_base = get_node("/root/Level1/Enemies")
-@onready var spawn_positions = spawn_list_base.get_children()
+#@onready var spawn_list_base = get_node("/root/Level1/wave_1").get_children()
+#@onready var spawn_positions = spawn_list_base.get_children()
+
 @onready var boss_spawn_position = get_node("/root/Level1/boss_spawn_position")
 
 
@@ -50,6 +54,13 @@ func start_next_wave():
 		
 		#if !new_wave_timer.is_stopped():
 			#new_wave_timer.stop()
+			
+func get_next_wave_position():
+	# Currently we are getting that value from 
+	# @onready var spawn_list_base = get_node("/root/Level1/wave_1").get_children()
+	var node_to_get: String = "/root/Level1/wave_" + str(wave_number)
+	var spawn_list_base = get_node(node_to_get).get_children()
+	return spawn_list_base
 
 func spawn_enemies():
 	if current_state == WaveState.SPAWNING:
@@ -57,11 +68,13 @@ func spawn_enemies():
 			# instantiate the mob
 			var mob_to_spawn = current_wave.enemy_scene.instantiate()
 			# the position of the mob should be equal to the position
-			var spawn_position = spawn_positions[randi() % spawn_positions.size()].global_position
+			var spawn_list_base = get_next_wave_position()
+			var spawn_position = spawn_list_base[wave_list_index_spawner % spawn_list_base.size()].global_position
 			enemies_node.add_child(mob_to_spawn)
 			mob_to_spawn.global_position = spawn_position
 			mob_to_spawn.connect("mob_destroyed", Callable(self, "_on_mob_death"))
 			amount_of_enemies -= 1
+			wave_list_index_spawner += 1
 		else:
 			print("ALL enemies has been spawn from this current wave dude")
 			spawn_timer.stop()
@@ -79,6 +92,7 @@ func _on_boss_death():
 	print("Level Completed :D")
 
 func _on_mob_death():
+	#TODO keep track on killed mobs over all and killed mobs on current wave
 	killed_mobs += 1
 	#player.player_stats.current_score += 
 	print("one enemy down, there are ", current_wave.enemy_count - killed_mobs, " left")

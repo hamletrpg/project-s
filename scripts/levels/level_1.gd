@@ -30,3 +30,10 @@ func _on_dummy_area_2_area_entered(area):
 	if area.get_parent() is LevelOneCamera:
 		wave_manager.current_wave_index += 1
 		wave_manager.start_next_wave()
+
+
+func _on_dummy_area_3_area_entered(area):
+	if area.get_parent() is LevelOneCamera:
+		wave_manager.current_wave_index += 1
+		wave_manager.wave_number += 1
+		wave_manager.start_next_wave()

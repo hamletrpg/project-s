@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bn3bv4jnmc88t"]
+[gd_scene load_steps=14 format=4 uid="uid://bn3bv4jnmc88t"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_1.gd" id="1_esvit"]
 [ext_resource type="PackedScene" uid="uid://cfa5k6fj6tlv1" path="res://scenes/Player/player.tscn" id="1_grpn2"]
@@ -17,6 +17,8 @@ texture = ExtResource("4_cd8iy")
 sources/0 = SubResource("TileSetAtlasSource_h6hcq")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j7p55"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wxxvg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mpru2"]
 
@@ -124,44 +126,66 @@ position = Vector2(-882, 1218)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Stars"]
 
-[node name="Enemies" type="Node2D" parent="."]
+[node name="wave_1" type="Node2D" parent="."]
 position = Vector2(1221, 325)
 
-[node name="position_1" type="Marker2D" parent="Enemies"]
+[node name="position_1" type="Marker2D" parent="wave_1"]
 position = Vector2(-61, -81)
 
-[node name="position_2" type="Marker2D" parent="Enemies"]
+[node name="position_2" type="Marker2D" parent="wave_1"]
 position = Vector2(-65, 49)
 
-[node name="position_3" type="Marker2D" parent="Enemies"]
+[node name="position_3" type="Marker2D" parent="wave_1"]
 position = Vector2(-68, -158)
 
-[node name="position_4" type="Marker2D" parent="Enemies"]
+[node name="position_4" type="Marker2D" parent="wave_1"]
+position = Vector2(-62, 115)
+
+[node name="wave_2" type="Node2D" parent="."]
+position = Vector2(1599, 325)
+
+[node name="position_1" type="Marker2D" parent="wave_2"]
+position = Vector2(-61, -81)
+
+[node name="position_2" type="Marker2D" parent="wave_2"]
+position = Vector2(-65, 49)
+
+[node name="position_3" type="Marker2D" parent="wave_2"]
+position = Vector2(-68, -158)
+
+[node name="position_4" type="Marker2D" parent="wave_2"]
 position = Vector2(-62, 115)
 
 [node name="WaveManager" parent="." node_paths=PackedStringArray("enemies_node") instance=ExtResource("8_dw1qc")]
-enemies_node = NodePath("../Enemies")
+enemies_node = NodePath("../wave_1")
 
 [node name="GameUI" parent="." instance=ExtResource("9_dxsmu")]
 
 [node name="Level_1_camera" parent="." node_paths=PackedStringArray("wave_manager") instance=ExtResource("8_8mmnw")]
 wave_manager = NodePath("../WaveManager")
 
-[node name="dummy_area_1" type="Area2D" parent="."]
+[node name="wave_1_caller" type="Area2D" parent="."]
 position = Vector2(1010, 312)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="dummy_area_1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wave_1_caller"]
 shape = SubResource("CircleShape2D_j7p55")
 
-[node name="dummy_area_2" type="Area2D" parent="."]
-position = Vector2(1444, 286)
+[node name="wave_2_caller" type="Area2D" parent="."]
+position = Vector2(1399, 324)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="dummy_area_2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wave_2_caller"]
+shape = SubResource("CircleShape2D_wxxvg")
+
+[node name="boss_caller" type="Area2D" parent="."]
+position = Vector2(1763, 286)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boss_caller"]
 shape = SubResource("CircleShape2D_mpru2")
 
 [node name="boss_spawn_position" type="Marker2D" parent="."]
-position = Vector2(1522, 292)
+position = Vector2(1876, 292)
 
 [connection signal="laser" from="player" to="." method="_on_player_laser"]
-[connection signal="area_entered" from="dummy_area_1" to="." method="_on_dummy_area_1_area_entered"]
-[connection signal="area_entered" from="dummy_area_2" to="." method="_on_dummy_area_2_area_entered"]
+[connection signal="area_entered" from="wave_1_caller" to="." method="_on_dummy_area_1_area_entered"]
+[connection signal="area_entered" from="wave_2_caller" to="." method="_on_dummy_area_3_area_entered"]
+[connection signal="area_entered" from="boss_caller" to="." method="_on_dummy_area_2_area_entered"]
