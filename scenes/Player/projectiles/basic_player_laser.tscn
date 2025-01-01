@@ -1,11 +1,40 @@
-[gd_scene load_steps=5 format=3 uid="uid://bomv023tgkb8y"]
+[gd_scene load_steps=9 format=3 uid="uid://bomv023tgkb8y"]
 
-[ext_resource type="Texture2D" uid="uid://cc3qwx07ms7d8" path="res://graphics/Player/Lasers/playerLaser.png" id="1_0ulru"]
 [ext_resource type="Script" path="res://scripts/player/projectiles/basic_player_laser.gd" id="1_f8xcl"]
 [ext_resource type="Resource" uid="uid://dk8beegsoo0fr" path="res://Resources/damage/player_basic_bullet_stat.tres" id="2_seelb"]
+[ext_resource type="Texture2D" uid="uid://c8f2qwfw88cpt" path="res://graphics/Player/Lasers/purple_projectile/purple-basic-laser_idle.png" id="3_sehqf"]
+[ext_resource type="Texture2D" uid="uid://b0nuci04v8jxv" path="res://graphics/Player/Lasers/purple_projectile/purple-basic-laser_feedback_impact_02.png" id="4_de3q6"]
+[ext_resource type="Texture2D" uid="uid://da1l75c4hyfco" path="res://graphics/Player/Lasers/purple_projectile/purple-basic-laser_feedback_impact_03.png" id="5_w3vyb"]
+[ext_resource type="Texture2D" uid="uid://d0qkq1tnw5jhj" path="res://graphics/Player/Lasers/purple_projectile/purple-basic-laser_feedback_impact_04.png" id="6_c0xuv"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dhkrm"]
-radius = 3.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gb66h"]
+radius = 2.0
+height = 16.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3x07c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sehqf")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_de3q6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_w3vyb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_c0xuv")
+}],
+"loop": false,
+"name": &"impact_end",
+"speed": 60.0
+}]
 
 [node name="basic_player_laser" type="Area2D" groups=["player_laser"]]
 collision_layer = 4
@@ -14,7 +43,10 @@ script = ExtResource("1_f8xcl")
 stat = ExtResource("2_seelb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_dhkrm")
+rotation = 1.57254
+shape = SubResource("CapsuleShape2D_gb66h")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_0ulru")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3x07c")
+animation = &"idle"
+autoplay = "idle"

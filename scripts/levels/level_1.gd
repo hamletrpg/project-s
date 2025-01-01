@@ -26,13 +26,48 @@ func _on_dummy_area_1_area_entered(area):
 	if area.get_parent() is LevelOneCamera:
 		wave_manager.start_next_wave()
 
-func _on_dummy_area_2_area_entered(area):
+func _on_wave_2_caller_area_entered(area):
 	if area.get_parent() is LevelOneCamera:
 		wave_manager.current_wave_index += 1
 		wave_manager.start_next_wave()
 
+func _on_wave_3_caller_area_entered(area):
+	if area.get_parent() is LevelOneCamera:
+		wave_manager.current_wave_index += 1
+		wave_manager.wave_number += 1
+		wave_manager.start_next_wave()
 
-func _on_dummy_area_3_area_entered(area):
+func _on_wave_4_caller_area_entered(area):
+	if area.get_parent() is LevelOneCamera:
+		wave_manager.current_wave_index += 1
+		wave_manager.wave_number += 1
+		wave_manager.start_next_wave()
+
+func _on_wave_5_caller_area_entered(area):
+	if area.get_parent() is LevelOneCamera:
+		wave_manager.current_wave_index += 1
+		wave_manager.wave_number += 1
+		wave_manager.start_next_wave()
+		
+func _on_wave_6_caller_area_entered(area):
+	if area.get_parent() is LevelOneCamera:
+		wave_manager.current_wave_index += 1
+		wave_manager.wave_number += 1
+		wave_manager.start_next_wave()
+
+func _on_wave_7_caller_area_entered(area):
+	if area.get_parent() is LevelOneCamera:
+		wave_manager.current_wave_index += 1
+		wave_manager.wave_number += 1
+		wave_manager.start_next_wave()
+
+func _on_wave_8_caller_area_entered(area):
+	if area.get_parent() is LevelOneCamera:
+		wave_manager.current_wave_index += 1
+		wave_manager.wave_number += 1
+		wave_manager.start_next_wave()
+
+func _on_boss_caller_area_entered(area):
 	if area.get_parent() is LevelOneCamera:
 		wave_manager.current_wave_index += 1
 		wave_manager.wave_number += 1

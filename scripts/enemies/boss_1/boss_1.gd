@@ -27,7 +27,7 @@ func _ready():
 	wander_movement_controller.connect("move_to_target", Callable(self, "_on_move_to_target"))
 	wander_movement_controller.start_wandering()
 
-func _physics_process(delta):
+func _process(delta):
 	if current_state == State.WANDER and not is_waiting:
 		move_to_target(delta)
 
@@ -57,7 +57,7 @@ func move_to_target(delta):
 		wander_movement_controller.reached_target()
 	else:
 		global_position += direction * move_amount
-		
+
 func _on_entity_health_below_zero():
 	emit_signal("boss_destroyed")
 	var player = PlayerReference.player
@@ -69,7 +69,7 @@ func _on_entity_health_below_zero():
 func _on_hurt_box_area_entered(area):
 	if area is PlayerLaserMainProjectile:
 		basic_mob_health_component.substract_health(area.stat.damage)
-		area.queue_free()
+		area.bullet_impacted()
 	elif area is PlayerFireballSecondProjectile:
 		basic_mob_health_component.substract_health(area.stat.damage)
 		area.queue_free()

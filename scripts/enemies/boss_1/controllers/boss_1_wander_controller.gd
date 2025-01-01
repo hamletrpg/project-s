@@ -4,7 +4,7 @@ extends Node2D
 @onready var wait_timer: Timer = $wait_timer
 
 var position_index: int = 0
-var target_positions: Array[Vector2] = []  # Array to store fixed target positions
+@onready var target_positions: Array[Vector2] = []  # Array to store fixed target positions
 
 signal move_to_target(target_position: Vector2)
 signal waiting_started()

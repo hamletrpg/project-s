@@ -1,7 +1,7 @@
 class_name LevelOneCamera
 extends Camera2D
 
-@export var speed: float = 20
+@export var speed: float = 60
 @export var rotation_speed = 3.5
 @export var wave_manager: Node2D
 

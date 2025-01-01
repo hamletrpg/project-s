@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://bn3bv4jnmc88t"]
+[gd_scene load_steps=20 format=4 uid="uid://bn3bv4jnmc88t"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_1.gd" id="1_esvit"]
 [ext_resource type="PackedScene" uid="uid://cfa5k6fj6tlv1" path="res://scenes/Player/player.tscn" id="1_grpn2"]
@@ -19,6 +19,18 @@ sources/0 = SubResource("TileSetAtlasSource_h6hcq")
 [sub_resource type="CircleShape2D" id="CircleShape2D_j7p55"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wxxvg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2u4cu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jd0kd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e0bvh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hkh1h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nyevd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0esr4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mpru2"]
 
@@ -91,6 +103,63 @@ position = Vector2(949, 483)
 [node name="basic_star12" parent="Stars" instance=ExtResource("6_d05fh")]
 position = Vector2(961, 48)
 
+[node name="basic_star30" parent="Stars" instance=ExtResource("6_d05fh")]
+position = Vector2(3984, 529)
+
+[node name="basic_star31" parent="Stars" instance=ExtResource("6_d05fh")]
+position = Vector2(3721, 30)
+
+[node name="basic_star32" parent="Stars" instance=ExtResource("6_d05fh")]
+position = Vector2(3746, 462)
+
+[node name="basic_star33" parent="Stars" instance=ExtResource("6_d05fh")]
+position = Vector2(4245, 251)
+
+[node name="basic_star34" parent="Stars" instance=ExtResource("6_d05fh")]
+position = Vector2(2332, 306)
+
+[node name="basic_star35" parent="Stars" instance=ExtResource("6_d05fh")]
+position = Vector2(3203, 466)
+
+[node name="basic_star37" parent="Stars" instance=ExtResource("6_d05fh")]
+position = Vector2(3795, 515)
+
+[node name="basic_star38" parent="Stars" instance=ExtResource("6_d05fh")]
+position = Vector2(3532, 16)
+
+[node name="basic_star39" parent="Stars" instance=ExtResource("6_d05fh")]
+position = Vector2(3557, 448)
+
+[node name="basic_star40" parent="Stars" instance=ExtResource("6_d05fh")]
+position = Vector2(4056, 237)
+
+[node name="basic_star41" parent="Stars" instance=ExtResource("6_d05fh")]
+position = Vector2(2143, 292)
+
+[node name="basic_star42" parent="Stars" instance=ExtResource("6_d05fh")]
+position = Vector2(3014, 452)
+
+[node name="basic_star43" parent="Stars" instance=ExtResource("6_d05fh")]
+position = Vector2(3523, 325)
+
+[node name="basic_star44" parent="Stars" instance=ExtResource("6_d05fh")]
+position = Vector2(3260, -174)
+
+[node name="basic_star45" parent="Stars" instance=ExtResource("6_d05fh")]
+position = Vector2(3285, 258)
+
+[node name="basic_star46" parent="Stars" instance=ExtResource("6_d05fh")]
+position = Vector2(3784, 47)
+
+[node name="basic_star47" parent="Stars" instance=ExtResource("6_d05fh")]
+position = Vector2(1871, 102)
+
+[node name="basic_star48" parent="Stars" instance=ExtResource("6_d05fh")]
+position = Vector2(2742, 262)
+
+[node name="basic_star36" parent="Stars" instance=ExtResource("6_d05fh")]
+position = Vector2(3215, 31)
+
 [node name="basic_star13" parent="Stars" instance=ExtResource("6_d05fh")]
 position = Vector2(-190, 1861)
 
@@ -156,8 +225,97 @@ position = Vector2(-68, -158)
 [node name="position_4" type="Marker2D" parent="wave_2"]
 position = Vector2(-62, 115)
 
-[node name="WaveManager" parent="." node_paths=PackedStringArray("enemies_node") instance=ExtResource("8_dw1qc")]
-enemies_node = NodePath("../wave_1")
+[node name="wave_3" type="Node2D" parent="."]
+position = Vector2(1947, 329)
+
+[node name="position_1" type="Marker2D" parent="wave_3"]
+position = Vector2(-61, -81)
+
+[node name="position_2" type="Marker2D" parent="wave_3"]
+position = Vector2(-65, 49)
+
+[node name="position_3" type="Marker2D" parent="wave_3"]
+position = Vector2(-68, -158)
+
+[node name="position_4" type="Marker2D" parent="wave_3"]
+position = Vector2(-62, 115)
+
+[node name="wave_4" type="Node2D" parent="."]
+position = Vector2(2281, 329)
+
+[node name="position_1" type="Marker2D" parent="wave_4"]
+position = Vector2(-61, -81)
+
+[node name="position_2" type="Marker2D" parent="wave_4"]
+position = Vector2(-65, 49)
+
+[node name="position_3" type="Marker2D" parent="wave_4"]
+position = Vector2(-68, -158)
+
+[node name="position_4" type="Marker2D" parent="wave_4"]
+position = Vector2(-62, 115)
+
+[node name="wave_5" type="Node2D" parent="."]
+position = Vector2(2672, 328)
+
+[node name="position_1" type="Marker2D" parent="wave_5"]
+position = Vector2(-61, -81)
+
+[node name="position_2" type="Marker2D" parent="wave_5"]
+position = Vector2(-65, 49)
+
+[node name="position_3" type="Marker2D" parent="wave_5"]
+position = Vector2(-68, -158)
+
+[node name="position_4" type="Marker2D" parent="wave_5"]
+position = Vector2(-62, 115)
+
+[node name="wave_6" type="Node2D" parent="."]
+position = Vector2(3039, 328)
+
+[node name="position_1" type="Marker2D" parent="wave_6"]
+position = Vector2(-61, -81)
+
+[node name="position_2" type="Marker2D" parent="wave_6"]
+position = Vector2(-65, 49)
+
+[node name="position_3" type="Marker2D" parent="wave_6"]
+position = Vector2(-68, -158)
+
+[node name="position_4" type="Marker2D" parent="wave_6"]
+position = Vector2(-62, 115)
+
+[node name="wave_7" type="Node2D" parent="."]
+position = Vector2(3435, 328)
+
+[node name="position_1" type="Marker2D" parent="wave_7"]
+position = Vector2(-61, -81)
+
+[node name="position_2" type="Marker2D" parent="wave_7"]
+position = Vector2(-65, 49)
+
+[node name="position_3" type="Marker2D" parent="wave_7"]
+position = Vector2(-68, -158)
+
+[node name="position_4" type="Marker2D" parent="wave_7"]
+position = Vector2(-62, 115)
+
+[node name="wave_8" type="Node2D" parent="."]
+position = Vector2(3904, 314)
+
+[node name="position_1" type="Marker2D" parent="wave_8"]
+position = Vector2(-61, -81)
+
+[node name="position_2" type="Marker2D" parent="wave_8"]
+position = Vector2(-65, 49)
+
+[node name="position_3" type="Marker2D" parent="wave_8"]
+position = Vector2(-68, -158)
+
+[node name="position_4" type="Marker2D" parent="wave_8"]
+position = Vector2(-62, 115)
+
+[node name="WaveManager" parent="." instance=ExtResource("8_dw1qc")]
 
 [node name="GameUI" parent="." instance=ExtResource("9_dxsmu")]
 
@@ -176,16 +334,58 @@ position = Vector2(1399, 324)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wave_2_caller"]
 shape = SubResource("CircleShape2D_wxxvg")
 
+[node name="wave_3_caller" type="Area2D" parent="."]
+position = Vector2(1815, 313)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wave_3_caller"]
+shape = SubResource("CircleShape2D_2u4cu")
+
+[node name="wave_4_caller" type="Area2D" parent="."]
+position = Vector2(2149, 326)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wave_4_caller"]
+shape = SubResource("CircleShape2D_jd0kd")
+
+[node name="wave_5_caller" type="Area2D" parent="."]
+position = Vector2(2513, 332)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wave_5_caller"]
+shape = SubResource("CircleShape2D_e0bvh")
+
+[node name="wave_6_caller" type="Area2D" parent="."]
+position = Vector2(2881, 317)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wave_6_caller"]
+shape = SubResource("CircleShape2D_hkh1h")
+
+[node name="wave_7_caller" type="Area2D" parent="."]
+position = Vector2(3273, 314)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wave_7_caller"]
+shape = SubResource("CircleShape2D_nyevd")
+
+[node name="wave_8_caller" type="Area2D" parent="."]
+position = Vector2(3732, 304)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wave_8_caller"]
+shape = SubResource("CircleShape2D_0esr4")
+
 [node name="boss_caller" type="Area2D" parent="."]
-position = Vector2(1763, 286)
+position = Vector2(4193, 288)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="boss_caller"]
 shape = SubResource("CircleShape2D_mpru2")
 
 [node name="boss_spawn_position" type="Marker2D" parent="."]
-position = Vector2(1876, 292)
+position = Vector2(3991, 283)
 
 [connection signal="laser" from="player" to="." method="_on_player_laser"]
 [connection signal="area_entered" from="wave_1_caller" to="." method="_on_dummy_area_1_area_entered"]
-[connection signal="area_entered" from="wave_2_caller" to="." method="_on_dummy_area_3_area_entered"]
-[connection signal="area_entered" from="boss_caller" to="." method="_on_dummy_area_2_area_entered"]
+[connection signal="area_entered" from="wave_2_caller" to="." method="_on_wave_2_caller_area_entered"]
+[connection signal="area_entered" from="wave_3_caller" to="." method="_on_wave_3_caller_area_entered"]
+[connection signal="area_entered" from="wave_4_caller" to="." method="_on_wave_4_caller_area_entered"]
+[connection signal="area_entered" from="wave_5_caller" to="." method="_on_wave_5_caller_area_entered"]
+[connection signal="area_entered" from="wave_6_caller" to="." method="_on_wave_6_caller_area_entered"]
+[connection signal="area_entered" from="wave_7_caller" to="." method="_on_wave_7_caller_area_entered"]
+[connection signal="area_entered" from="wave_8_caller" to="." method="_on_wave_8_caller_area_entered"]
+[connection signal="area_entered" from="boss_caller" to="." method="_on_boss_caller_area_entered"]

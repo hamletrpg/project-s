@@ -17,7 +17,7 @@ var wave_number: int = 1
 var wave_list_index_spawner: int = 0
 
 @onready var waves: Array[Wave] = []
-@export var enemies_node: Node2D
+#@export var enemies_node: Node2D
 @onready var spawn_timer: Timer = Timer.new()
 #@onready var new_wave_timer: Timer = Timer.new()
 #@onready var spawn_list_base = get_node("/root/Level1/wave_1").get_children()
@@ -70,7 +70,7 @@ func spawn_enemies():
 			# the position of the mob should be equal to the position
 			var spawn_list_base = get_next_wave_position()
 			var spawn_position = spawn_list_base[wave_list_index_spawner % spawn_list_base.size()].global_position
-			enemies_node.add_child(mob_to_spawn)
+			self.get_parent().add_child(mob_to_spawn)
 			mob_to_spawn.global_position = spawn_position
 			mob_to_spawn.connect("mob_destroyed", Callable(self, "_on_mob_death"))
 			amount_of_enemies -= 1
@@ -82,7 +82,7 @@ func spawn_enemies():
 func boss_fight_started():
 	var boss_to_spaw = current_wave.boss_scene.instantiate()
 	var spawn_position = boss_spawn_position.global_position
-	enemies_node.add_child(boss_to_spaw)
+	self.get_parent().call_deferred("add_child", boss_to_spaw)
 	boss_to_spaw.global_position = spawn_position
 	boss_to_spaw.connect("boss_destroyed", Callable(self, "_on_boss_death"))
 	current_state = WaveState.BOSS_FIGHT
