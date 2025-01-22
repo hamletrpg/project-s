@@ -15,6 +15,7 @@ var current_wave: Wave
 var killed_mobs: int
 var wave_number: int = 1
 var wave_list_index_spawner: int = 0
+var number_to_print: float
 
 @onready var waves: Array[Wave] = []
 #@export var enemies_node: Node2D
@@ -22,9 +23,8 @@ var wave_list_index_spawner: int = 0
 #@onready var new_wave_timer: Timer = Timer.new()
 #@onready var spawn_list_base = get_node("/root/Level1/wave_1").get_children()
 #@onready var spawn_positions = spawn_list_base.get_children()
-
 @onready var boss_spawn_position = get_node("/root/Level1/boss_spawn_position")
-
+@export var power_up_to_spawn: PackedScene
 
 func _ready():
 	add_child(spawn_timer)
@@ -70,9 +70,14 @@ func spawn_enemies():
 			# the position of the mob should be equal to the position
 			var spawn_list_base = get_next_wave_position()
 			var spawn_position = spawn_list_base[wave_list_index_spawner % spawn_list_base.size()].global_position
+			number_to_print = wave_list_index_spawner % spawn_list_base.size()
+			#if number_to_print == 0:
+				#mob_to_spawn.has_power_up = true
+				#_spaw_power_up_on_level(mob_to_spawn)
 			self.get_parent().add_child(mob_to_spawn)
 			mob_to_spawn.global_position = spawn_position
 			mob_to_spawn.connect("mob_destroyed", Callable(self, "_on_mob_death"))
+			mob_to_spawn.connect("check_for_power_up_to_spawn", Callable(self, "_on_spaw_power_up_on_level").bind(mob_to_spawn))
 			amount_of_enemies -= 1
 			wave_list_index_spawner += 1
 		else:
@@ -86,6 +91,13 @@ func boss_fight_started():
 	boss_to_spaw.global_position = spawn_position
 	boss_to_spaw.connect("boss_destroyed", Callable(self, "_on_boss_death"))
 	current_state = WaveState.BOSS_FIGHT
+	
+func _on_spaw_power_up_on_level(mob):
+	if number_to_print == 0:
+		var power_up_to_spawn = power_up_to_spawn.instantiate()
+		self.get_parent().call_deferred("add_child", power_up_to_spawn)
+		power_up_to_spawn.global_position = mob.global_position
+		print("hey, power up dropped")
 
 func _on_boss_death():
 	current_state = WaveState.COMPLETED
@@ -103,7 +115,7 @@ func _on_mob_death():
 
 func _on_spawn_timer_timeout():
 	current_state = WaveState.SPAWNING
-	
+
 	spawn_enemies()
 
 #func _on_new_wave_timer_timeout():

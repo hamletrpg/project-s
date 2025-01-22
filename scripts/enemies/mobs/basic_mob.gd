@@ -7,9 +7,11 @@ var can_shoot = true
 @export var bullet: PackedScene 
 @export var basic_mob_health_component: HealthComponent
 var worth: float = 30.0
+var has_power_up: bool = false
 
 signal laser(pos, dir)
 signal mob_destroyed
+signal check_for_power_up_to_spawn(mob)
 
 enum State {
 	WANDER
@@ -31,6 +33,7 @@ func set_state(state):
 	
 func _on_entity_health_below_zero():
 	emit_signal("mob_destroyed")
+	emit_signal("check_for_power_up_to_spawn")
 	var player = PlayerReference.player
 	player.player_stats.current_score += worth
 	player.emit_signal("point_changed")
@@ -39,7 +42,6 @@ func _on_entity_health_below_zero():
 func _on_hurt_box_area_entered(area):
 	if area is PlayerLaserMainProjectile:
 		basic_mob_health_component.substract_health(area.stat.damage)
-		
 		area.bullet_impacted()
 	elif area is PlayerFireballSecondProjectile:
 		basic_mob_health_component.substract_health(area.stat.damage)

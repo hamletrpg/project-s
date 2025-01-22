@@ -4,13 +4,7 @@ var can_shoot = true
 @export var player: CharacterBody2D
 
 @onready var attack_timer = $attack_timer
-@onready var basic_attack_timer: Timer = Timer.new()
-
-func _ready():
-	add_child(basic_attack_timer)
-	basic_attack_timer.connect("timeout", Callable(self, "_on_basic_attack_timer_timeout"))
-	basic_attack_timer.wait_time = 0.3
-	basic_attack_timer.start()
+@onready var basic_attack_timer: Timer = player.basic_attack_timer
 
 func process_attack():
 	if Input.is_action_just_pressed("second_fire"):
