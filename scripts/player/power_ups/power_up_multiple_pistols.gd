@@ -1,9 +1,7 @@
-class_name TwoExtraGunsPowerUp
+class_name TwoExtraGunsPowerUpImage
 extends Node2D
 
-@onready var player: CharacterBody2D = PlayerReference.player
-@export var extra_weapon_one: Marker2D
-@export var extra_weapon_two: Marker2D
+@export var power_up_resource: PowerUpResource
 @onready var pickup_area: Area2D = $"pick_up_area"
 @onready var animated_sprite: AnimatedSprite2D = $"AnimatedSprite2D"
 var attached:bool = false
@@ -15,17 +13,9 @@ func _process(_delta):
 	if !attached:
 		position.x -= 3
 
-func _on_player_laser():
-	player.laser.emit(extra_weapon_one.global_position, Vector2.RIGHT)
-	player.laser.emit(extra_weapon_two.global_position, Vector2.RIGHT)
-	print("pew pew lasers from power up >:D")
-
-func _on_area_entered(_area):
-	attached = true
-	player.add_child(self)
-	player.basic_attack_timer.connect("timeout", Callable(self, "_on_player_laser"))
-	animated_sprite.visible = false
-	#global_position = player.global_position
-	pickup_area.queue_free()
+func _on_area_entered(area):
+	var power_up_resource_instance = power_up_resource.power_up_scene.instantiate()
+	area.get_parent().add_child(power_up_resource_instance)
+	area.get_parent().basic_attack_timer.connect("timeout", Callable(power_up_resource_instance, "_on_player_laser"))
+	queue_free()
 	
-	print("crashign with player")

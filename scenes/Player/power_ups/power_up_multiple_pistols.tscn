@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccx5dp74q0m1l"]
+[gd_scene load_steps=9 format=3 uid="uid://ccx5dp74q0m1l"]
 
 [ext_resource type="Script" path="res://scripts/player/power_ups/power_up_multiple_pistols.gd" id="1_x1p76"]
+[ext_resource type="Resource" uid="uid://b5ci8b6gbalgo" path="res://Resources/PowerUps/two_gun_power_up_resource.tres" id="2_e1e1f"]
 [ext_resource type="Texture2D" uid="uid://mh4vay2wpbxs" path="res://graphics/power_up_textures/multiple_bullet/multiple_bullet_power_up_first_draft1.png" id="2_eajww"]
 [ext_resource type="Texture2D" uid="uid://c7xs2vq2mfa1f" path="res://graphics/power_up_textures/multiple_bullet/multiple_bullet_power_up_first_draft2.png" id="3_rgaj6"]
 [ext_resource type="Texture2D" uid="uid://cqsraj0rqsmxh" path="res://graphics/power_up_textures/multiple_bullet/multiple_bullet_power_up_first_draft3.png" id="4_2acbd"]
@@ -29,16 +30,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="power_up_multiple_pistols" type="Node2D" node_paths=PackedStringArray("extra_weapon_one", "extra_weapon_two")]
+[node name="power_up_multiple_pistols" type="Node2D"]
 script = ExtResource("1_x1p76")
-extra_weapon_one = NodePath("position_1")
-extra_weapon_two = NodePath("position_2")
-
-[node name="position_1" type="Marker2D" parent="."]
-position = Vector2(14, -10)
-
-[node name="position_2" type="Marker2D" parent="."]
-position = Vector2(14, 9)
+power_up_resource = ExtResource("2_e1e1f")
 
 [node name="pick_up_area" type="Area2D" parent="."]
 collision_layer = 16

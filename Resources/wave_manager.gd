@@ -94,9 +94,9 @@ func boss_fight_started():
 	
 func _on_spaw_power_up_on_level(mob):
 	if number_to_print == 0:
-		var power_up_to_spawn = power_up_to_spawn.instantiate()
-		self.get_parent().call_deferred("add_child", power_up_to_spawn)
-		power_up_to_spawn.global_position = mob.global_position
+		var power_up_to_spawn_instance = power_up_to_spawn.instantiate()
+		self.get_parent().call_deferred("add_child", power_up_to_spawn_instance)
+		power_up_to_spawn_instance.global_position = mob.global_position
 		print("hey, power up dropped")
 
 func _on_boss_death():

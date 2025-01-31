@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://djp1n0tvdvu0v"]
+
+[ext_resource type="Script" path="res://scripts/player/power_up_multiple_gun_object.gd" id="1_kixj5"]
+
+[node name="power_up_multiple_gun_object" type="Node2D" node_paths=PackedStringArray("extra_weapon_one", "extra_weapon_two")]
+script = ExtResource("1_kixj5")
+extra_weapon_one = NodePath("position_1")
+extra_weapon_two = NodePath("position_2")
+
+[node name="position_1" type="Marker2D" parent="."]
+position = Vector2(14, -10)
+
+[node name="position_2" type="Marker2D" parent="."]
+position = Vector2(14, 9)
