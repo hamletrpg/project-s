@@ -40,10 +40,9 @@ func _on_shoot_timer_timeout():
 	can_shoot = true
 
 func _on_hurt_box_area_entered(area):
-	if area is BasicBossOneLaser:
-		emit_signal("health_changed")
-		player_stats.player_health_stat.substract_health(area.stat.damage)
-		print("Player took damage from boss D:> current health: ", player_stats.player_health_stat.get_current_health())
+	emit_signal("health_changed")
+	player_stats.player_health_stat.substract_health(area.stat.damage)
+	print("Player took damage from boss D:> current health: ", player_stats.player_health_stat.get_current_health())
 	#if area is TwoExtraGunsPowerUp:
 		#var power_up = TwoExtraGunsPowerUp.new()
 		#add_child(power_up)

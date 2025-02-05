@@ -30,14 +30,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="power_up_multiple_pistols" type="Node2D"]
+[node name="power_up_multiple_pistols" type="Area2D"]
+collision_layer = 16
 script = ExtResource("1_x1p76")
 power_up_resource = ExtResource("2_e1e1f")
 
-[node name="pick_up_area" type="Area2D" parent="."]
-collision_layer = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pick_up_area"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_u5m6a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

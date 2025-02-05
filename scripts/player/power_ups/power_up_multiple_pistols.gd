@@ -1,13 +1,12 @@
 class_name TwoExtraGunsPowerUpImage
-extends Node2D
+extends Area2D
 
 @export var power_up_resource: PowerUpResource
-@onready var pickup_area: Area2D = $"pick_up_area"
 @onready var animated_sprite: AnimatedSprite2D = $"AnimatedSprite2D"
 var attached:bool = false
 
 func _ready():
-	pickup_area.connect("area_entered", Callable(self, "_on_area_entered"))
+	connect("area_entered", Callable(self, "_on_area_entered"))
 
 func _process(_delta):
 	if !attached:

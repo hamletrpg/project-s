@@ -14,7 +14,7 @@ radius = 12.0416
 
 [node name="player" type="CharacterBody2D" node_paths=PackedStringArray("movement_controller", "attack_controller")]
 rotation = -6.26583
-collision_mask = 26
+collision_mask = 16
 script = ExtResource("1_hxh8b")
 movement_controller = NodePath("movementController")
 attack_controller = NodePath("attackController")
@@ -43,7 +43,7 @@ wait_time = 0.644
 autostart = true
 
 [node name="hurt_box" type="Area2D" parent="."]
-collision_mask = 10
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_box"]
 shape = SubResource("CircleShape2D_5nrmx")

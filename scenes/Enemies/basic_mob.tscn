@@ -17,6 +17,7 @@ current_health = 50.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_21k71"]
 
 [node name="basic_mob" type="CharacterBody2D" node_paths=PackedStringArray("wander_controller") groups=["enemies"]]
+collision_layer = 2
 script = ExtResource("1_5bvnm")
 wander_controller = NodePath("basicEnemyWanderController")
 bullet = ExtResource("2_1ojow")
