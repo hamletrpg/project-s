@@ -44,7 +44,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAA
 tile_set = SubResource("TileSet_pl6cg")
 
 [node name="player" parent="." node_paths=PackedStringArray("current_level_camera") instance=ExtResource("1_grpn2")]
-position = Vector2(259, 393)
+position = Vector2(259, 387)
 current_level_camera = NodePath("../Level_1_camera")
 
 [node name="Stars" type="Node2D" parent="."]

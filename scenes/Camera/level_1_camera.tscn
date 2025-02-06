@@ -19,7 +19,7 @@ position = Vector2(577, -324)
 shape = SubResource("SegmentShape2D_22r3c")
 
 [node name="destroy_collision_area" type="Area2D" parent="."]
-position = Vector2(-465, 0)
+position = Vector2(-1017, 0)
 collision_layer = 16
 collision_mask = 26
 
