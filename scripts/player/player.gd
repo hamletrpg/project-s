@@ -5,7 +5,6 @@ extends CharacterBody2D
 @export var attack_controller: Node2D
 @export var player_stats: PlayerStats
 @export var current_level_camera: Camera2D
-#@export var player_power_up_test: Node2D
 
 @onready var basic_attack_timer: Timer = Timer.new()
 
@@ -22,7 +21,6 @@ func _ready():
 	PlayerReference.player = self
 	add_child(basic_attack_timer)
 	basic_attack_timer.connect("timeout", Callable(attack_controller, "_on_basic_attack_timer_timeout"))
-	#basic_attack_timer.connect("timeout", Callable(player_power_up_test, "_on_player_laser"))
 	basic_attack_timer.wait_time = 0.3
 	basic_attack_timer.start()
 
@@ -45,7 +43,3 @@ func _on_hurt_box_area_entered(area):
 	player_stats.player_health_stat.substract_health(area.stat.damage)
 	area.queue_free()
 	print("Player took damage from boss D:> current health: ", player_stats.player_health_stat.get_current_health())
-	#if area is TwoExtraGunsPowerUp:
-		#var power_up = TwoExtraGunsPowerUp.new()
-		#add_child(power_up)
-		#basic_attack_timer.connect("timeout", Callable(player_power_up_test, "_on_player_laser"))

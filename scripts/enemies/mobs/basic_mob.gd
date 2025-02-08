@@ -6,6 +6,8 @@ var can_shoot = true
 @export var wander_controller: Node2D
 @export var bullet: PackedScene 
 @export var basic_mob_health_component: HealthComponent
+@onready var animated_sprite: AnimatedSprite2D = $"AnimatedSprite2D"
+@onready var hurtbox: Area2D = $"hurt_box"
 var worth: float = 30.0
 var has_power_up: bool = false
 
@@ -14,7 +16,8 @@ signal mob_destroyed
 signal check_for_power_up_to_spawn(mob)
 
 enum State {
-	WANDER
+	WANDER,
+	DEATH
 }
 
 func _ready():
@@ -23,6 +26,8 @@ func _ready():
 func _physics_process(_delta):
 	if get_state() == State.WANDER:
 		wander_controller.wander_action()
+	if get_state() == State.DEATH:
+		velocity = Vector2.ZERO
 	move_and_slide()
 
 func get_state():
@@ -32,11 +37,15 @@ func set_state(state):
 	current_state = state
 	
 func _on_entity_health_below_zero():
+	set_state(State.DEATH)
+	hurtbox.get_child(0).queue_free()
 	emit_signal("mob_destroyed")
 	emit_signal("check_for_power_up_to_spawn")
 	var player = PlayerReference.player
 	player.player_stats.current_score += worth
+	animated_sprite.play("death_animation")
 	player.emit_signal("point_changed")
+	await animated_sprite.animation_finished
 	queue_free()
 
 func _on_hurt_box_area_entered(area):

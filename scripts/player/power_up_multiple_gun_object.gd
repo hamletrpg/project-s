@@ -9,4 +9,3 @@ extends Node2D
 func _on_player_laser():
 	player.laser.emit(extra_weapon_one.global_position, Vector2.RIGHT)
 	player.laser.emit(extra_weapon_two.global_position, Vector2.RIGHT)
-	print("pew pew lasers from power up >:D")
