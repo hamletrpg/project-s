@@ -17,4 +17,3 @@ func _on_area_entered(area):
 	area.get_parent().add_child(power_up_resource_instance)
 	area.get_parent().basic_attack_timer.connect("timeout", Callable(power_up_resource_instance, "_on_player_laser"))
 	queue_free()
-	
