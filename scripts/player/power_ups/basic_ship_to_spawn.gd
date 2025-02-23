@@ -1,20 +1,26 @@
 extends Node2D
 
 var dynamic_y_value_for_ray: float = 20.0
-@onready var ship_sprite_one_up: Sprite2D = $"ship_up"
-@onready var ship_sprite_two_down: Sprite2D = $"ship_down"
+@onready var ship_up: Area2D = $"ship_up_area"
+@onready var ship_down: Area2D = $"ship_down_area"
 
 @export var bullet_scene: PackedScene
 
-signal shoot(dir)
-
 func _ready():
-	self.connect("shoot",  Callable(self, "_on_shoot"))
+	ship_up.connect("body_entered", Callable(self, "_on_body_entered_ship_up"))
+	ship_down.connect("body_entered", Callable(self, "_on_body_entered_ship_down"))
 
-	
-func _on_shoot(dir: Vector2):
+func _on_body_entered_ship_up(body):
+	shoot_from_bot_at_direction(body.global_position)
+
+func _on_body_entered_ship_down(body):
+	shoot_from_bot_at_direction(body.global_position)
+
+func shoot_from_bot_at_direction(enemy_position: Vector2):
+	# I'll gather the direction of the enemy after it collides with the bot's vision
+	# once I have the global position of the enemy I can figure out where to shoot
 	var bullet_instance = bullet_scene.instantiate()
-	bullet_instance.global_position = self.get_parent().global_position
-	bullet_instance.direction = dir
-	self.get_parent().get_parent().add_child(bullet_instance)
-	print("die peasant :D")
+	var direction = global_position.direction_to(enemy_position).normalized()
+	bullet_instance.global_position = global_position
+	bullet_instance.direction = direction
+	get_parent().get_parent().add_child(bullet_instance)
