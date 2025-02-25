@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PowerUpResource" load_steps=3 format=3 uid="uid://drlvsk3n3i6dv"]
+
+[ext_resource type="PackedScene" uid="uid://bdy7ejn330r4j" path="res://scenes/Player/power_ups/basic_ship_to_spawn.tscn" id="1_27068"]
+[ext_resource type="Script" path="res://Resources/PowerUps/power_up_resourec.gd" id="1_akiue"]
+
+[resource]
+script = ExtResource("1_akiue")
+power_up_name = "TwoShips"
+power_up_scene = ExtResource("1_27068")

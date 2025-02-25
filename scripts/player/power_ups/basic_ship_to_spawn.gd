@@ -3,12 +3,17 @@ extends Node2D
 var dynamic_y_value_for_ray: float = 20.0
 @onready var ship_up: Area2D = $"ship_up_area"
 @onready var ship_down: Area2D = $"ship_down_area"
+@onready var collision_shape_up: CollisionShape2D = $"ship_up_area/CollisionShape2D"
+@onready var collision_shape_down: CollisionShape2D = $"ship_down_area/CollisionShape2D"
 
 @export var bullet_scene: PackedScene
 
 func _ready():
 	ship_up.connect("body_entered", Callable(self, "_on_body_entered_ship_up"))
 	ship_down.connect("body_entered", Callable(self, "_on_body_entered_ship_down"))
+	
+func _process(delta):
+	perform_rotation()
 
 func _on_body_entered_ship_up(body):
 	shoot_from_bot_at_direction(body.global_position)
@@ -24,3 +29,8 @@ func shoot_from_bot_at_direction(enemy_position: Vector2):
 	bullet_instance.global_position = global_position
 	bullet_instance.direction = direction
 	get_parent().get_parent().add_child(bullet_instance)
+
+func perform_rotation():
+	collision_shape_up.rotate(20)
+	collision_shape_down.rotate(40)
+	

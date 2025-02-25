@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfa5k6fj6tlv1"]
+[gd_scene load_steps=8 format=3 uid="uid://cfa5k6fj6tlv1"]
 
 [ext_resource type="Texture2D" uid="uid://cbh5fcy3ukll6" path="res://graphics/Player/ShipAnimated3.png" id="1_5og54"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_hxh8b"]
 [ext_resource type="Resource" uid="uid://dpbhstk6okahr" path="res://Resources/player/player_stat.tres" id="2_sf0cd"]
 [ext_resource type="PackedScene" uid="uid://bo3cvbws56w4u" path="res://scenes/Controllers/Player/movement_controller.tscn" id="3_uf2ww"]
 [ext_resource type="PackedScene" uid="uid://clmb2m2xj4oua" path="res://scenes/Controllers/Player/attack_controller.tscn" id="4_o2gl1"]
-[ext_resource type="PackedScene" uid="uid://bdy7ejn330r4j" path="res://scenes/Player/power_ups/basic_ship_to_spawn.tscn" id="6_p0mnk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ydn7t"]
 radius = 9.21955
@@ -49,8 +48,6 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_box"]
 shape = SubResource("CircleShape2D_5nrmx")
-
-[node name="basic_ship_to_spawn" parent="." instance=ExtResource("6_p0mnk")]
 
 [connection signal="laser" from="." to="attackController" method="_on_player_laser"]
 [connection signal="timeout" from="shoot_timer" to="." method="_on_shoot_timer_timeout"]

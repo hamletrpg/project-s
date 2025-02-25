@@ -10,6 +10,8 @@ var current_wave_index: int = 0
 var current_state: WaveState
 var amount_of_enemies: int = 0
 var current_wave: Wave
+
+@onready var player: MainCharacterPlayer = PlayerReference.player
 # very bad practice, delete later lol
 # Further note, is it? I mean, it works lol
 var killed_mobs: int
@@ -24,7 +26,10 @@ var number_to_print: float
 #@onready var spawn_list_base = get_node("/root/Level1/wave_1").get_children()
 #@onready var spawn_positions = spawn_list_base.get_children()
 @onready var boss_spawn_position = get_node("/root/Level1/boss_spawn_position")
+
+# start thinking on making these more dynamic though
 @export var power_up_to_spawn: PackedScene
+@export var power_up_to_spawn_2: PackedScene
 
 func _ready():
 	add_child(spawn_timer)
@@ -94,10 +99,16 @@ func boss_fight_started():
 	
 func _on_spaw_power_up_on_level(mob):
 	if number_to_print == 0:
-		var power_up_to_spawn_instance = power_up_to_spawn.instantiate()
-		self.get_parent().call_deferred("add_child", power_up_to_spawn_instance)
-		power_up_to_spawn_instance.global_position = mob.global_position
-		print("hey, power up dropped")
+		if player.current_power_up_name != "TwoGuns":
+			var power_up_to_spawn_instance = power_up_to_spawn.instantiate()
+			self.get_parent().call_deferred("add_child", power_up_to_spawn_instance)
+			power_up_to_spawn_instance.global_position = mob.global_position
+			print("hey, power up dropped")
+		else:
+			var power_up_to_spawn_instance = power_up_to_spawn_2.instantiate()
+			self.get_parent().call_deferred("add_child", power_up_to_spawn_instance)
+			power_up_to_spawn_instance.global_position = mob.global_position
+			print("hey, power up dropped")
 
 func _on_boss_death():
 	current_state = WaveState.COMPLETED

@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=4 uid="uid://bn3bv4jnmc88t"]
+[gd_scene load_steps=21 format=4 uid="uid://bn3bv4jnmc88t"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_1.gd" id="1_esvit"]
 [ext_resource type="PackedScene" uid="uid://cfa5k6fj6tlv1" path="res://scenes/Player/player.tscn" id="1_grpn2"]
 [ext_resource type="Resource" uid="uid://daruiitaychkx" path="res://Resources/level.tres" id="3_32le6"]
 [ext_resource type="Texture2D" uid="uid://6ax8ixylje2t" path="res://graphics/level/tiles/black_shape_tile.png" id="4_cd8iy"]
 [ext_resource type="PackedScene" uid="uid://2vgc2hveq4lk" path="res://scenes/Levels/decorations/basic_star.tscn" id="6_d05fh"]
+[ext_resource type="PackedScene" uid="uid://jhfwqxuth57w" path="res://scenes/Player/power_ups/power_up_multiple_ships.tscn" id="7_dxrus"]
 [ext_resource type="PackedScene" uid="uid://bdg83vfwqxogi" path="res://scenes/Camera/level_1_camera.tscn" id="8_8mmnw"]
 [ext_resource type="PackedScene" uid="uid://7r34o4eidkyq" path="res://Resources/wave_manager.tscn" id="8_dw1qc"]
 [ext_resource type="PackedScene" uid="uid://cwk3mbel30igm" path="res://scenes/UI/game_ui.tscn" id="9_dxsmu"]
@@ -316,6 +317,7 @@ position = Vector2(-68, -158)
 position = Vector2(-62, 115)
 
 [node name="WaveManager" parent="." instance=ExtResource("8_dw1qc")]
+power_up_to_spawn_2 = ExtResource("7_dxrus")
 
 [node name="GameUI" parent="." instance=ExtResource("9_dxsmu")]
 

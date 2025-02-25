@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b1un5ev4rcsdi" path="res://graphics/power_up_textures/extra_ship/small_ship.png" id="2_irl6g"]
 
 [sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_6h16u"]
-length = 283.992
+length = 283.0
 
 [sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_6258m"]
 length = 286.0
@@ -29,7 +29,7 @@ rotation = -1.5708
 shape = SubResource("SeparationRayShape2D_6h16u")
 
 [node name="ship_down_area" type="Area2D" parent="."]
-position = Vector2(17, 17)
+position = Vector2(17, 21)
 collision_layer = 16
 collision_mask = 2
 

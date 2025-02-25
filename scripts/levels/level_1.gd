@@ -11,11 +11,11 @@ func _ready():
 	player.connect("second_projectile", Callable(self, "_on_player_second_projectile"))
 	wave_manager.waves = level_resource.waves
 
-#func _on_player_laser(pos, dir):
-	#var spawned_bullet = player.player_stats.player_main_weapon.instantiate()
-	#spawned_bullet.direction = dir
-	#spawned_bullet.position = pos
-	#add_child(spawned_bullet)
+func _on_player_laser(pos, dir):
+	var spawned_bullet = player.player_stats.player_main_weapon.instantiate()
+	spawned_bullet.direction = dir
+	spawned_bullet.position = pos
+	add_child(spawned_bullet)
 
 func _on_player_second_projectile(pos, dir):
 	var spawned_bullet = player.player_stats.player_secondary_weapon.instantiate()

@@ -65,11 +65,6 @@ func _on_entity_health_below_zero():
 	player.emit_signal("point_changed")
 	queue_free()
 
-
 func _on_hurt_box_area_entered(area):
-	if area is PlayerLaserMainProjectile:
-		basic_mob_health_component.substract_health(area.stat.damage)
-		area.bullet_impacted()
-	elif area is PlayerFireballSecondProjectile:
-		basic_mob_health_component.substract_health(area.stat.damage)
-		area.queue_free()
+	basic_mob_health_component.substract_health(area.stat.damage)
+	area.bullet_impacted()
