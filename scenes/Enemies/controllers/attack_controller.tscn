@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bryxb2ku35jen"]
 
-[ext_resource type="Script" path="res://scripts/enemies/enemy_controllers/attack_controller.gd" id="1_y1mdr"]
+[ext_resource type="Script" uid="uid://bfmxntikbr475" path="res://scripts/enemies/enemy_controllers/attack_controller.gd" id="1_y1mdr"]
 
 [node name="attack_controller" type="Node2D"]
 script = ExtResource("1_y1mdr")

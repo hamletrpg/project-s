@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cr8m5kqmso2hh"]
 
-[ext_resource type="Script" path="res://scripts/basic_selector/basic_selector.gd" id="1_3qp1h"]
+[ext_resource type="Script" uid="uid://bir6t5uk20ik2" path="res://scripts/basic_selector/basic_selector.gd" id="1_3qp1h"]
 [ext_resource type="Texture2D" uid="uid://6evn2nmf1vs" path="res://graphics/selector_poc/selector_poc.png" id="1_xqsdn"]
 
 [node name="basic_selector" type="Node2D"]

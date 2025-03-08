@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://7r34o4eidkyq"]
 
-[ext_resource type="Script" path="res://Resources/wave_manager.gd" id="1_dsxib"]
+[ext_resource type="Script" uid="uid://cg6x8t8kogog5" path="res://Resources/wave_manager.gd" id="1_dsxib"]
 [ext_resource type="PackedScene" uid="uid://ccx5dp74q0m1l" path="res://scenes/Player/power_ups/power_up_multiple_pistols.tscn" id="2_2tmic"]
 
 [node name="WaveManager" type="Node2D"]

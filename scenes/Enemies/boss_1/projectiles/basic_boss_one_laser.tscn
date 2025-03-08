@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c7pc3mbqxdqbs"]
 
 [ext_resource type="Texture2D" uid="uid://d3s25k7sytl2n" path="res://graphics/mobs/boss_1/projectiles/Sprite-0001.png" id="1_4vc2v"]
-[ext_resource type="Script" path="res://scripts/enemies/boss_1/projectiles/basic_boss_one_laser.gd" id="1_787su"]
+[ext_resource type="Script" uid="uid://c08huvd0qm6gi" path="res://scripts/enemies/boss_1/projectiles/basic_boss_one_laser.gd" id="1_787su"]
 [ext_resource type="Resource" uid="uid://cw3o2ixkwven" path="res://Resources/damage/boss_1_basic_bullet_stat.tres" id="2_vrxyb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_galim"]

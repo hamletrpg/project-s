@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://tv70wifjj634"]
 
-[ext_resource type="Script" path="res://scripts/enemies/mobs/miners_harvesters/basic_miner.gd" id="1_13rpi"]
+[ext_resource type="Script" uid="uid://bsgea42dvdmi2" path="res://scripts/enemies/mobs/miners_harvesters/basic_miner.gd" id="1_13rpi"]
 [ext_resource type="Texture2D" uid="uid://3g6iilmhcpkv" path="res://graphics/mobs/basic_miner/miner_basic.png" id="1_30flc"]
 [ext_resource type="PackedScene" uid="uid://dpubvi77hto5w" path="res://scenes/Enemies/controllers/basic_enemy_wander_controller.tscn" id="3_8orec"]
 [ext_resource type="PackedScene" uid="uid://bifcb4knv7q4l" path="res://scripts/enemies/enemy_controllers/basic_havesting_controller.tscn" id="4_okj1n"]

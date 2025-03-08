@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dd8e8dn6hy3ot"]
 
-[ext_resource type="Script" path="res://scripts/enemies/boss_1/controllers/boss_1_attack_controller.gd" id="1_17hry"]
+[ext_resource type="Script" uid="uid://bkyiav3dftpvu" path="res://scripts/enemies/boss_1/controllers/boss_1_attack_controller.gd" id="1_17hry"]
 [ext_resource type="PackedScene" uid="uid://c7pc3mbqxdqbs" path="res://scenes/Enemies/boss_1/projectiles/basic_boss_one_laser.tscn" id="2_735n6"]
 
 [node name="boss_1_attack_controller" type="Node2D"]

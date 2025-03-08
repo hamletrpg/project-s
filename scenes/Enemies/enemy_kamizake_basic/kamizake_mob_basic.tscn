@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dbnu1n121fcwu"]
 
-[ext_resource type="Script" path="res://scripts/enemies/mobs/kamikaze_mob/character_body_2d.gd" id="1_q3r7g"]
+[ext_resource type="Script" uid="uid://dsy3cjvi011np" path="res://scripts/enemies/mobs/kamikaze_mob/character_body_2d.gd" id="1_q3r7g"]
 [ext_resource type="Texture2D" uid="uid://b5yvgdl3yw3ap" path="res://graphics/mobs/basic_bio_mob/enemy_bio1.png" id="1_u5rca"]
 [ext_resource type="PackedScene" uid="uid://wrweywb738l0" path="res://scenes/Enemies/controllers/kamikaze_movement_controller.tscn" id="3_biciw"]
 

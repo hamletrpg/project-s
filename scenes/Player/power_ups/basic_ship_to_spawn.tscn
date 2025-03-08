@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bdy7ejn330r4j"]
 
-[ext_resource type="Script" path="res://scripts/player/power_ups/basic_ship_to_spawn.gd" id="1_lqaah"]
+[ext_resource type="Script" uid="uid://1x7dfi6ytjys" path="res://scripts/player/power_ups/basic_ship_to_spawn.gd" id="1_lqaah"]
 [ext_resource type="PackedScene" uid="uid://dlq4xwycn2fbq" path="res://scenes/Player/power_ups/multiple_ships_bullets/spawned_ship_bullets.tscn" id="2_4ufa0"]
 [ext_resource type="Texture2D" uid="uid://b1un5ev4rcsdi" path="res://graphics/power_up_textures/extra_ship/small_ship.png" id="2_irl6g"]
 

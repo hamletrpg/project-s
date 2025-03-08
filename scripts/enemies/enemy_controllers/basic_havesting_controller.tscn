@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bifcb4knv7q4l"]
 
-[ext_resource type="Script" path="res://scripts/enemies/enemy_controllers/basic_havesting_controller.gd" id="1_u1adt"]
+[ext_resource type="Script" uid="uid://dc8hgqucbl4k3" path="res://scripts/enemies/enemy_controllers/basic_havesting_controller.gd" id="1_u1adt"]
 
 [node name="basic_havesting_controller" type="Node2D"]
 script = ExtResource("1_u1adt")

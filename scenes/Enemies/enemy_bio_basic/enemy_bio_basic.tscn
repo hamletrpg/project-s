@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://dj2sp4luty23e"]
 
-[ext_resource type="Script" path="res://scripts/enemies/mobs/enemy_bio_basic/enemy_bio_basic.gd" id="1_40kmi"]
+[ext_resource type="Script" uid="uid://dnm0ave6vlfgc" path="res://scripts/enemies/mobs/enemy_bio_basic/enemy_bio_basic.gd" id="1_40kmi"]
 [ext_resource type="Texture2D" uid="uid://bgvxmbfojs8gm" path="res://graphics/mobs/basic_bio_mob/enemy_bio10.png" id="2_ni0wy"]
 [ext_resource type="PackedScene" uid="uid://tcqy5jlvx87r" path="res://scenes/Enemies/enemy_projectiles/bio_basic_projectile.tscn" id="2_p3ddl"]
 [ext_resource type="Texture2D" uid="uid://q6srwcmwkc7x" path="res://graphics/mobs/basic_bio_mob/enemy_bio11.png" id="3_wc0mj"]

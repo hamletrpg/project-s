@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="PowerUpResource" load_steps=3 format=3 uid="uid://b5ci8b6gbalgo"]
 
 [ext_resource type="PackedScene" uid="uid://djp1n0tvdvu0v" path="res://scenes/Player/power_up_multiple_gun_object.tscn" id="1_oi588"]
-[ext_resource type="Script" path="res://Resources/PowerUps/power_up_resourec.gd" id="1_rrho7"]
+[ext_resource type="Script" uid="uid://cqgc02uacjj6c" path="res://Resources/PowerUps/power_up_resourec.gd" id="1_rrho7"]
 
 [resource]
 script = ExtResource("1_rrho7")

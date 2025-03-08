@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bdg83vfwqxogi"]
 
-[ext_resource type="Script" path="res://scripts/Camera/level_1_camera.gd" id="1_thd4l"]
+[ext_resource type="Script" uid="uid://du1uj86fpti1e" path="res://scripts/Camera/level_1_camera.gd" id="1_thd4l"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_22r3c"]
 b = Vector2(0, 648)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dp637hywq465e"]
 
-[ext_resource type="Script" path="res://scripts/player/aim_and_shoot_controller.gd" id="1_alqhp"]
+[ext_resource type="Script" uid="uid://cc3h6xibjgt1r" path="res://scripts/player/aim_and_shoot_controller.gd" id="1_alqhp"]
 
 [node name="aim_and_shoot_controller" type="Node2D"]
 script = ExtResource("1_alqhp")

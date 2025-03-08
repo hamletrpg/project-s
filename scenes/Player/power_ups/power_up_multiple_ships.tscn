@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://jhfwqxuth57w"]
 
 [ext_resource type="Texture2D" uid="uid://dorjrr84ws1e3" path="res://graphics/power_up_textures/extra_ship/ship_invoked_projectile_icon.png" id="1_8vg5i"]
-[ext_resource type="Script" path="res://scripts/player/power_ups/movementController.gd" id="1_muvus"]
+[ext_resource type="Script" uid="uid://c5pix5e3moige" path="res://scripts/player/power_ups/movementController.gd" id="1_muvus"]
 [ext_resource type="Resource" uid="uid://drlvsk3n3i6dv" path="res://Resources/PowerUps/two_ships_power_up_resource.tres" id="2_ia0lk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_df2t4"]

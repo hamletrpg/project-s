@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Wave" load_steps=3 format=3 uid="uid://bivibngaqaknj"]
 
-[ext_resource type="Script" path="res://Resources/waves.gd" id="1_trde1"]
+[ext_resource type="Script" uid="uid://bi1kum78iptx8" path="res://Resources/waves.gd" id="1_trde1"]
 [ext_resource type="PackedScene" uid="uid://cmxjqojlhm8om" path="res://scenes/Enemies/basic_mob.tscn" id="2_1x0w3"]
 
 [resource]

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="HealthComponent" load_steps=2 format=3 uid="uid://det48iahgxu7g"]
 
-[ext_resource type="Script" path="res://Resources/health/health_component.gd" id="1_4nnew"]
+[ext_resource type="Script" uid="uid://dlt6givhscerc" path="res://Resources/health/health_component.gd" id="1_4nnew"]
 
 [resource]
 resource_local_to_scene = true

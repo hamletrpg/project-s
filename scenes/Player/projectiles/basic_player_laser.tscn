@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bomv023tgkb8y"]
 
-[ext_resource type="Script" path="res://scripts/player/projectiles/basic_player_laser.gd" id="1_f8xcl"]
+[ext_resource type="Script" uid="uid://dy1lds3qaris2" path="res://scripts/player/projectiles/basic_player_laser.gd" id="1_f8xcl"]
 [ext_resource type="Resource" uid="uid://dk8beegsoo0fr" path="res://Resources/damage/player_basic_bullet_stat.tres" id="2_seelb"]
 [ext_resource type="Texture2D" uid="uid://c8f2qwfw88cpt" path="res://graphics/Player/Lasers/purple_projectile/purple-basic-laser_idle.png" id="3_sehqf"]
 [ext_resource type="Texture2D" uid="uid://b0nuci04v8jxv" path="res://graphics/Player/Lasers/purple_projectile/purple-basic-laser_feedback_impact_02.png" id="4_de3q6"]

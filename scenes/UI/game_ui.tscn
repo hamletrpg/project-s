@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cwk3mbel30igm"]
 
-[ext_resource type="Script" path="res://scripts/UI/parent_horizontal_player_information_on_level__container.gd" id="1_1mh73"]
-[ext_resource type="Script" path="res://scripts/UI/progress_bar.gd" id="1_s8khw"]
+[ext_resource type="Script" uid="uid://dcws7toghgufl" path="res://scripts/UI/parent_horizontal_player_information_on_level__container.gd" id="1_1mh73"]
+[ext_resource type="Script" uid="uid://ca1lj72kolkqi" path="res://scripts/UI/progress_bar.gd" id="1_s8khw"]
 
 [node name="GameUI" type="CanvasLayer"]
 

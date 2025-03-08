@@ -1,9 +1,9 @@
 [gd_scene load_steps=20 format=3 uid="uid://cmxjqojlhm8om"]
 
-[ext_resource type="Script" path="res://scripts/enemies/mobs/basic_mob.gd" id="1_5bvnm"]
+[ext_resource type="Script" uid="uid://baoxg0fkf6bs3" path="res://scripts/enemies/mobs/basic_mob.gd" id="1_5bvnm"]
 [ext_resource type="PackedScene" uid="uid://df7xotv1od8v0" path="res://scenes/Enemies/enemy_projectiles/basic_enemy_lasser.tscn" id="2_1ojow"]
 [ext_resource type="Texture2D" uid="uid://b3fwxgitq3qbc" path="res://graphics/mobs/basic_mob/enemy.png" id="2_c6iuh"]
-[ext_resource type="Script" path="res://Resources/health/health_component.gd" id="3_x5qql"]
+[ext_resource type="Script" uid="uid://dlt6givhscerc" path="res://Resources/health/health_component.gd" id="3_x5qql"]
 [ext_resource type="PackedScene" uid="uid://dpubvi77hto5w" path="res://scenes/Enemies/controllers/basic_enemy_wander_controller.tscn" id="4_smdja"]
 [ext_resource type="Texture2D" uid="uid://do8dp2ddami2t" path="res://graphics/mobs/death_animations/basic_explosion/explosion1.png" id="5_btkia"]
 [ext_resource type="Texture2D" uid="uid://cp283erlns2ww" path="res://graphics/mobs/death_animations/basic_explosion/explosion2.png" id="6_4dbcp"]

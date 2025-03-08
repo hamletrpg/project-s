@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://e5kac0j2yqgr"]
 
-[ext_resource type="Script" path="res://scripts/enemies/mobs/basic_shielded_enemy/basic_shielded_enemy.gd" id="1_n57dt"]
+[ext_resource type="Script" uid="uid://6b4aa7m4je4r" path="res://scripts/enemies/mobs/basic_shielded_enemy/basic_shielded_enemy.gd" id="1_n57dt"]
 [ext_resource type="Texture2D" uid="uid://3g6iilmhcpkv" path="res://graphics/mobs/basic_miner/miner_basic.png" id="2_st7j6"]
 [ext_resource type="PackedScene" uid="uid://dpubvi77hto5w" path="res://scenes/Enemies/controllers/basic_enemy_wander_controller.tscn" id="3_58mun"]
 [ext_resource type="PackedScene" uid="uid://bryxb2ku35jen" path="res://scenes/Enemies/controllers/attack_controller.tscn" id="4_i3l7t"]
