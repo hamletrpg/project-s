@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bonr386xd78xl"]
+
+[ext_resource type="Script" uid="uid://kll7nmlxgkh2" path="res://scenes/Player/projectiles/basic_green_projectile.gd" id="1_3so0u"]
+[ext_resource type="Texture2D" uid="uid://cschjj3ypaexr" path="res://graphics/Player/Lasers/basic_green_projectile/green_projectile_basic.png" id="1_umjya"]
+[ext_resource type="Resource" uid="uid://cpos5janxgg87" path="res://Resources/damage/player_basic_green_bullet.tres" id="2_ccbrj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3so0u"]
+radius = 1.99996
+height = 14.0129
+
+[node name="basic_green_projectile" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_3so0u")
+stat = ExtResource("2_ccbrj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_umjya")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.56421
+shape = SubResource("CapsuleShape2D_3so0u")
