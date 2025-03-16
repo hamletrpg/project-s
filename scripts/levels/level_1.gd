@@ -15,6 +15,7 @@ func _on_player_laser(pos, dir):
 	var spawned_bullet = player.player_stats.player_main_weapon.instantiate()
 	spawned_bullet.direction = dir
 	spawned_bullet.position = pos
+	spawned_bullet.shooter = player
 	add_child(spawned_bullet)
 
 func _on_player_second_projectile(pos, dir):

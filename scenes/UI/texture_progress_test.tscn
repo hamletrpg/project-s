@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cucwvwghfwbmq"]
+
+[ext_resource type="Script" uid="uid://ckeopgjyk7j4o" path="res://scripts/UI/texture_progress_test.gd" id="2_12glr"]
+
+[node name="texture_progress_test" type="ProgressBar"]
+offset_left = -25.0
+offset_top = 12.0
+offset_right = 24.0
+offset_bottom = 39.0
+max_value = 3.0
+step = 0.0
+script = ExtResource("2_12glr")

@@ -5,7 +5,7 @@ var can_shoot = true
 
 @export var wander_controller: Node2D
 @export var bullet: PackedScene 
-@export var basic_mob_health_component: HealthComponent
+@export var health: HealthComponent
 @onready var animated_sprite: AnimatedSprite2D = $"AnimatedSprite2D"
 @onready var hurtbox: Area2D = $"hurt_box"
 var worth: float = 30.0
@@ -21,7 +21,7 @@ enum State {
 }
 
 func _ready():
-	basic_mob_health_component.connect("entity_health_below_zero", Callable(self, "_on_entity_health_below_zero"))
+	health.connect("entity_health_below_zero", Callable(self, "_on_entity_health_below_zero"))
 
 func _physics_process(_delta):
 	if get_state() == State.WANDER:
@@ -35,7 +35,7 @@ func get_state():
 
 func set_state(state):
 	current_state = state
-	
+
 func _on_entity_health_below_zero():
 	set_state(State.DEATH)
 	hurtbox.get_child(0).queue_free()
@@ -49,5 +49,5 @@ func _on_entity_health_below_zero():
 	queue_free()
 
 func _on_hurt_box_area_entered(area):
-	basic_mob_health_component.substract_health(area.stat.damage)
+	health.substract_health(area.stat.damage)
 	area.bullet_impacted()

@@ -1,9 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://cmxjqojlhm8om"]
+[gd_scene load_steps=19 format=3 uid="uid://cmxjqojlhm8om"]
 
 [ext_resource type="Script" uid="uid://baoxg0fkf6bs3" path="res://scripts/enemies/mobs/basic_mob.gd" id="1_5bvnm"]
 [ext_resource type="PackedScene" uid="uid://df7xotv1od8v0" path="res://scenes/Enemies/enemy_projectiles/basic_enemy_lasser.tscn" id="2_1ojow"]
 [ext_resource type="Texture2D" uid="uid://b3fwxgitq3qbc" path="res://graphics/mobs/basic_mob/enemy.png" id="2_c6iuh"]
-[ext_resource type="Script" uid="uid://dlt6givhscerc" path="res://Resources/health/health_component.gd" id="3_x5qql"]
+[ext_resource type="Resource" uid="uid://vkb80wg2uf4d" path="res://Resources/health/mob_health_component.tres" id="3_rtdv4"]
 [ext_resource type="PackedScene" uid="uid://dpubvi77hto5w" path="res://scenes/Enemies/controllers/basic_enemy_wander_controller.tscn" id="4_smdja"]
 [ext_resource type="Texture2D" uid="uid://do8dp2ddami2t" path="res://graphics/mobs/death_animations/basic_explosion/explosion1.png" id="5_btkia"]
 [ext_resource type="Texture2D" uid="uid://cp283erlns2ww" path="res://graphics/mobs/death_animations/basic_explosion/explosion2.png" id="6_4dbcp"]
@@ -15,12 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://coqn38k4l1jja" path="res://graphics/mobs/death_animations/basic_explosion/explosion8.png" id="12_kh6co"]
 [ext_resource type="Texture2D" uid="uid://dcgftxnb3qsdd" path="res://graphics/mobs/death_animations/basic_explosion/explosion9.png" id="13_2xi0e"]
 [ext_resource type="Texture2D" uid="uid://ckr21h2ktixgy" path="res://graphics/mobs/death_animations/basic_explosion/explosion10.png" id="14_ocnx0"]
-
-[sub_resource type="Resource" id="Resource_j6nj6"]
-resource_local_to_scene = true
-script = ExtResource("3_x5qql")
-MAX_VALUE = 50.0
-current_health = 50.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f4mcv"]
 
@@ -77,7 +71,7 @@ collision_layer = 2
 script = ExtResource("1_5bvnm")
 wander_controller = NodePath("basicEnemyWanderController")
 bullet = ExtResource("2_1ojow")
-basic_mob_health_component = SubResource("Resource_j6nj6")
+health = ExtResource("3_rtdv4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_f4mcv")
