@@ -20,33 +20,22 @@ var wave_list_index_spawner: int = 0
 var number_to_print: float
 
 @onready var waves: Array[Wave] = []
-#@export var enemies_node: Node2D
 @onready var spawn_timer: Timer = Timer.new()
-#@onready var new_wave_timer: Timer = Timer.new()
-#@onready var spawn_list_base = get_node("/root/Level1/wave_1").get_children()
-#@onready var spawn_positions = spawn_list_base.get_children()
 @onready var boss_spawn_position = get_node("/root/Level1/boss_spawn_position")
 
 # start thinking on making these more dynamic though
 @export var power_up_to_spawn: PackedScene
 @export var power_up_to_spawn_2: PackedScene
+@export var status_effect_manager: StatusEffectManager
 
 func _ready():
 	add_child(spawn_timer)
-	#add_child(new_wave_timer)	
 	spawn_timer.connect("timeout", Callable(self, "_on_spawn_timer_timeout"))
-	#new_wave_timer.connect("timeout", Callable(self, "_on_new_wave_timer_timeout"))
-	#spawn timer settings
 	
 	spawn_timer.one_shot = false
-	# new wave timer settings
-	#new_wave_timer.wait_time = 5
-	#new_wave_timer.one_shot = false
 
 func start_next_wave():
 	current_wave = waves[current_wave_index]
-	#if !new_wave_timer.is_stopped():
-			#new_wave_timer.stop()
 	if current_wave.has_boss:
 		print("aye mate this is a boss fight")
 		current_state = WaveState.BOSS_FIGHT
@@ -56,9 +45,6 @@ func start_next_wave():
 		spawn_timer.wait_time = current_wave.spawn_interval
 		spawn_timer.start()
 		print("stopping new wave timer")
-		
-		#if !new_wave_timer.is_stopped():
-			#new_wave_timer.stop()
 			
 func get_next_wave_position():
 	# Currently we are getting that value from 
@@ -83,6 +69,8 @@ func spawn_enemies():
 			mob_to_spawn.global_position = spawn_position
 			mob_to_spawn.connect("mob_destroyed", Callable(self, "_on_mob_death"))
 			mob_to_spawn.connect("check_for_power_up_to_spawn", Callable(self, "_on_spaw_power_up_on_level").bind(mob_to_spawn))
+			mob_to_spawn.connect("special_damage_trigger", Callable(status_effect_manager, "_on_special_damage_trigger"))
+
 			amount_of_enemies -= 1
 			wave_list_index_spawner += 1
 		else:
@@ -128,7 +116,3 @@ func _on_spawn_timer_timeout():
 	current_state = WaveState.SPAWNING
 
 	spawn_enemies()
-
-#func _on_new_wave_timer_timeout():
-	#current_wave_index += 1
-	#start_current_wave()

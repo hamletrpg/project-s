@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_5supq")
+bullet_name = "BASIC_BLUE"
 damage = 30.0
 speed = 2000.0

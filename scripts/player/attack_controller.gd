@@ -5,8 +5,6 @@ var can_shoot = true
 
 @onready var attack_timer = $attack_timer
 @onready var basic_attack_timer: Timer = player.basic_attack_timer
-var hit_count: int = 0
-var last_enemy_hit_reference: CharacterBody2D
 
 func process_attack():
 	if Input.is_action_just_pressed("second_fire"):

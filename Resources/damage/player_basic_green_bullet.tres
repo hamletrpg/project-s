@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_wb0nq")
+bullet_name = "BASIC_GREEN"
 damage = 25.0
 speed = 700.0
 metadata/_custom_type_script = "uid://cop0tmxpof2ra"

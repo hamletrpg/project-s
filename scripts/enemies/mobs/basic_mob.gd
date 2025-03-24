@@ -14,6 +14,7 @@ var has_power_up: bool = false
 signal laser(pos, dir)
 signal mob_destroyed
 signal check_for_power_up_to_spawn(mob)
+signal special_damage_trigger(target, damage_type)
 
 enum State {
 	WANDER,
@@ -49,5 +50,7 @@ func _on_entity_health_below_zero():
 	queue_free()
 
 func _on_hurt_box_area_entered(area):
+	if area.stat.bullet_name == "BASIC_GREEN":
+		special_damage_trigger.emit(self, 0)
 	health.substract_health(area.stat.damage)
 	area.bullet_impacted()

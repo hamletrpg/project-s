@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_58h13")
+bullet_name = "BASIC_MOB_BULLET"
 damage = 10.0
 speed = 400.0
