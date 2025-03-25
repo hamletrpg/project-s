@@ -9,7 +9,8 @@ extends Node2D
 
 var target_vector  
 var desired_velocity  
-var speed = 100
+# to change
+var speed = 0
 
 var start_node_position = null  
 var wander_radius = 32

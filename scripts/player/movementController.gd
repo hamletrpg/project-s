@@ -2,7 +2,7 @@ extends Node2D
 
 
 @export var speed = 400
-@export var default_velocity = 4000 #change back to 4000 after testing
+@export var default_velocity = 0 #change back to 4000 after testing
 
 
 var input_direction

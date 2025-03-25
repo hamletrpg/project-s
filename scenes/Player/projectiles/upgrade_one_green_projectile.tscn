@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwkxrurys7qn1"]
+
+[ext_resource type="Texture2D" uid="uid://dytcjgmnekicf" path="res://graphics/Player/Lasers/basic_green_projectile/green_projectile_upgrade_one.png" id="1_r7u00"]
+[ext_resource type="Script" uid="uid://cec8ywwapi4g6" path="res://scripts/player/projectiles/upgrade_one_green_projectile.gd" id="1_uc0y7"]
+[ext_resource type="Resource" uid="uid://dqkx2lj8wcyg1" path="res://Resources/damage/player_bullet_green_power_up_one.tres" id="2_5hdyf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uc0y7"]
+radius = 3.99893
+height = 13.9996
+
+[node name="upgrade_one_green_projectile" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_uc0y7")
+stat = ExtResource("2_5hdyf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_r7u00")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1)
+rotation = 1.56339
+shape = SubResource("CapsuleShape2D_uc0y7")

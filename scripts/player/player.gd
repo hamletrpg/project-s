@@ -6,8 +6,6 @@ extends CharacterBody2D
 @export var player_stats: PlayerStats
 @export var current_level_camera: Camera2D
 @onready var current_power_up_name: String
-@export var burst_sign_node: PackedScene
-
 
 
 @onready var basic_attack_timer: Timer = Timer.new()

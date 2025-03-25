@@ -20,7 +20,7 @@ position = Vector2(259, 393)
 current_level_camera = NodePath("../Level_1_camera")
 
 [node name="wave_1" type="Node2D" parent="."]
-position = Vector2(1221, 325)
+position = Vector2(873, 325)
 
 [node name="position_1" type="Marker2D" parent="wave_1"]
 position = Vector2(-61, -81)
@@ -44,7 +44,7 @@ status_effect_manager = NodePath("../StatusEffectManager")
 wave_manager = NodePath("../WaveManager")
 
 [node name="wave_1_caller" type="Area2D" parent="."]
-position = Vector2(1010, 312)
+position = Vector2(909, 312)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wave_1_caller"]
 shape = SubResource("CircleShape2D_j7p55")

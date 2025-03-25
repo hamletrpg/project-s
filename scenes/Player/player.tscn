@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfa5k6fj6tlv1"]
+[gd_scene load_steps=8 format=3 uid="uid://cfa5k6fj6tlv1"]
 
 [ext_resource type="Texture2D" uid="uid://cbh5fcy3ukll6" path="res://graphics/Player/ShipAnimated3.png" id="1_5og54"]
 [ext_resource type="Script" uid="uid://bk4lixcuk5l3c" path="res://scripts/player/player.gd" id="1_hxh8b"]
 [ext_resource type="Resource" uid="uid://dpbhstk6okahr" path="res://Resources/player/player_stat.tres" id="2_sf0cd"]
-[ext_resource type="PackedScene" uid="uid://cucwvwghfwbmq" path="res://scenes/UI/texture_progress_test.tscn" id="3_hvfru"]
 [ext_resource type="PackedScene" uid="uid://bo3cvbws56w4u" path="res://scenes/Controllers/Player/movement_controller.tscn" id="3_uf2ww"]
 [ext_resource type="PackedScene" uid="uid://clmb2m2xj4oua" path="res://scenes/Controllers/Player/attack_controller.tscn" id="4_o2gl1"]
 
@@ -15,13 +14,12 @@ radius = 12.0416
 
 [node name="player" type="CharacterBody2D" node_paths=PackedStringArray("movement_controller", "attack_controller")]
 rotation = -6.26583
-collision_mask = 26
+collision_mask = 10
 motion_mode = 1
 script = ExtResource("1_hxh8b")
 movement_controller = NodePath("movementController")
 attack_controller = NodePath("attackController")
 player_stats = ExtResource("2_sf0cd")
-burst_sign_node = ExtResource("3_hvfru")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ydn7t")

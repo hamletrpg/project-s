@@ -2,9 +2,9 @@
 
 [ext_resource type="Resource" uid="uid://f4wpgnj8pd45" path="res://Resources/health/player_health.tres" id="1_71lry"]
 [ext_resource type="Script" uid="uid://jxelso10fnlp" path="res://Resources/player/player_stats.gd" id="1_lu6j5"]
-[ext_resource type="PackedScene" uid="uid://bonr386xd78xl" path="res://scenes/Player/projectiles/basic_green_projectile.tscn" id="2_h6rpc"]
+[ext_resource type="PackedScene" uid="uid://cwkxrurys7qn1" path="res://scenes/Player/projectiles/upgrade_one_green_projectile.tscn" id="2_h6rpc"]
 [ext_resource type="PackedScene" uid="uid://d048gril42d7m" path="res://scenes/Player/projectiles/player_fire_ball_projectile.tscn" id="3_bvmud"]
-[ext_resource type="Texture2D" uid="uid://cschjj3ypaexr" path="res://graphics/Player/Lasers/basic_green_projectile/green_projectile_basic.png" id="3_te3s8"]
+[ext_resource type="Texture2D" uid="uid://dytcjgmnekicf" path="res://graphics/Player/Lasers/basic_green_projectile/green_projectile_upgrade_one.png" id="3_te3s8"]
 [ext_resource type="Texture2D" uid="uid://dv3w64nkpta0l" path="res://graphics/Player/second_projectile/fireball.png" id="5_iq704"]
 
 [resource]

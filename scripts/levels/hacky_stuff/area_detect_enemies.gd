@@ -1,0 +1,2 @@
+class_name AreaDetectEnemies
+extends Area2D

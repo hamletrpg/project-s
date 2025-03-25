@@ -13,9 +13,17 @@ func process_attack():
 			print("fireball")
 			can_shoot = false
 			attack_timer.start()
+			
+	if Input.is_action_just_pressed("main_fire"):
+		if can_shoot:
+			player.laser.emit(player.get_laser_marker_position(), Vector2.RIGHT)
+			print("main")
+			can_shoot = false
+			attack_timer.start()
 
 func _on_attack_timer_timeout():
 	can_shoot = true
 
-func _on_basic_attack_timer_timeout():
-	player.laser.emit(player.get_laser_marker_position(), Vector2.RIGHT)
+# comenting for poc
+#func _on_basic_attack_timer_timeout():
+	#player.laser.emit(player.get_laser_marker_position(), Vector2.RIGHT)

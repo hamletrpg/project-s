@@ -12,8 +12,9 @@ func _ready():
 	print("destroyed started")
 
 func _process(delta):
-	if wave_manager.current_state != wave_manager.WaveState.BOSS_FIGHT:
-		global_position += Vector2.RIGHT * speed * delta
+	pass
+	#if wave_manager.current_state != wave_manager.WaveState.BOSS_FIGHT:
+		#global_position += Vector2.RIGHT * speed * delta
 
 func _on_area_entered(area):
 	print("destroying area: ", area.name)

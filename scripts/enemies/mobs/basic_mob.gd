@@ -52,5 +52,7 @@ func _on_entity_health_below_zero():
 func _on_hurt_box_area_entered(area):
 	if area.stat.bullet_name == "BASIC_GREEN":
 		special_damage_trigger.emit(self, 0)
+	if area.stat.bullet_name == "GREEN_UPGRADE_ONE":
+		special_damage_trigger.emit(self, 1)
 	health.substract_health(area.stat.damage)
 	area.bullet_impacted()
