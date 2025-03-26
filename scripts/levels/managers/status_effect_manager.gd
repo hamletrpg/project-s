@@ -36,7 +36,6 @@ func green_upgrade_one_handler(target: CharacterBody2D):
 			instance_area_detect_enemy = area_detect_enemies.instantiate()
 			last_enemy_hit_reference.add_child(instance_area_detect_enemy)
 			instance_area_detect_enemy.connect("body_entered", Callable(self, "_on_body_entered"))
-			
 		elif hit_count >= 3:
 			for enemies in enemies_detected:
 				enemies.health.substract_health(50 * 3)
@@ -47,7 +46,9 @@ func green_upgrade_one_handler(target: CharacterBody2D):
 		hit_count += 1
 	elif target != last_enemy_hit_reference:
 		last_enemy_hit_reference.remove_child(instance_area_detect_enemy)
+		last_enemy_hit_reference.remove_child(basic_green_bullet_ui_notice)
 		last_enemy_hit_reference = target
+		last_enemy_hit_reference.add_child(basic_green_bullet_ui_notice)
 		hit_count = 1
 		enemies_detected.clear()
 		#target.add_child(basic_green_bullet_ui_notice)
@@ -57,4 +58,5 @@ func green_upgrade_one_handler(target: CharacterBody2D):
 func _on_body_entered(body):
 	if body is CharacterBody2D:
 		enemies_detected.append(body)
+		var basic_green_bullet_ui_notice: BasicGreenBulletUINotice = BasicGreenBulletUINotice.new()
 		body.add_child(basic_green_bullet_ui_notice)
