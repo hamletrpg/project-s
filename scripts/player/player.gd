@@ -16,6 +16,7 @@ var can_shoot: bool = true
 
 signal laser(pos, dir)
 signal second_projectile(pos, dir)
+signal special_ability(pos)
 signal health_changed 
 signal point_changed
 signal green_bullet_burst()

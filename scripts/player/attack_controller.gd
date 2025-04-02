@@ -20,6 +20,12 @@ func process_attack():
 			print("main")
 			can_shoot = false
 			attack_timer.start()
+			
+	if Input.is_action_just_pressed("special_ability"):
+		if can_shoot:
+			player.special_ability.emit(player.get_laser_marker_position())
+			can_shoot = false
+			attack_timer.start()
 
 func _on_attack_timer_timeout():
 	can_shoot = true

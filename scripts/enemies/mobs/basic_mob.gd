@@ -54,5 +54,7 @@ func _on_hurt_box_area_entered(area):
 		special_damage_trigger.emit(self, 0)
 	if area.stat.bullet_name == "GREEN_UPGRADE_ONE":
 		special_damage_trigger.emit(self, 1)
+	if area.stat.bullet_name == "GREEN_UPGRADE_TORNADO":
+		special_damage_trigger.emit(self, 2)
 	health.substract_health(area.stat.damage)
 	area.bullet_impacted()

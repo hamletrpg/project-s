@@ -9,6 +9,7 @@ extends Node2D
 
 func _ready():
 	player.connect("second_projectile", Callable(self, "_on_player_second_projectile"))
+	player.connect("special_ability", Callable(self, "_on_player_special_ability"))
 	wave_manager.waves = level_resource.waves
 
 func _on_player_laser(pos, dir):
@@ -23,6 +24,15 @@ func _on_player_second_projectile(pos, dir):
 	spawned_bullet.direction = dir
 	spawned_bullet.position = pos
 	add_child(spawned_bullet)
+
+func _on_player_special_ability(pos):
+	var spawned_bullet_up = player.player_stats.player_special_ability.instantiate()
+	spawned_bullet_up.position = pos
+	var spawned_bullet_down = player.player_stats.player_special_ability.instantiate()
+	spawned_bullet_down.position = pos
+	spawned_bullet_down.upper_bullet = false
+	add_child(spawned_bullet_up)
+	add_child(spawned_bullet_down)
 
 func _on_dummy_area_1_area_entered(area):
 	if area.get_parent() is LevelOneCamera:
