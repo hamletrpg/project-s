@@ -28,9 +28,11 @@ func _on_player_second_projectile(pos, dir):
 func _on_player_special_ability(pos):
 	var spawned_bullet_up = player.player_stats.player_special_ability.instantiate()
 	spawned_bullet_up.position = pos
+	spawned_bullet_up.current_direction = 1
 	var spawned_bullet_down = player.player_stats.player_special_ability.instantiate()
 	spawned_bullet_down.position = pos
 	spawned_bullet_down.upper_bullet = false
+	spawned_bullet_down.current_direction = 0
 	add_child(spawned_bullet_up)
 	add_child(spawned_bullet_down)
 
