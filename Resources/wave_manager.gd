@@ -45,7 +45,7 @@ func start_next_wave():
 		spawn_timer.wait_time = current_wave.spawn_interval
 		spawn_timer.start()
 		print("stopping new wave timer")
-			
+
 func get_next_wave_position():
 	# Currently we are getting that value from 
 	# @onready var spawn_list_base = get_node("/root/Level1/wave_1").get_children()

@@ -6,6 +6,7 @@ var can_shoot = true
 @export var wander_controller: Node2D
 @export var bullet: PackedScene 
 @export var health: HealthComponent
+@export var damage_handler_controller: Node2D
 @onready var animated_sprite: AnimatedSprite2D = $"AnimatedSprite2D"
 @onready var hurtbox: Area2D = $"hurt_box"
 var worth: float = 30.0
@@ -50,11 +51,4 @@ func _on_entity_health_below_zero():
 	queue_free()
 
 func _on_hurt_box_area_entered(area):
-	if area.stat.bullet_name == "BASIC_GREEN":
-		special_damage_trigger.emit(self, 0)
-	if area.stat.bullet_name == "GREEN_UPGRADE_ONE":
-		special_damage_trigger.emit(self, 1)
-	if area.stat.bullet_name == "GREEN_UPGRADE_TORNADO":
-		special_damage_trigger.emit(self, 2)
-	health.substract_health(area.stat.damage)
-	area.bullet_impacted()
+	damage_handler_controller.damage_handler(self, area)

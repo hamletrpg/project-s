@@ -9,6 +9,7 @@ var upper_bullet: bool = true
 @onready var wave_radius: float 
 var current_state = State.SHOT
 var current_direction
+var parent_pointer: CharacterBody2D
 
 @onready var tornado_damage_timer: Timer = Timer.new()
 var timer_hit_count: int = 0
@@ -50,10 +51,11 @@ func _ready():
 # This will be call from the enemy's node that will call area.bullet_impacted()
 # For now just set the state to collision and let the handler do the logic
 # Although it's weird lol
-func bullet_impacted():
+func bullet_impacted(parent):
 	set_state(1)
 	tornado_damage_timer.start()
 	tornado_damage_timer.wait_time = 1
+	parent_pointer = parent
 
 func _process(delta): 
 	if get_state() == State.SHOT:
@@ -107,4 +109,6 @@ func collision_state_handler():
 
 func _on_tornado_damage_timer_timeout():
 	collision_state_handler()
+	parent_pointer.health.substract_health(stat.damage)
+	print(parent_pointer.health.get_current_health())
 	timer_hit_count += 1
