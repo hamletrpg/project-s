@@ -15,7 +15,8 @@ var enemies_detected: Array = []
 enum DamageType {
 	GREEN_BASIC,
 	GREEN_UPGRADE_ONE,
-	GREEN_UPGRADE_TORNADO
+	GREEN_UPGRADE_TORNADO,
+	RED_BASIC
 }
 
 func _on_special_damage_trigger(target: CharacterBody2D, damage_type):
@@ -26,3 +27,5 @@ func _on_special_damage_trigger(target: CharacterBody2D, damage_type):
 			green_upgrade_one_handler_controller.green_upgrade_one_handler(target)
 		DamageType.GREEN_UPGRADE_TORNADO:
 			print("GREEN_UPGRADE_TORNADO")
+		DamageType.RED_BASIC:
+			print("RED_BASIC")

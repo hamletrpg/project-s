@@ -6,6 +6,7 @@ extends Node2D
 @onready var wave_manager = $WaveManager
 # being able to reference current level by code to spawn materials (like bullets)
 # instead of usin tricky-hacky methods 
+# Some random comment :D
 
 func _ready():
 	player.connect("second_projectile", Callable(self, "_on_player_second_projectile"))

@@ -16,6 +16,7 @@ signal laser(pos, dir)
 signal mob_destroyed
 signal check_for_power_up_to_spawn(mob)
 signal special_damage_trigger(target, damage_type)
+signal regular_damage_trigger(target, damage_type)
 
 enum State {
 	WANDER,

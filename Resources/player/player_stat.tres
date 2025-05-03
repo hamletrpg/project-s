@@ -2,17 +2,17 @@
 
 [ext_resource type="Resource" uid="uid://f4wpgnj8pd45" path="res://Resources/health/player_health.tres" id="1_71lry"]
 [ext_resource type="Script" uid="uid://jxelso10fnlp" path="res://Resources/player/player_stats.gd" id="1_lu6j5"]
-[ext_resource type="PackedScene" uid="uid://cwkxrurys7qn1" path="res://scenes/Player/projectiles/upgrade_one_green_projectile.tscn" id="2_h6rpc"]
+[ext_resource type="PackedScene" uid="uid://dcxvufkyiaqu7" path="res://scenes/Player/projectiles/basic_red_projectile.tscn" id="2_te3s8"]
+[ext_resource type="Texture2D" uid="uid://b2t05h41vhghb" path="res://graphics/Player/Lasers/basic_red_projectile/basic_red_projectile.png" id="3_58s48"]
 [ext_resource type="PackedScene" uid="uid://d048gril42d7m" path="res://scenes/Player/projectiles/player_fire_ball_projectile.tscn" id="3_bvmud"]
-[ext_resource type="Texture2D" uid="uid://dytcjgmnekicf" path="res://graphics/Player/Lasers/basic_green_projectile/green_projectile_upgrade_one.png" id="3_te3s8"]
 [ext_resource type="Texture2D" uid="uid://dv3w64nkpta0l" path="res://graphics/Player/second_projectile/fireball.png" id="5_iq704"]
 [ext_resource type="PackedScene" uid="uid://bjwfvm6tig26f" path="res://scenes/Player/projectiles/player_projectile_tornado.tscn" id="6_te3s8"]
 
 [resource]
 script = ExtResource("1_lu6j5")
 player_health_stat = ExtResource("1_71lry")
-player_main_weapon = ExtResource("2_h6rpc")
-player_main_weapon_icon = ExtResource("3_te3s8")
+player_main_weapon = ExtResource("2_te3s8")
+player_main_weapon_icon = ExtResource("3_58s48")
 player_secondary_weapon = ExtResource("3_bvmud")
 player_secondary_weapon_icon = ExtResource("5_iq704")
 player_special_ability = ExtResource("6_te3s8")
