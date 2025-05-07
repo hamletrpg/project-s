@@ -17,3 +17,6 @@ player_secondary_weapon = ExtResource("3_bvmud")
 player_secondary_weapon_icon = ExtResource("5_iq704")
 player_special_ability = ExtResource("6_te3s8")
 current_score = 0.0
+bullet_name = "BASIC_RED"
+damage = 30.0
+speed = 300.0

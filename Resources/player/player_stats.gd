@@ -8,3 +8,8 @@ extends Resource
 @export var player_secondary_weapon_icon: Texture2D
 @export var player_special_ability: PackedScene
 @export var current_score: float
+
+# Bullet data
+@export var bullet_name: String
+@export var damage: float
+@export var speed: float

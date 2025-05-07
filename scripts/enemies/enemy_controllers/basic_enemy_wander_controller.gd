@@ -33,7 +33,7 @@ func _on_attack_timer_timeout():
 	var spawned_bullet = bullet.instantiate()
 	spawned_bullet.global_position = get_parent().global_position
 	spawned_bullet.direction = Vector2.LEFT
-	get_parent().get_parent().get_parent().add_child(spawned_bullet)
+	get_tree().root.add_child(spawned_bullet)
 	
 # Placeholder function, the attack has to be outside the state machine
 # from basic enemy, instead attack will be triggered by a time signal
