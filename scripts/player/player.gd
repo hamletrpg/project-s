@@ -62,10 +62,23 @@ func process_attack():
 			attack_timer.start()
 			
 	if Input.is_action_just_pressed("main_fire"):
-		if can_shoot:
-			laser.emit(get_laser_marker_position(), Vector2.RIGHT)
-			can_shoot = false
-			attack_timer.start()
+		print(red_bullet_burst_counter)
+		print(can_shoot)
+		if player_stats.bullet_name == "BASIC_RED":
+			if red_bullet_burst_counter >= 2:
+				can_shoot = false
+				attack_timer.start()
+				red_bullet_burst_counter = 0
+			else:
+				if can_shoot:
+					laser.emit(get_laser_marker_position(), Vector2.RIGHT)
+			red_bullet_burst_counter += 1
+			
+		else:
+			if can_shoot:
+				laser.emit(get_laser_marker_position(), Vector2.RIGHT)
+				can_shoot = false
+				attack_timer.start()
 			
 	if Input.is_action_just_pressed("special_ability"):
 		if can_shoot:
@@ -100,6 +113,9 @@ func _on_player_laser(pos, dir):
 	var spawned_bullet = player_stats.player_main_weapon.instantiate()
 	spawned_bullet.direction = dir
 	spawned_bullet.position = pos
+	spawned_bullet.speed = player_stats.speed
+	spawned_bullet.damage = player_stats.damage
+	spawned_bullet.bullet_name = player_stats.bullet_name
 	get_tree().root.add_child(spawned_bullet)
 
 func _on_player_second_projectile(pos, dir):
