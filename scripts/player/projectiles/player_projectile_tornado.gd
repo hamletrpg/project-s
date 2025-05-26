@@ -1,18 +1,15 @@
 extends Area2D
 
 # this is how much damage this laser does
-@export var stat: BasicLaserDamage
-@onready var speed = stat.speed
-@onready var shooter: CharacterBody2D
+var speed = 200
 # default value to true, manually instantiate second tornado and change value to false
 var upper_bullet: bool = true
 @onready var wave_radius: float 
 var current_state = State.SHOT
 var current_direction
-var parent_pointer: CharacterBody2D
-
-@onready var tornado_damage_timer: Timer = Timer.new()
-var timer_hit_count: int = 0
+# To be deleted, just as a proof of concept
+var bullet_name = "GREEN_UPGRADE_TORNADO"
+var damage = 30
 
 enum Direction {
 	UP,
@@ -35,11 +32,7 @@ var wave_vector: Vector2
 var time_flying = 0
 
 func _ready():
-	add_child(tornado_damage_timer)
-	tornado_damage_timer.connect("timeout", Callable(self, "_on_tornado_damage_timer_timeout"))
-	tornado_damage_timer.wait_time = 0.1
 
-	connect("body_entered", Callable(shooter, "_from_green_bullet_on_body_entered").bind(self))
 	bullet_position = position
 	if upper_bullet:
 		wave_radius = 30
@@ -51,11 +44,8 @@ func _ready():
 # This will be call from the enemy's node that will call area.bullet_impacted()
 # For now just set the state to collision and let the handler do the logic
 # Although it's weird lol
-func bullet_impacted(parent):
+func bullet_impacted():
 	set_state(1)
-	tornado_damage_timer.start()
-	tornado_damage_timer.wait_time = 1
-	parent_pointer = parent
 
 func _process(delta): 
 	if get_state() == State.SHOT:
@@ -88,27 +78,3 @@ func shot_state_handler(delta):
 		set_direciton(1)
 	elif wave_vector.y > 0:
 		set_direciton(0)
-
-'''
-What TODO when collided?
-Brainstorm:
-	- on contact the behavior of the bullet must change
-	- Slow Down, move one pixel - deal damage, move another pixel - deal damage, move another pixel, explode
-	- One way on checking if bullet goes up and down is:
-		keep track of center.y position of the player
-		DOWN is positive y - Up is Negative y
-'''
-
-func collision_state_handler():
-	if timer_hit_count >= 3:
-		queue_free()
-	if get_direction() == 1:
-		position += Vector2(1, 1) * 2
-	elif get_direction() == 0:
-		position += Vector2(1, -1) * 5 
-
-func _on_tornado_damage_timer_timeout():
-	collision_state_handler()
-	parent_pointer.health.substract_health(stat.damage)
-	print(parent_pointer.health.get_current_health())
-	timer_hit_count += 1

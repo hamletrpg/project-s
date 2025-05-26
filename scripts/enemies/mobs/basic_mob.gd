@@ -6,7 +6,6 @@ var can_shoot = true
 @export var wander_controller: Node2D
 @export var bullet: PackedScene 
 @export var health: HealthComponent
-@export var damage_handler_controller: Node2D
 @onready var animated_sprite: AnimatedSprite2D = $"AnimatedSprite2D"
 @onready var hurtbox: Area2D = $"hurt_box"
 var worth: float = 30.0
@@ -15,8 +14,7 @@ var has_power_up: bool = false
 signal laser(pos, dir)
 signal mob_destroyed
 signal check_for_power_up_to_spawn(mob)
-signal special_damage_trigger(target, damage_type)
-signal regular_damage_trigger(target, damage_type)
+signal damage_trigger(target, damage_type)
 
 enum State {
 	WANDER,
@@ -52,4 +50,4 @@ func _on_entity_health_below_zero():
 	queue_free()
 
 func _on_hurt_box_area_entered(area):
-	damage_handler_controller.damage_handler(self, area)
+	damage_trigger.emit(self, area)

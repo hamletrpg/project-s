@@ -48,10 +48,10 @@ func _on_shoot_timer_timeout():
 	can_shoot = true
 
 func _on_hurt_box_area_entered(area):
+	player_stats.player_health_stat.substract_health(area.damage)
 	emit_signal("health_changed")
-	player_stats.player_health_stat.substract_health(area.stat.damage)
 	area.queue_free()
-	print("Player took damage from boss D:> current health: ", player_stats.player_health_stat.get_current_health())
+	print("Player took damage D:> current health: ", player_stats.player_health_stat.get_current_health())
 
 # Attack Logic
 func process_attack():
@@ -62,23 +62,12 @@ func process_attack():
 			attack_timer.start()
 			
 	if Input.is_action_just_pressed("main_fire"):
-		print(red_bullet_burst_counter)
-		print(can_shoot)
-		if player_stats.bullet_name == "BASIC_RED":
-			if red_bullet_burst_counter >= 2:
-				can_shoot = false
-				attack_timer.start()
-				red_bullet_burst_counter = 0
-			else:
-				if can_shoot:
-					laser.emit(get_laser_marker_position(), Vector2.RIGHT)
-			red_bullet_burst_counter += 1
-			
-		else:
-			if can_shoot:
+		if can_shoot:
+			for some_variable in range(2):
 				laser.emit(get_laser_marker_position(), Vector2.RIGHT)
-				can_shoot = false
-				attack_timer.start()
+				await get_tree().create_timer(0.2).timeout
+			can_shoot = false
+			attack_timer.start()
 			
 	if Input.is_action_just_pressed("special_ability"):
 		if can_shoot:

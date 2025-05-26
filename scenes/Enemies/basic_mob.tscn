@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cmxjqojlhm8om"]
+[gd_scene load_steps=19 format=3 uid="uid://cmxjqojlhm8om"]
 
 [ext_resource type="Script" uid="uid://baoxg0fkf6bs3" path="res://scripts/enemies/mobs/basic_mob.gd" id="1_5bvnm"]
 [ext_resource type="PackedScene" uid="uid://df7xotv1od8v0" path="res://scenes/Enemies/enemy_projectiles/basic_enemy_lasser.tscn" id="2_1ojow"]
@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://coqn38k4l1jja" path="res://graphics/mobs/death_animations/basic_explosion/explosion8.png" id="12_kh6co"]
 [ext_resource type="Texture2D" uid="uid://dcgftxnb3qsdd" path="res://graphics/mobs/death_animations/basic_explosion/explosion9.png" id="13_2xi0e"]
 [ext_resource type="Texture2D" uid="uid://ckr21h2ktixgy" path="res://graphics/mobs/death_animations/basic_explosion/explosion10.png" id="14_ocnx0"]
-[ext_resource type="Script" uid="uid://bf7jxclbohf6a" path="res://scripts/enemies/enemy_controllers/damage_handler_controller.gd" id="16_1e580"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f4mcv"]
 
@@ -67,13 +66,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="basic_mob" type="CharacterBody2D" node_paths=PackedStringArray("wander_controller", "damage_handler_controller") groups=["enemies"]]
+[node name="basic_mob" type="CharacterBody2D" node_paths=PackedStringArray("wander_controller") groups=["enemies"]]
 collision_layer = 2
 script = ExtResource("1_5bvnm")
 wander_controller = NodePath("basicEnemyWanderController")
 bullet = ExtResource("2_1ojow")
 health = ExtResource("3_rtdv4")
-damage_handler_controller = NodePath("damage_handler_controller")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_f4mcv")
@@ -97,9 +95,6 @@ rotation = 1.56858
 sprite_frames = SubResource("SpriteFrames_olvk6")
 animation = &"death_animation"
 autoplay = "idle"
-
-[node name="damage_handler_controller" type="Node2D" parent="."]
-script = ExtResource("16_1e580")
 
 [connection signal="timeout" from="wander_update" to="." method="_on_wander_update_timeout"]
 [connection signal="area_entered" from="hurt_box" to="." method="_on_hurt_box_area_entered"]

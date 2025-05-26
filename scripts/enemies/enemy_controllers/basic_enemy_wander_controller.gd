@@ -31,6 +31,8 @@ func wander_action():
 func _on_attack_timer_timeout():
 	print("Projectile used")
 	var spawned_bullet = bullet.instantiate()
+	spawned_bullet.speed = 200
+	spawned_bullet.damage = 30
 	spawned_bullet.global_position = get_parent().global_position
 	spawned_bullet.direction = Vector2.LEFT
 	get_tree().root.add_child(spawned_bullet)

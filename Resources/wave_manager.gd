@@ -69,7 +69,7 @@ func spawn_enemies():
 			mob_to_spawn.global_position = spawn_position
 			mob_to_spawn.connect("mob_destroyed", Callable(self, "_on_mob_death"))
 			mob_to_spawn.connect("check_for_power_up_to_spawn", Callable(self, "_on_spaw_power_up_on_level").bind(mob_to_spawn))
-			mob_to_spawn.connect("special_damage_trigger", Callable(status_effect_manager, "_on_special_damage_trigger"))
+			mob_to_spawn.connect("damage_trigger", Callable(status_effect_manager, "_on_special_damage_trigger"))
 
 			amount_of_enemies -= 1
 			wave_list_index_spawner += 1

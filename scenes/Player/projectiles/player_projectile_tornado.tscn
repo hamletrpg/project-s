@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjwfvm6tig26f"]
+[gd_scene load_steps=4 format=3 uid="uid://bjwfvm6tig26f"]
 
 [ext_resource type="Script" uid="uid://bo6x444vp3oac" path="res://scripts/player/projectiles/player_projectile_tornado.gd" id="1_alu3o"]
 [ext_resource type="Texture2D" uid="uid://dv3w64nkpta0l" path="res://graphics/Player/second_projectile/fireball.png" id="1_trfjo"]
-[ext_resource type="Resource" uid="uid://qetvekoqva60" path="res://Resources/damage/player_tornado_projectile.tres" id="2_inygs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w3ks8"]
 radius = 9.0
@@ -11,7 +10,6 @@ radius = 9.0
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_alu3o")
-stat = ExtResource("2_inygs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_trfjo")

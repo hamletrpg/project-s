@@ -12,20 +12,46 @@ var enemies_detected: Array = []
 @onready var green_basic_handler_controller: Node2D = $"green_basic_handler_controller"
 @onready var green_upgrade_one_handler_controller: Node2D = $"green_upgrate_one_handler_controller"
 
-enum DamageType {
-	GREEN_BASIC,
-	GREEN_UPGRADE_ONE,
-	GREEN_UPGRADE_TORNADO,
-	RED_BASIC
-}
+# Red bullet handlers
+@onready var green_upgrade_tornado_damage_controller: Node2D = $green_upgrade_tornado_damage_handler
 
-func _on_special_damage_trigger(target: CharacterBody2D, damage_type):
-	match(damage_type):
-		DamageType.GREEN_BASIC:
+# Useless
+#enum DamageType {
+	#GREEN_BASIC,
+	#GREEN_UPGRADE_ONE,
+	#GREEN_UPGRADE_TORNADO,
+	#RED_BASIC
+#}
+
+func _on_special_damage_trigger(target: CharacterBody2D, source):
+	match(source.bullet_name):
+		"BASIC_GREEN":
 			green_basic_handler_controller.green_basic_handler(target)
-		DamageType.GREEN_UPGRADE_ONE:
+		"GREEN_UPGRADE_ONE":
 			green_upgrade_one_handler_controller.green_upgrade_one_handler(target)
-		DamageType.GREEN_UPGRADE_TORNADO:
-			print("GREEN_UPGRADE_TORNADO")
-		DamageType.RED_BASIC:
-			print("RED_BASIC")
+		"GREEN_UPGRADE_TORNADO":
+			green_upgrade_tornado_damage_controller.green_upgrade_tornado_damage_handler(target, source)
+		"BASIC_RED":
+			basic_red_bullet_damage_handler(target, source)
+
+func basic_red_bullet_damage_handler(target, source):
+	target.health.substract_health(source.damage)
+	source.bullet_impacted()
+
+
+
+# Useless
+#func damage_handler(parent, entity):
+	#if entity.bullet_name == "BASIC_GREEN":
+		#parent.special_damage_trigger.emit(parent, 0)
+		#parent.health.substract_health(entity.damage)
+		#entity.bullet_impacted()
+	#if entity.bullet_name == "GREEN_UPGRADE_ONE":
+		#parent.special_damage_trigger.emit(parent, 1)
+		#parent.health.substract_health(entity.damage)
+		#entity.bullet_impacted()
+	#if entity.bullet_name == "GREEN_UPGRADE_TORNADO":
+		
+	#if entity.bullet_name == "BASIC_RED":
+		##parent.special_damage_trigger.emit(parent, 2)
+		

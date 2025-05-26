@@ -1,7 +1,6 @@
 class_name BasicBossOneLaser
 extends Area2D
 
-@export var stat: BasicLaserDamage
 
 var speed: int = 300
 var direction: Vector2 = Vector2.LEFT

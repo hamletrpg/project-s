@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://df7xotv1od8v0"]
+[gd_scene load_steps=4 format=3 uid="uid://df7xotv1od8v0"]
 
 [ext_resource type="Script" uid="uid://craa46fbtb60x" path="res://scripts/enemies/enemy_projectiles/basic_enemy_lasser.gd" id="1_nxoab"]
 [ext_resource type="Texture2D" uid="uid://283nkj3eqqwe" path="res://graphics/mobs/basic_mob/enemyLaser.png" id="2_f51ms"]
-[ext_resource type="Resource" uid="uid://dtpn63db50tp4" path="res://Resources/damage/basic_enemy_bullet_stat.tres" id="2_ldxa8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_41gfo"]
 radius = 5.0
@@ -11,7 +10,6 @@ height = 10.0
 [node name="basic_enemy_lasser" type="Area2D"]
 collision_layer = 8
 script = ExtResource("1_nxoab")
-stat = ExtResource("2_ldxa8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_41gfo")
