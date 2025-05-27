@@ -5,9 +5,8 @@ extends Node2D
 @onready var wave_manager = $WaveManager
 # being able to reference current level by code to spawn materials (like bullets)
 # instead of usin tricky-hacky methods 
-# Some random comment :D
 
-func _ready():	
+func _ready():
 	wave_manager.waves = level_resource.waves
 
 func _on_dummy_area_1_area_entered(area):

@@ -9,7 +9,6 @@
 
 [node name="StatusEffectManager" type="Node2D"]
 script = ExtResource("1_lv4mx")
-area_detect_enemies = ExtResource("2_8y77g")
 
 [node name="green_basic_handler_controller" type="Node2D" parent="."]
 script = ExtResource("2_vuqgd")

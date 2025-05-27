@@ -5,8 +5,15 @@ var hit_count: float = 0
 var last_enemy_hit_reference: CharacterBody2D
 @onready var basic_green_bullet_ui_notice: BasicGreenBulletUINotice = BasicGreenBulletUINotice.new()
 @onready var instance_area_detect_enemy
-@export var area_detect_enemies: PackedScene
 var enemies_detected: Array = []
+
+# Timer for dots
+var dots_timer: Timer = Timer.new()
+
+# counter for dots
+var dots_damage_apply_count: int = 0
+var dots_amount_of_base_damage: int = 5
+var dots_stack_damage = 0
 
 # Handlers for green UI
 @onready var green_basic_handler_controller: Node2D = $"green_basic_handler_controller"
@@ -23,12 +30,21 @@ var enemies_detected: Array = []
 	#RED_BASIC
 #}
 
+# Keeping this function to quickly itterate
+func _ready():
+	add_child(dots_timer)
+	dots_timer.wait_time = 2
+
 func _on_special_damage_trigger(target: CharacterBody2D, source):
 	match(source.bullet_name):
 		"BASIC_GREEN":
 			green_basic_handler_controller.green_basic_handler(target)
+			# Probably handle this on the controller
+			target.health.substract_health(source.damage)
 		"GREEN_UPGRADE_ONE":
 			green_upgrade_one_handler_controller.green_upgrade_one_handler(target)
+			# Probably handle this on the controller
+			target.health.substract_health(source.damage)
 		"GREEN_UPGRADE_TORNADO":
 			green_upgrade_tornado_damage_controller.green_upgrade_tornado_damage_handler(target, source)
 		"BASIC_RED":
@@ -37,21 +53,18 @@ func _on_special_damage_trigger(target: CharacterBody2D, source):
 func basic_red_bullet_damage_handler(target, source):
 	target.health.substract_health(source.damage)
 	source.bullet_impacted()
+	dots_timer.connect("timeout", Callable(self, "_on_dots_timer_timeout").bind(target, source))
+	dots_timer.start()
+	print("dots timer started")
 
-
-
-# Useless
-#func damage_handler(parent, entity):
-	#if entity.bullet_name == "BASIC_GREEN":
-		#parent.special_damage_trigger.emit(parent, 0)
-		#parent.health.substract_health(entity.damage)
-		#entity.bullet_impacted()
-	#if entity.bullet_name == "GREEN_UPGRADE_ONE":
-		#parent.special_damage_trigger.emit(parent, 1)
-		#parent.health.substract_health(entity.damage)
-		#entity.bullet_impacted()
-	#if entity.bullet_name == "GREEN_UPGRADE_TORNADO":
-		
-	#if entity.bullet_name == "BASIC_RED":
-		##parent.special_damage_trigger.emit(parent, 2)
-		
+func apply_dots(target, source):
+	if dots_damage_apply_count > 5:
+		dots_timer.stop()
+	target.health.substract_health(dots_amount_of_base_damage)
+	dots_damage_apply_count += 1
+	
+func _on_dots_timer_timeout(target, source):
+	apply_dots(target, source)
+	print(target.health.get_current_health())
+	print("dots applied")
+	# Do something
