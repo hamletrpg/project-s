@@ -13,7 +13,9 @@ var dots_timer: Timer = Timer.new()
 # counter for dots
 var dots_damage_apply_count: int = 0
 var dots_amount_of_base_damage: int = 5
-var dots_stack_damage = 0
+
+# keep track of dots stacking
+var dots_stacking_count: int = 0
 
 # Handlers for green UI
 @onready var green_basic_handler_controller: Node2D = $"green_basic_handler_controller"
@@ -54,17 +56,29 @@ func basic_red_bullet_damage_handler(target, source):
 	target.health.substract_health(source.damage)
 	source.bullet_impacted()
 	dots_timer.connect("timeout", Callable(self, "_on_dots_timer_timeout").bind(target, source))
-	dots_timer.start()
-	print("dots timer started")
+	if dots_timer.is_stopped():
+		dots_timer.start()
+		print("dots timer started")
+	if "dots" not in target.status_effects:
+		target.status_effects.append("dots")
+	if "dots" in target.status_effects and dots_stacking_count <= 5:
+		dots_amount_of_base_damage += 2
+		dots_stacking_count += 1
+	print(target.status_effects)
+	print("base dots damage: ", dots_amount_of_base_damage)
+	print("dots stacking amount: ", dots_stacking_count)
+	
 
-func apply_dots(target, source):
+func apply_dots(target: CharacterBody2D, source):
 	if dots_damage_apply_count > 5:
 		dots_timer.stop()
-	target.health.substract_health(dots_amount_of_base_damage)
+		dots_damage_apply_count = 0
+	if target:
+		target.health.substract_health(dots_amount_of_base_damage)
 	dots_damage_apply_count += 1
 	
 func _on_dots_timer_timeout(target, source):
 	apply_dots(target, source)
 	print(target.health.get_current_health())
-	print("dots applied")
+	print("dots applied: ", dots_amount_of_base_damage)
 	# Do something

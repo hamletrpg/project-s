@@ -7,8 +7,7 @@ extends Area2D
 var direction: Vector2 = Vector2.RIGHT
 
 # this is how much damage this laser does
-@export var stat: BasicLaserDamage
-@onready var speed = stat.speed
+var speed = 200
 
 func _process(delta):
 	position += direction * speed * delta

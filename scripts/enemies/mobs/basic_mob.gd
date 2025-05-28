@@ -10,6 +10,7 @@ var can_shoot = true
 @onready var hurtbox: Area2D = $"hurt_box"
 var worth: float = 30.0
 var has_power_up: bool = false
+var status_effects = []
 
 signal laser(pos, dir)
 signal mob_destroyed
