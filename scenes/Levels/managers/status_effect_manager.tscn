@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://xdglx6uoo8o7"]
+[gd_scene load_steps=8 format=3 uid="uid://xdglx6uoo8o7"]
 
 [ext_resource type="Script" uid="uid://blyxkdpdnjtbq" path="res://scripts/levels/managers/status_effect_manager.gd" id="1_lv4mx"]
 [ext_resource type="PackedScene" uid="uid://d0ltb8170xydq" path="res://scenes/Levels/hacky_stuff/area_detect_enemies.tscn" id="2_8y77g"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c1dhuts2yi8sy" path="res://scenes/Levels/managers/green_upgrate_one_handler_controller.tscn" id="4_jgn1e"]
 [ext_resource type="Script" uid="uid://fbimweaawb7f" path="res://scripts/levels/managers/controllers/green_upgrate_one_handler_controller.gd" id="5_7aoht"]
 [ext_resource type="Script" uid="uid://rbuki8oj2xtf" path="res://scripts/levels/managers/controllers/green_upgrade_tornado_damage_handler.gd" id="6_7aoht"]
+[ext_resource type="Script" uid="uid://c741vx344njkc" path="res://scripts/levels/managers/controllers/red_bullet_basic_handler_controller.gd" id="7_mxeos"]
 
 [node name="StatusEffectManager" type="Node2D"]
 script = ExtResource("1_lv4mx")
@@ -19,3 +20,6 @@ area_detect_enemies = ExtResource("2_8y77g")
 
 [node name="green_upgrade_tornado_damage_handler" type="Node2D" parent="."]
 script = ExtResource("6_7aoht")
+
+[node name="red_bullet_basic_handler_controller" type="Node2D" parent="."]
+script = ExtResource("7_mxeos")

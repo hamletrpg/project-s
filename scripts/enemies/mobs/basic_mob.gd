@@ -10,7 +10,13 @@ var can_shoot = true
 @onready var hurtbox: Area2D = $"hurt_box"
 var worth: float = 30.0
 var has_power_up: bool = false
+
+# Status effect related stuff
 var status_effects = []
+var dots_stacking_count: int = 0
+var dots_damage_apply_count: int = 0
+var dots_amount_of_base_damage: int = 5
+var dots_timer: Timer
 
 signal laser(pos, dir)
 signal mob_destroyed

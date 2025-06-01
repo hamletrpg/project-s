@@ -18,7 +18,6 @@ var wander_radius = 32
 signal laser(pos, dir)
 
 func _ready():
-	print("from ready basic enemy wander")
 	add_child(attack_timer)
 	start_node_position = enemy.global_position  
 	attack_timer.connect("timeout", Callable(self, "_on_attack_timer_timeout"))
@@ -29,7 +28,6 @@ func wander_action():
 	enemy.velocity = Vector2.LEFT * speed
 	
 func _on_attack_timer_timeout():
-	print("Projectile used")
 	var spawned_bullet = bullet.instantiate()
 	spawned_bullet.speed = 200
 	spawned_bullet.damage = 30
