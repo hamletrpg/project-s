@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=4 format=3 uid="uid://ch0xjkpk85foa"]
+
+[ext_resource type="Script" uid="uid://rkhkili7lahk" path="res://Resources/weapon/weapon_resource.gd" id="1_uppew"]
+[ext_resource type="PackedScene" uid="uid://bsknrts2m36ph" path="res://scenes/Player/projectiles/red_bullet_upgrade_two.tscn" id="2_ptikw"]
+[ext_resource type="Texture2D" uid="uid://dpdl2vq5y83ou" path="res://graphics/Player/Lasers/basic_red_projectile/red_projectile_upgrade_two.png" id="3_1f8bg"]
+
+[resource]
+script = ExtResource("1_uppew")
+weapon = ExtResource("2_ptikw")
+weapon_icon = ExtResource("3_1f8bg")
+bullet_name = "RED_UPGRADE_TWO"
+damage = 40.0
+speed = 450.0
+metadata/_custom_type_script = "uid://rkhkili7lahk"

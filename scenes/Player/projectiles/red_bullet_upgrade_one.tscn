@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://mdr7wbhgc2qd"]
+
+[ext_resource type="Texture2D" uid="uid://cquuxu5kkgos3" path="res://graphics/Player/Lasers/red_projectile_upgrade_one.png" id="1_kyig0"]
+[ext_resource type="Script" uid="uid://dn3ef26oyoyka" path="res://scripts/player/projectiles/red_bullet_upgrade_one.gd" id="1_r0iwv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r0iwv"]
+radius = 3.00005
+height = 14.0
+
+[node name="red_bullet_upgrade_one" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_r0iwv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+rotation = 1.57074
+shape = SubResource("CapsuleShape2D_r0iwv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kyig0")

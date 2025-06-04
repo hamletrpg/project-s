@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfa5k6fj6tlv1"]
+
+[ext_resource type="Texture2D" uid="uid://cbh5fcy3ukll6" path="res://graphics/Player/ShipAnimated3.png" id="1_5og54"]
+[ext_resource type="Script" uid="uid://bk4lixcuk5l3c" path="res://scripts/player/player.gd" id="1_hxh8b"]
+[ext_resource type="Resource" uid="uid://dpbhstk6okahr" path="res://Resources/player/player_stat.tres" id="2_sf0cd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ydn7t"]
+radius = 9.21955
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5nrmx"]
+radius = 12.0416
+
+[node name="player" type="CharacterBody2D"]
+rotation = -6.26583
+collision_mask = 10
+motion_mode = 1
+script = ExtResource("1_hxh8b")
+player_stats = ExtResource("2_sf0cd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ydn7t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5456
+scale = Vector2(1.5625, 1.375)
+texture = ExtResource("1_5og54")
+
+[node name="laser_position" type="Marker2D" parent="."]
+position = Vector2(17.0148, 0.704825)
+
+[node name="Projectiles" type="Node2D" parent="."]
+
+[node name="shoot_timer" type="Timer" parent="."]
+wait_time = 0.644
+autostart = true
+
+[node name="hurt_box" type="Area2D" parent="."]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_box"]
+shape = SubResource("CircleShape2D_5nrmx")
+
+[node name="attack_timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="shoot_timer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="area_entered" from="hurt_box" to="." method="_on_hurt_box_area_entered"]

@@ -2,13 +2,12 @@
 
 [ext_resource type="Resource" uid="uid://f4wpgnj8pd45" path="res://Resources/health/player_health.tres" id="1_71lry"]
 [ext_resource type="Script" uid="uid://jxelso10fnlp" path="res://Resources/player/player_stats.gd" id="1_lu6j5"]
-[ext_resource type="Resource" uid="uid://cpu5ijjnucdqb" path="res://Resources/weapon/basic_blue.tres" id="2_fax3m"]
-[ext_resource type="Resource" uid="uid://cyvvy652ydjfb" path="res://Resources/weapon/fireball_second_projectile.tres" id="3_fax3m"]
+[ext_resource type="Resource" uid="uid://bamlxq4wifvf" path="res://Resources/weapon/basic_red.tres" id="2_fax3m"]
+[ext_resource type="Texture2D" uid="uid://dv3w64nkpta0l" path="res://graphics/Player/second_projectile/fireball.png" id="5_iq704"]
 
 [resource]
 script = ExtResource("1_lu6j5")
 player_health_stat = ExtResource("1_71lry")
 player_main_weapon = ExtResource("2_fax3m")
-player_secondary_weapon = ExtResource("3_fax3m")
-player_special_ability = ExtResource("3_fax3m")
+player_secondary_weapon_icon = ExtResource("5_iq704")
 current_score = 0.0
